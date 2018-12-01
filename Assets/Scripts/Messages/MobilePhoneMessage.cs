@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MobilePhoneMessage : MonoBehaviour
 {
 
+    public RectTransform panel;
     public Image icon;
     public LocalizedText localizedText;
 
@@ -13,6 +14,12 @@ public class MobilePhoneMessage : MonoBehaviour
     {
         icon.sprite = SheepsManager.Instance.GetSheepConfigById(blob.senderID).Icon;
         localizedText.SetupText(blob.messageKey);
+    }
+
+    public void SetVisibility(bool visible)
+    {
+        panel.gameObject.SetActive(visible);
+
     }
 
 }
