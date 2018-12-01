@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SheepInputData))]
-public class SheepStateController : MonoBehaviour
+public class SheepState : MonoBehaviour
 {
     //Control Variables
     public int healthPoints;

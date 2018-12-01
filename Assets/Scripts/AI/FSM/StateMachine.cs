@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StateMachine
 {
-    public State CurrentState { get; private set; }
+    public FSMState CurrentState { get; private set; }
     public object Agent;
 
-    public void SetState(State state)
+    public void SetState(FSMState state)
     {
         if(CurrentState != null)
         {

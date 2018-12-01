@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SheepStateController))]
+[RequireComponent(typeof(SheepState))]
 public class SheepAI : MonoBehaviour
 {
     public StateMachine stateMachine = new StateMachine();
-    public SheepStateController sheepStateController;
+    public SheepState sheepStateController;
     public SheepInputData sheepInputData;
 
     public void Awake()
     {
         stateMachine.Agent = this;
-        sheepStateController = GetComponent<SheepStateController>();
+        sheepStateController = GetComponent<SheepState>();
         sheepInputData = GetComponent<SheepInputData>();
     }
 

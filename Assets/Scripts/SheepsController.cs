@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SheepsController : Singleton<SheepsController>
 {
-    [HideInInspector] public List<SheepStateController> allSheeps = new List<SheepStateController>();
+    [HideInInspector] public List<SheepState> allSheeps = new List<SheepState>();
 
     public SheepConfig[] configsToStart;
     public GameObject sheepPrefab;
@@ -14,7 +14,7 @@ public class SheepsController : Singleton<SheepsController>
         foreach (SheepConfig config in configsToStart)
         {
             GameObject go = Instantiate(sheepPrefab,Vector3.zero,Quaternion.identity);
-            SheepStateController state = go.GetComponent<SheepStateController>();
+            SheepState state = go.GetComponent<SheepState>();
             state.SetupSheep(config);
         }
     }

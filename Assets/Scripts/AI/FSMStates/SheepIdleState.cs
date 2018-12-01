@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepIdleState : State
+public class SheepIdleState : FSMState
 {
     public override void OnEnter()
     {

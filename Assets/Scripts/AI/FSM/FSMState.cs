@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State
+public class FSMState
 {
     public object Agent;
 
