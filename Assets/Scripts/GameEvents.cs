@@ -2,7 +2,7 @@ using System;
 
 public static class GameEvents{
     public static class Messages{
-        public static Action NewMessage;
+        public static Action<MessageBlob> NewMessage;
     }
 
     public static class Localization{
@@ -10,7 +10,7 @@ public static class GameEvents{
     }
 
     public static class Notifications{
-        public static Action<NotificationBlob> TriggerNotification;
+        public static Action<NotificationBlob> NewNotification;
     }
 
     public static class AI

@@ -7,7 +7,7 @@ public class LocalizationManager : Singleton<LocalizationManager>
     public TextAsset csvFile;
     private Dictionary<string, string> localizedTexts = new Dictionary<string, string>();
     private List<string> languages = new List<string>();
-    private string currentLanguage = "enUS";
+    [SerializeField] private string currentLanguage = "enUS";
 
     private char lineSeperater = '\n'; // It defines line seperate character
     private char fieldSeperator = ';'; // It defines field seperate chracter

@@ -6,7 +6,7 @@ public class NotificationsManager : Singleton<NotificationsManager>
 
     public void AddNotification(NotificationBlob blob){
         notificationHistory.Add(blob);
-        GameEvents.Notifications.TriggerNotification.SafeInvoke(blob);
+        GameEvents.Notifications.NewNotification.SafeInvoke(blob);
     }
 }
 

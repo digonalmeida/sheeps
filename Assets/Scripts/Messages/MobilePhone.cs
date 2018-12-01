@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class MobilePhone : Singleton<MobilePhone>
+{
+    public MobilePhoneMessage messagePrefab;
+    public Transform contentParent;
+    public int maxMessagesOnScreen = 8;
+
+    private Animator animator;
+	private Animator contentAnimator;
+    private RectTransform phoneTrasform;
+	private Vector2 localMousePosition;
+    private bool isHovered;
+
+
+    void OnEnable()
+    {
+        GameEvents.Messages.NewMessage += AddMessage;
+    }
+
+    void OnDisable()
+    {
+        GameEvents.Messages.NewMessage -= AddMessage;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // get references
+        animator = GetComponent<Animator>();
+		contentAnimator = contentParent.GetComponent<Animator>();
+        phoneTrasform = GetComponent<RectTransform>();
+
+        // instantiate cards
+        for (int i = 0; i < maxMessagesOnScreen; i++)
+        {
+            MobilePhoneMessage msg = Instantiate(messagePrefab, contentParent);
+            msg.SetVisibility(false);
+        }
+    }
+
+    internal void FinishedScrolling()
+    {
+		Transform msgTransform = contentParent.GetChild(0).transform;
+        msgTransform.SetAsLastSibling();
+        Debug.Log("voltou");
+    }
+
+	private void StartScrolling(){
+		Transform msgTransform = contentParent.GetChild(0).transform;
+		msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(false);
+		contentAnimator.SetTrigger("scroll");
+	}
+
+    void Update()
+    {
+		// get mousePos
+		localMousePosition = phoneTrasform.InverseTransformPoint(Input.mousePosition);
+        isHovered = phoneTrasform.rect.Contains(localMousePosition);
+
+		//update animator
+        animator.SetBool("hover", isHovered);
+    }
+
+    private void AddMessage(MessageBlob blob)
+    {
+        Transform msgTransform = contentParent.GetChild(contentParent.childCount-1).transform;
+        msgTransform.GetComponent<MobilePhoneMessage>().Setup(blob);
+		msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
+
+		StartScrolling();
+    }
+
+    public void ClearAllMessages()
+    {
+        for (int i = 0; i < maxMessagesOnScreen; i++)
+        {
+            contentParent.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+}

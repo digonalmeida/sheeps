@@ -9,10 +9,26 @@ public class SheepConfig : ScriptableObject {
 	[SerializeField] private int _id;
 	[SerializeField] private string _name;
 	[SerializeField] private string _description;
-	[SerializeField] private Texture2D _icon;
+	[SerializeField] private Sprite _icon;
 	[SerializeField] private List<Message> messages;
 
-	public MessageBlob GetMessage(messageType messageType){
+    public int Id
+    {
+        get
+        {
+            return _id;
+        }
+    }
+
+    public Sprite Icon
+    {
+        get
+        {
+            return _icon;
+        }
+    }
+
+    public MessageBlob GetMessage(messageType messageType){
 		Message[] filtered = messages.Where(m=>m.MessageType == messageType).ToArray();
 		if(filtered.Length>0){
 			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageTextKey,messageStyle.normal);
