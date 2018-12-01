@@ -6,16 +6,19 @@ public class SheepGrabbingOtherState : FSMState
 {
     //Control Variables
     private SheepController agent;
+    private float timer;
 
     public override void OnEnter()
     {
         base.OnEnter();
         agent = Agent as SheepController;
         PlayerInput.Instance.highlightTargetLocked = true;
+        timer = agent.sheepAnimationController.timeAnimationGrabbing;
     }
 
     public override void Update()
     {
-        if (agent.sheepAnimationController.checkEndOfAnimation("Grabbing")) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
+        timer -= Time.deltaTime;
+        if (timer <= 0) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
     }
 }

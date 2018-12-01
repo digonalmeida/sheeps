@@ -22,6 +22,7 @@ public class SheepController : MonoBehaviour
     //FSM States References
     public StateMachine stateMachine;
     public SheepDyingState sheepDyingState;
+    public SheepDeadState sheepDeadState;
     public SheepIdleState sheepIdleState;
     public SheepMovementState sheepMovementState;
     public SheepGrabbingOtherState sheepGrabbingOtherState;
@@ -55,6 +56,7 @@ public class SheepController : MonoBehaviour
         sheepAttackingState = new SheepAttackingState();
         sheepStunnedState = new SheepStunnedState();
         sheepUnconsciousState = new SheepUnconsciousState();
+        sheepDeadState = new SheepDeadState();
 
         //FSM Transitions
         sheepIdleState.AddTransition((int)FSMEventTriggers.Captured, sheepState.checkUncounscious, sheepCapturedUnconsciousState);
@@ -84,7 +86,7 @@ public class SheepController : MonoBehaviour
 
         sheepCapturedUnconsciousState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
         sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
-        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Stun, sheepIdleState);
 
         sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Death, sheepDyingState);
         sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
@@ -105,6 +107,8 @@ public class SheepController : MonoBehaviour
         sheepUnconsciousState.AddTrigger((int)FSMEventTriggers.Captured, sheepCapturedUnconsciousState);
         sheepUnconsciousState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
 
+        sheepDyingState.AddTrigger((int)FSMEventTriggers.Death, sheepDeadState);
+
         //Set State Machine
         stateMachine = new StateMachine();
         stateMachine.Agent = this;
@@ -120,7 +124,6 @@ public class SheepController : MonoBehaviour
     //Sheep Controller Aux Methods
     public void takeDamage()
     {
-        Debug.LogWarning("DAMAGE");
         sheepState.takeDamage();
         if (sheepState.checkUncounscious()) stateMachine.TriggerEvent((int)FSMEventTriggers.Unconscious);
     }
