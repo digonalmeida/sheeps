@@ -28,10 +28,19 @@ public class SheepConfig : ScriptableObject {
         }
     }
 
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
+
     public MessageBlob GetMessage(messageType messageType){
 		Message[] filtered = messages.Where(m=>m.MessageType == messageType).ToArray();
 		if(filtered.Length>0){
-			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageTextKey,messageStyle.normal);
+            messageStyle style = messageType == messageType.fear ? messageStyle.alert : messageStyle.normal;
+			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageTextKey,style);
 		} else {
 			return null;
 		}

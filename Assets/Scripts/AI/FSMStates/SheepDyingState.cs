@@ -6,18 +6,19 @@ public class SheepDyingState : FSMState
 {
     //Control Variables
     private SheepController agent;
+    private float timer;
 
     public override void OnEnter()
     {
         base.OnEnter();
         agent = Agent as SheepController;
+        timer = agent.sheepAnimationController.timeAnimationDying;
+        agent.sheepAnimationController.setTrigger("Die");
     }
 
     public override void Update()
     {
-        if (agent.sheepAnimationController.checkEndOfAnimation("Dying"))
-        {
-            GameObject.Destroy(agent.gameObject);
-        }
+        timer -= Time.deltaTime;
+        if (timer <= 0f) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.Death);
     }
 }

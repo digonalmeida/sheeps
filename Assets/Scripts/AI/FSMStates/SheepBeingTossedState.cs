@@ -11,8 +11,15 @@ public class SheepBeingTossedState : FSMState
     public override void OnEnter()
     {
         base.OnEnter();
-        target = agent.transform.position + (agent.sheepInputData.movementDirection * agent.sheepState.tossDistanceMultiplier);
         agent = Agent as SheepController;
+        target = agent.transform.position + (agent.sheepInputData.movementDirection * agent.sheepState.tossDistanceMultiplier);
+        agent.sheepAnimationController.setBool("BeingTossed", true);
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        agent.sheepAnimationController.setBool("BeingTossed", false);
     }
 
     public override void Update()

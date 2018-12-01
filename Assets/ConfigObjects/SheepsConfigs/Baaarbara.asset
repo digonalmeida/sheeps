@@ -9,16 +9,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6077d3613af7ccf4da39f045c15c8e63, type: 3}
-  m_Name: Carlos Albeeerto
+  m_Name: Baaarbara
   m_EditorClassIdentifier: 
-  _id: 1
-  _name: Carlos Albeeerto
+  _id: 5
+  _name: Baaarbara
   _description: 
   _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
   messages:
   - messageType: 1
-    messageTextKey: Carlos Albeeerto_greating
+    messageTextKey: Baaarbara_greating
   - messageType: 5
-    messageTextKey: Carlos Albeeerto_dumb
+    messageTextKey: Baaarbara_dumb
+  - messageType: 3
+    messageTextKey: Baaarbara_fear
+  - messageType: 2
+    messageTextKey: Baaarbara_gossip
+  - messageType: 4
+    messageTextKey: Baaarbara_relief
   - messageType: 6
-    messageTextKey: Carlos Albeeerto_grief
+    messageTextKey: Baaarbara_grief
+  - messageType: 7
+    messageTextKey: All_Tretas_11
+  - messageType: 7
+    messageTextKey: All_Tretas_1

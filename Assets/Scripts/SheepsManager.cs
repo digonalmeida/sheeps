@@ -31,12 +31,4 @@ public class SheepsManager : Singleton<SheepsManager>
         }
     }
 
-    private void Start(){
-        Dictionary<messageType, float> messageTypesStart = new Dictionary<messageType, float>();
-        messageTypesStart.Add(messageType.greeting,0.3f);
-        messageTypesStart.Add(messageType.shitpost,0.4f);
-        MessageFlowController.Instance.ChangeCurrentMessageTypes(messageTypesStart);
-        MessageFlowController.Instance.StartMessaging();
-    }
-
 }

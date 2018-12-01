@@ -75,6 +75,9 @@ public class MobilePhone : Singleton<MobilePhone>
         msgTransform.GetComponent<MobilePhoneMessage>().Setup(blob);
         msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
 
+        if (blob.style == messageStyle.alert)
+            phoneAnimator.SetTrigger("vibrate");
+
         StartScrolling();
     }
 

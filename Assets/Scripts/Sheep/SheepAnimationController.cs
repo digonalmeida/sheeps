@@ -5,8 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class SheepAnimationController : MonoBehaviour
 {
-    //Variables
+    //Animator Reference
     private Animator animator;
+
+    //Timing Animations
+    public float timeAnimationDying = 1f;
+    public float timeAnimationAttacking = 1f;
+    public float timeAnimationGrabbing = 1f;
+    public float timeAnimationStunned = 1f;
+    public float timeAnimationUncounscious = 1f;
 
     //Start
     private void Start()
@@ -14,18 +21,13 @@ public class SheepAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    //Check if An Animation has Ended
-    public bool checkEndOfAnimation(string animation)
+    public void setTrigger(string id)
     {
-        //Temporary
-        return true;
+        animator.SetTrigger(id);
+    }
 
-        /*
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
-        {
-            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
-        }
-        else return false;
-        */
+    public void setBool(string id, bool value)
+    {
+        animator.SetBool(id, value);
     }
 }

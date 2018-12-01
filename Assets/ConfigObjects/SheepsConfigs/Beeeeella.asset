@@ -9,14 +9,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6077d3613af7ccf4da39f045c15c8e63, type: 3}
-  m_Name: Beeernaaardo
+  m_Name: Beeeeella
   m_EditorClassIdentifier: 
-  _id: 2
-  _name: Beeernaaardo
+  _id: 9
+  _name: Beeeeella
   _description: 
   _icon: {fileID: 21300000, guid: 302d2af54aec9c94ca84df159c05ab99, type: 3}
   messages:
   - messageType: 1
-    messageTextKey: Beeernaaardo_greating
+    messageTextKey: Beeeeella_greating
   - messageType: 5
-    messageTextKey: Beeernaaardo_dumb
+    messageTextKey: Beeeeella_dumb
+  - messageType: 3
+    messageTextKey: Beeeeella_fear
+  - messageType: 2
+    messageTextKey: Beeeeella_gossip
+  - messageType: 4
+    messageTextKey: Beeeeella_relief
+  - messageType: 6
+    messageTextKey: Beeeeella_grief
+  - messageType: 7
+    messageTextKey: All_Tretas_7
+  - messageType: 7
+    messageTextKey: All_Tretas_5

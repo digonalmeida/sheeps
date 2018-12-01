@@ -11,5 +11,6 @@ public class SheepCapturedUnconsciousState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
+        agent.sheepAnimationController.setBool("Unconscious", true);
     }
 }

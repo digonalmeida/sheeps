@@ -8,7 +8,8 @@ public enum FSMEventTriggers
     Unconscious,
     FinishedAnimation,
     Tossed,
-    Stun
+    Stun,
+    Captured
 }
 
 public class SheepController : MonoBehaviour
@@ -21,6 +22,7 @@ public class SheepController : MonoBehaviour
     //FSM States References
     public StateMachine stateMachine;
     public SheepDyingState sheepDyingState;
+    public SheepDeadState sheepDeadState;
     public SheepIdleState sheepIdleState;
     public SheepMovementState sheepMovementState;
     public SheepGrabbingOtherState sheepGrabbingOtherState;
@@ -54,14 +56,19 @@ public class SheepController : MonoBehaviour
         sheepAttackingState = new SheepAttackingState();
         sheepStunnedState = new SheepStunnedState();
         sheepUnconsciousState = new SheepUnconsciousState();
+        sheepDeadState = new SheepDeadState();
 
         //FSM Transitions
+        sheepIdleState.AddTransition((int)FSMEventTriggers.Captured, sheepState.checkUncounscious, sheepCapturedUnconsciousState);
+        sheepIdleState.AddTransition((int)FSMEventTriggers.Captured, () => !sheepState.checkUncounscious(), sheepCapturedStrugglingState);
         sheepIdleState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
         sheepIdleState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
         sheepIdleState.AddCondition(() => sheepInputData.grabThrow && checkInteractDistance(), sheepGrabbingOtherState);
         sheepIdleState.AddCondition(() => sheepInputData.attacking, sheepAttackingState);
         sheepIdleState.AddCondition(() => sheepInputData.movementDirection != Vector3.zero, sheepMovementState);
 
+        sheepMovementState.AddTransition((int)FSMEventTriggers.Captured, sheepState.checkUncounscious, sheepCapturedUnconsciousState);
+        sheepMovementState.AddTransition((int)FSMEventTriggers.Captured, () => !sheepState.checkUncounscious(), sheepCapturedStrugglingState);
         sheepMovementState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
         sheepMovementState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
         sheepMovementState.AddCondition(() => sheepInputData.grabThrow && checkInteractDistance(), sheepGrabbingOtherState);
@@ -70,7 +77,7 @@ public class SheepController : MonoBehaviour
 
         sheepGrabbingOtherState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
         sheepGrabbingOtherState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
-        sheepGrabbingOtherState.AddTransition((int)FSMEventTriggers.FinishedAnimation, checkInteractDistance, sheepGrabbingOtherState);
+        sheepGrabbingOtherState.AddTransition((int)FSMEventTriggers.FinishedAnimation, checkInteractDistance, sheepCapturedOtherState);
         sheepGrabbingOtherState.AddTransition((int)FSMEventTriggers.FinishedAnimation, () => !checkInteractDistance(), sheepIdleState);
 
         sheepCapturedOtherState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
@@ -79,21 +86,28 @@ public class SheepController : MonoBehaviour
 
         sheepCapturedUnconsciousState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
         sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
-        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Stun, sheepIdleState);
 
         sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Death, sheepDyingState);
         sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
 
         sheepTossingOtherState.AddCondition(() => true, sheepIdleState);
 
+        sheepAttackingState.AddTransition((int)FSMEventTriggers.Captured, sheepState.checkUncounscious, sheepCapturedUnconsciousState);
+        sheepAttackingState.AddTransition((int)FSMEventTriggers.Captured, () => !sheepState.checkUncounscious(), sheepCapturedStrugglingState);
         sheepAttackingState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
         sheepAttackingState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
         sheepAttackingState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
 
+        sheepStunnedState.AddTransition((int)FSMEventTriggers.Captured, sheepState.checkUncounscious, sheepCapturedUnconsciousState);
+        sheepStunnedState.AddTransition((int)FSMEventTriggers.Captured, () => !sheepState.checkUncounscious(), sheepCapturedStrugglingState);
         sheepStunnedState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
         sheepStunnedState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
 
+        sheepUnconsciousState.AddTrigger((int)FSMEventTriggers.Captured, sheepCapturedUnconsciousState);
         sheepUnconsciousState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
+
+        sheepDyingState.AddTrigger((int)FSMEventTriggers.Death, sheepDeadState);
 
         //Set State Machine
         stateMachine = new StateMachine();
@@ -117,6 +131,7 @@ public class SheepController : MonoBehaviour
     public void getCaptured(GameObject capturor)
     {
         sheepState.capturor = capturor;
+        stateMachine.TriggerEvent((int)FSMEventTriggers.Captured);
     }
 
     public void breakFreeFromCapture()
