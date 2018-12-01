@@ -33,6 +33,8 @@ public class TensionFlow : MonoBehaviour
         currentTensionSequence = new List<TensionCurve>(tensionSequence);
         currentMessageTypeDict = RebuildMsgTypeDict(currentTensionSequence[0]);
 
+        MessageFlowController.Instance.StartMessaging();
+
         while (currentTensionSequence.Count > 0)
         {
             if (timer > currentTensionSequence[0].duration)
@@ -65,8 +67,6 @@ public class TensionFlow : MonoBehaviour
         currentTensionSequence = null;
 
 		MessageFlowController.Instance.StopMessaging();
-
-        Debug.Log("Finished flow");
 
     }
 
