@@ -16,7 +16,7 @@ public enum messageType
 public class Message
 {
     [SerializeField] private messageType messageType;
-    [SerializeField] private LocalizableText messageText;
+    [SerializeField] private string messageTextKey;
 
     public messageType MessageType
     {
@@ -26,11 +26,11 @@ public class Message
         }
     }
 
-    public LocalizableText MessageText
+    public string MessageTextKey
     {
         get
         {
-            return messageText;
+            return messageTextKey;
         }
     }
 }

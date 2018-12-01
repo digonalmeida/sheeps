@@ -15,7 +15,7 @@ public class SheepConfig : ScriptableObject {
 	public MessageBlob GetMessage(messageType messageType){
 		Message[] filtered = messages.Where(m=>m.MessageType == messageType).ToArray();
 		if(filtered.Length>0){
-			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageText,messageStyle.normal);
+			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageTextKey,messageStyle.normal);
 		} else {
 			return null;
 		}
