@@ -15,9 +15,13 @@ public class SheepController : MonoBehaviour
     public SheepMovementState sheepMovementState;
     public SheepGrabbingOtherState sheepGrabbingOtherState;
     public SheepCapturedOtherState sheepCapturedOtherState;
-    public SheepCapturedState sheepCapturedState;
+    public SheepCapturedUnconsciousState sheepCapturedUnconsciousState;
+    public SheepCapturedStrugglingState sheepCapturedStrugglingState;
     public SheepBeingTossedState sheepBeingTossedState;
     public SheepTossingOtherState sheepTossingOtherState;
+    public SheepRecoveringState sheepRecoveringState;
+    public SheepAttackingState sheepAttackingState;
+    public SheepStunnedState sheepStunState;
 
     //Start
     private void Start()
@@ -32,9 +36,13 @@ public class SheepController : MonoBehaviour
         sheepMovementState = new SheepMovementState();
         sheepGrabbingOtherState = new SheepGrabbingOtherState();
         sheepCapturedOtherState = new SheepCapturedOtherState();
-        sheepCapturedState = new SheepCapturedState();
+        sheepCapturedUnconsciousState = new SheepCapturedUnconsciousState();
+        sheepCapturedStrugglingState = new SheepCapturedStrugglingState();
         sheepBeingTossedState = new SheepBeingTossedState();
         sheepTossingOtherState = new SheepTossingOtherState();
+        sheepRecoveringState = new SheepRecoveringState();
+        sheepAttackingState = new SheepAttackingState();
+        sheepStunState = new SheepStunnedState();
 
         //Set State Machine
         stateMachine = new StateMachine();
@@ -45,7 +53,8 @@ public class SheepController : MonoBehaviour
     public void getCaptured(GameObject capturor)
     {
         sheepState.capturor = capturor;
-        stateMachine.SetState(sheepCapturedState);
+        if(sheepState.healthPoints == 0) stateMachine.SetState(sheepCapturedUnconsciousState);
+        else stateMachine.SetState(sheepCapturedStrugglingState);
     }
 
     public void getTossed(Vector3 direction)

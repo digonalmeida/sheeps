@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepTossingOtherState : FSMState
+public class SheepStunnedState : FSMState
 {
     //Control Variables
     private SheepController agent;
@@ -15,9 +15,8 @@ public class SheepTossingOtherState : FSMState
 
     public override void Update()
     {
-        if (agent.sheepAnimationController.checkEndOfAnimation("Tossing"))
+        if (agent.sheepAnimationController.checkEndOfAnimation("Stun"))
         {
-            agent.sheepInputData.targetSheep.GetComponent<SheepController>().getTossed(agent.sheepInputData.lookDirection);
             agent.stateMachine.SetState(agent.sheepIdleState);
         }
     }
