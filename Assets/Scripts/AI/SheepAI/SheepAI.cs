@@ -37,18 +37,25 @@ public class SheepAI : MonoBehaviour
 
     public IEnumerator StateTeste()
     {
-        for(;;)
+        stateMachine.SetState(idle);
+        for (;;)
         {
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
             stateMachine.SetState(idle);
-            yield return new WaitForSeconds(1);
-            stateMachine.SetState(attackingTarget);
-            yield return new WaitForSeconds(1);
-            stateMachine.SetState(fleeingState);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
             stateMachine.SetState(attackAnyone);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
+            stateMachine.SetState(fleeingState);
+            yield return new WaitForSeconds(Random.Range(0.0f, 0.3f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
+            stateMachine.SetState(attackingTarget);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
             stateMachine.SetState(grabbing);
-            yield return new WaitForSeconds(1);
         }
     }
 }

@@ -16,9 +16,10 @@ public class SheepAttackingAnyoneState : FSMState
         var sheeps = GameObject.FindObjectsOfType<MockSheep>();
         closestTarget = null;
         float closestDistance = float.MaxValue;
+
         for(int i = 0; i < sheeps.Length; i++)
         {
-            if(sheeps[i] == agent)
+            if(sheeps[i].gameObject == agent.gameObject)
             {
                 continue;
             }
@@ -29,7 +30,7 @@ public class SheepAttackingAnyoneState : FSMState
                 closestTarget = sheeps[i].gameObject;
             }
         }
-
+        
     }
 
     public override void Update()
@@ -39,12 +40,11 @@ public class SheepAttackingAnyoneState : FSMState
         var target = closestTarget;
         if (target != null)
         {
-            agent.InputData.movementDirection = (target.transform.position - agent.transform.position).normalized;
+            agent.InputData.movementDirection = (target.transform.position - agent.transform.position);
             agent.InputData.movementDirection.y = 0;
-            agent.InputData.movementDirection.Normalize();
+            agent.InputData.movementDirection = agent.InputData.movementDirection.normalized;
+            Debug.Log(closestTarget.name);
         }
-
-        base.Update();
     }
 
     public override void OnExit()

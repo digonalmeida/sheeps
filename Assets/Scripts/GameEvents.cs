@@ -12,4 +12,10 @@ public static class GameEvents{
     public static class Notifications{
         public static Action<NotificationBlob> TriggerNotification;
     }
+
+    public static class AI
+    {
+        public static Action WolfAppeared;
+        public static Action WolfDisappeared;
+    }
 }
