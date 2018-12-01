@@ -156,9 +156,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
+  lookDirection: {x: 0, y: 0, z: 0}
   targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
+  target: {fileID: 0}
+  moveSpeed: 1
 --- !u!114 &114872349778213176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,9 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d2f697178df654797f89e8feb712c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 5
+  healthPoints: 3
   movementSpeed: 1
-  grabDistance: 0.3
+  interactDistance: 1
+  tossDistanceMultiplier: 1
+  struggleTime: 1
+  capturor: {fileID: 0}
 --- !u!212 &212070128152211580
 SpriteRenderer:
   m_ObjectHideFlags: 1
