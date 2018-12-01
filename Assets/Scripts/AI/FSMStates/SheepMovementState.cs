@@ -18,6 +18,11 @@ public class SheepMovementState : FSMState
     public override void Update()
     {
         target = agent.transform.position + agent.sheepInputData.movementDirection;
-        agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.movementSpeed);
+        if (Vector3.Distance(agent.transform.position, target) >= 0f)
+        {
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.movementSpeed);
+            agent.sheepAnimationController.setBool("Walking", true);
+        }
+        else agent.sheepAnimationController.setBool("Walking", false);
     }
 }

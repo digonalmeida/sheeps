@@ -13,6 +13,7 @@ public class SheepAttackingState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         timer = agent.sheepAnimationController.timeAnimationAttacking;
+        agent.sheepAnimationController.setTrigger("Attack");
     }
 
     public override void Update()

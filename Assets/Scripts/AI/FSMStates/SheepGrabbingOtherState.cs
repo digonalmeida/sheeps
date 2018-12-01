@@ -14,6 +14,7 @@ public class SheepGrabbingOtherState : FSMState
         agent = Agent as SheepController;
         PlayerInput.Instance.highlightTargetLocked = true;
         timer = agent.sheepAnimationController.timeAnimationGrabbing;
+        agent.sheepAnimationController.setTrigger("Attack");
     }
 
     public override void Update()
