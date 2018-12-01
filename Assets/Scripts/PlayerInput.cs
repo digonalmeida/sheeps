@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate ()
     {
         //Movement
-        sheepInputData.movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        sheepInputData.movementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
 
         //Action
         if (Input.GetButton("Fire1")) sheepInputData.attacking = true;
