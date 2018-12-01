@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepMovementState : FSMState
+public class SheepCapturedOtherState : FSMState
 {
     //Control Variables
     private Vector3 target;

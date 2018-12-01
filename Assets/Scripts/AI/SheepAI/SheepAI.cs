@@ -6,19 +6,16 @@ using UnityEngine;
 public class SheepAI : MonoBehaviour
 {
     public StateMachine stateMachine = new StateMachine();
-    public SheepState sheepStateController;
-    public SheepInputData sheepInputData;
 
     public void Awake()
     {
         stateMachine.Agent = this;
-        sheepStateController = GetComponent<SheepState>();
-        sheepInputData = GetComponent<SheepInputData>();
     }
 
     private void Start()
     {
-        stateMachine.SetState(sheepStateController.sheepIdleState);
+        //FIX!
+        //stateMachine.SetState(stateMachine.sheepIdleState);
     }
 
     private void Update()
