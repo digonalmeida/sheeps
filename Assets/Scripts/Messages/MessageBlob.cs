@@ -6,13 +6,13 @@ public enum messageStyle{
 
 public class MessageBlob {
 	public int senderID {get; private set;}
-	public LocalizableText message {get; private set;}
+	public string messageKey {get; private set;}
 	public messageStyle style {get; private set;}
 
-    public MessageBlob(int senderID, LocalizableText message, messageStyle style)
+    public MessageBlob(int senderID, string messageKey, messageStyle style)
     {
         this.senderID = senderID;
-        this.message = message;
+        this.messageKey = messageKey;
 		this.style = style;
     }
 }

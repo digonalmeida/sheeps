@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1766675682320808}
+  m_RootGameObject: {fileID: 1712547589993062}
   m_IsPrefabParent: 1
---- !u!1 &1766675682320808
+--- !u!1 &1712547589993062
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4264396693660934}
-  - component: {fileID: 114043358156228428}
+  - component: {fileID: 4411159986544750}
+  - component: {fileID: 114925850148456972}
   m_Layer: 0
-  m_Name: SheepsController
+  m_Name: LocalizationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4264396693660934
+--- !u!4 &4411159986544750
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1766675682320808}
+  m_GameObject: {fileID: 1712547589993062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,21 +40,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114043358156228428
+--- !u!114 &114925850148456972
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1766675682320808}
+  m_GameObject: {fileID: 1712547589993062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe932340b30751640b0b0001d35c5958, type: 3}
+  m_Script: {fileID: 11500000, guid: 4737bab2102609442a031965ac2a675a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSheeps: []
-  configsToStart:
-  - {fileID: 11400000, guid: aa0e7c3a6849f144ba4080332bd292ef, type: 2}
-  - {fileID: 11400000, guid: 8ce519fb3ccdfd94fba4e1a84a442b7e, type: 2}
-  - {fileID: 11400000, guid: 0fb7977c0562da24e8b864779c8200de, type: 2}
-  sheepPrefab: {fileID: 1308517264654176, guid: 5a10f4b435564ba49b2e9c74d5cdfbd8,
-    type: 2}
+  csvFile: {fileID: 4900000, guid: ce1d67e2c17f3c64da419915687e3728, type: 3}

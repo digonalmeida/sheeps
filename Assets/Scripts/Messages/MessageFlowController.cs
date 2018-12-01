@@ -97,7 +97,7 @@ public class MessageFlowController : Singleton<MessageFlowController>
 
     private void GetMessageFromType(messageType messageType)
     {
-        List<SheepStateController> possibleSheeps = SheepsController.Instance.allSheeps.Where(
+        List<SheepState> possibleSheeps = SheepsManager.Instance.allSheeps.Where(
             s => !s.isDead && s.config.HasMessageType(messageType)).ToList();
 
         if (possibleSheeps.Count > 0)

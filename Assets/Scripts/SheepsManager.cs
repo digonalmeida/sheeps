@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepsController : Singleton<SheepsController>
+public class SheepsManager : Singleton<SheepsManager>
 {
     [HideInInspector] public List<SheepState> allSheeps = new List<SheepState>();
 
