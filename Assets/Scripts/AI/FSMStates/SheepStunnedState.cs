@@ -11,13 +11,11 @@ public class SheepStunnedState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
+        if (agent.sheepInputData.targetSheep != null && agent.sheepInputData.targetSheep.GetComponent<SheepController>().sheepState.capturor != null) agent.sheepInputData.targetSheep.GetComponent<SheepController>().breakFreeFromCapture();
     }
 
     public override void Update()
     {
-        if (agent.sheepAnimationController.checkEndOfAnimation("Stun"))
-        {
-            agent.stateMachine.SetState(agent.sheepIdleState);
-        }
+        if (agent.sheepAnimationController.checkEndOfAnimation("Stun")) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
     }
 }

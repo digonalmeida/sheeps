@@ -11,14 +11,6 @@ public class SheepTossingOtherState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
-    }
-
-    public override void Update()
-    {
-        if (agent.sheepAnimationController.checkEndOfAnimation("Tossing"))
-        {
-            agent.sheepInputData.targetSheep.GetComponent<SheepController>().getTossed(agent.sheepInputData.lookDirection);
-            agent.stateMachine.SetState(agent.sheepIdleState);
-        }
+        agent.sheepInputData.targetSheep.GetComponent<SheepController>().getTossed(agent.sheepInputData.lookDirection);
     }
 }

@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FSMEventTriggers
+{
+    Death,
+    Unconscious,
+    FinishedAnimation,
+    Tossed,
+    Stun
+}
+
 public class SheepController : MonoBehaviour
 {
     //Controllers References
@@ -11,6 +20,7 @@ public class SheepController : MonoBehaviour
 
     //FSM States References
     public StateMachine stateMachine;
+    public SheepDyingState sheepDyingState;
     public SheepIdleState sheepIdleState;
     public SheepMovementState sheepMovementState;
     public SheepGrabbingOtherState sheepGrabbingOtherState;
@@ -19,9 +29,9 @@ public class SheepController : MonoBehaviour
     public SheepCapturedStrugglingState sheepCapturedStrugglingState;
     public SheepBeingTossedState sheepBeingTossedState;
     public SheepTossingOtherState sheepTossingOtherState;
-    public SheepRecoveringState sheepRecoveringState;
     public SheepAttackingState sheepAttackingState;
-    public SheepStunnedState sheepStunState;
+    public SheepStunnedState sheepStunnedState;
+    public SheepUnconsciousState sheepUnconsciousState;
 
     //Start
     private void Start()
@@ -32,6 +42,7 @@ public class SheepController : MonoBehaviour
         sheepAnimationController = GetComponent<SheepAnimationController>();
 
         //FSM States
+        sheepDyingState = new SheepDyingState();
         sheepIdleState = new SheepIdleState();
         sheepMovementState = new SheepMovementState();
         sheepGrabbingOtherState = new SheepGrabbingOtherState();
@@ -40,9 +51,49 @@ public class SheepController : MonoBehaviour
         sheepCapturedStrugglingState = new SheepCapturedStrugglingState();
         sheepBeingTossedState = new SheepBeingTossedState();
         sheepTossingOtherState = new SheepTossingOtherState();
-        sheepRecoveringState = new SheepRecoveringState();
         sheepAttackingState = new SheepAttackingState();
-        sheepStunState = new SheepStunnedState();
+        sheepStunnedState = new SheepStunnedState();
+        sheepUnconsciousState = new SheepUnconsciousState();
+
+        //FSM Transitions
+        sheepIdleState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepIdleState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepIdleState.AddCondition(() => sheepInputData.grabThrow && checkInteractDistance(), sheepGrabbingOtherState);
+        sheepIdleState.AddCondition(() => sheepInputData.attacking, sheepAttackingState);
+        sheepIdleState.AddCondition(() => sheepInputData.movementDirection != Vector3.zero, sheepMovementState);
+
+        sheepMovementState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepMovementState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepMovementState.AddCondition(() => sheepInputData.grabThrow && checkInteractDistance(), sheepGrabbingOtherState);
+        sheepMovementState.AddCondition(() => sheepInputData.attacking, sheepAttackingState);
+        sheepMovementState.AddCondition(() => sheepInputData.movementDirection == Vector3.zero, sheepMovementState);
+
+        sheepGrabbingOtherState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepGrabbingOtherState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepGrabbingOtherState.AddTransition((int)FSMEventTriggers.FinishedAnimation, checkInteractDistance, sheepGrabbingOtherState);
+        sheepGrabbingOtherState.AddTransition((int)FSMEventTriggers.FinishedAnimation, () => !checkInteractDistance(), sheepIdleState);
+
+        sheepCapturedOtherState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepCapturedOtherState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepCapturedOtherState.AddCondition(() => sheepInputData.grabThrow, sheepTossingOtherState);
+
+        sheepCapturedUnconsciousState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
+        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Tossed, sheepBeingTossedState);
+        sheepCapturedStrugglingState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+
+        sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Death, sheepDyingState);
+        sheepBeingTossedState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+
+        sheepTossingOtherState.AddCondition(() => true, sheepIdleState);
+
+        sheepAttackingState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepAttackingState.AddTrigger((int)FSMEventTriggers.Stun, sheepStunnedState);
+        sheepAttackingState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
+
+        sheepStunnedState.AddTrigger((int)FSMEventTriggers.Unconscious, sheepUnconsciousState);
+        sheepStunnedState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
+
+        sheepUnconsciousState.AddTrigger((int)FSMEventTriggers.FinishedAnimation, sheepIdleState);
 
         //Set State Machine
         stateMachine = new StateMachine();
@@ -50,21 +101,38 @@ public class SheepController : MonoBehaviour
         stateMachine.SetState(sheepIdleState);
     }
 
+    //Update
+    private void Update()
+    {
+        stateMachine.Update();
+    }
+
+    //Sheep Controller Aux Methods
+    public void takeDamage()
+    {
+        sheepState.takeDamage();
+        if (sheepState.checkUncounscious()) stateMachine.TriggerEvent((int)FSMEventTriggers.Unconscious);
+    }
+
     public void getCaptured(GameObject capturor)
     {
         sheepState.capturor = capturor;
-        if(sheepState.healthPoints == 0) stateMachine.SetState(sheepCapturedUnconsciousState);
-        else stateMachine.SetState(sheepCapturedStrugglingState);
+    }
+
+    public void breakFreeFromCapture()
+    {
+        sheepState.capturor = null;
+        stateMachine.TriggerEvent((int)FSMEventTriggers.Stun);
     }
 
     public void getTossed(Vector3 direction)
     {
         sheepInputData.movementDirection = direction;
-        stateMachine.SetState(sheepBeingTossedState);
+        stateMachine.TriggerEvent((int)FSMEventTriggers.Tossed);
     }
 
-    private void Update()
+    public bool checkInteractDistance()
     {
-        stateMachine.Update();
+        return sheepInputData.targetSheep != null && Vector3.Distance(transform.position, sheepInputData.targetSheep.transform.position) <= sheepState.interactDistance;
     }
 }

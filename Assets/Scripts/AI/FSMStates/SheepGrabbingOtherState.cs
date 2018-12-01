@@ -16,11 +16,6 @@ public class SheepGrabbingOtherState : FSMState
 
     public override void Update()
     {
-        //Transitions
-        if (agent.sheepAnimationController.checkEndOfAnimation("Grabbing"))
-        {
-            if(Vector3.Distance(agent.transform.position, agent.sheepInputData.targetSheep.transform.position) <= agent.sheepState.interactDistance) agent.stateMachine.SetState(agent.sheepCapturedOtherState);
-            else agent.stateMachine.SetState(agent.sheepIdleState);
-        }
+        if (agent.sheepAnimationController.checkEndOfAnimation("Grabbing")) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
     }
 }

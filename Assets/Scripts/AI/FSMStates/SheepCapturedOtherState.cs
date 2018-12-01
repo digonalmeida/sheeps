@@ -27,9 +27,6 @@ public class SheepCapturedOtherState : FSMState
         //Movement
         target = agent.transform.position + agent.sheepInputData.movementDirection;
         agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.movementSpeed/2f);
-
         agent.sheepInputData.targetSheep.transform.position = new Vector3(agent.transform.position.x, agent.transform.position.y + 0.25f, agent.transform.position.z);
-
-        if (agent.sheepInputData.grabThrow) agent.stateMachine.SetState(agent.sheepTossingOtherState);
     }
 }

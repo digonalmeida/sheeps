@@ -17,7 +17,8 @@ public class SheepUnconsciousState : FSMState
     {
         if (agent.sheepAnimationController.checkEndOfAnimation("Unconscious"))
         {
-            agent.stateMachine.SetState(agent.sheepRecoveringState);
+            agent.sheepState.recover();
+            agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
         }
     }
 }

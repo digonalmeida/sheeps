@@ -17,7 +17,8 @@ public class SheepAttackingState : FSMState
     {
         if (agent.sheepAnimationController.checkEndOfAnimation("Attacking"))
         {
-            agent.stateMachine.SetState(agent.sheepIdleState);
+            if (agent.checkInteractDistance()) agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
+            agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
         }
     }
 }
