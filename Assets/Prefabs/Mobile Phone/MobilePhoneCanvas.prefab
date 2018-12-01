@@ -38,9 +38,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224837547524076242}
   - component: {fileID: 222061610091434484}
-  - component: {fileID: 114136645876515666}
   - component: {fileID: 225565682620321718}
   - component: {fileID: 95975808930915586}
+  - component: {fileID: 223997420324897794}
   m_Layer: 5
   m_Name: MobilePhone
   m_TagString: Untagged
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 224326263448341372}
   - component: {fileID: 223013952215075820}
   - component: {fileID: 114487589154644938}
-  - component: {fileID: 114083179447819784}
+  - component: {fileID: 114780843716168300}
   m_Layer: 5
   m_Name: MobilePhoneCanvas
   m_TagString: Untagged
@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 222657649096174140}
   - component: {fileID: 114063509664603974}
   - component: {fileID: 114583291853140014}
+  - component: {fileID: 95329070736166404}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -153,6 +154,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95329070736166404
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470535300028138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f34962af40a74a443a3c5463ccb077be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95975808930915586
 Animator:
   serializedVersion: 3
@@ -197,22 +215,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114083179447819784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413656759298192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &114122989188152614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,21 +242,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114136645876515666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1037032337205568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3efd9601540a04fb64f7e67cd8a614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messagePrefab: {fileID: 114659073814111106, guid: dc17eda40809c7447959fbcddc485fd2,
-    type: 2}
-  contentParent: {fileID: 224748665833086352}
-  maxMessagesOnScreen: 7
 --- !u!114 &114344996774673098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,6 +357,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &114780843716168300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413656759298192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3efd9601540a04fb64f7e67cd8a614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messagePrefab: {fileID: 114659073814111106, guid: dc17eda40809c7447959fbcddc485fd2,
+    type: 2}
+  phoneTrasform: {fileID: 224837547524076242}
+  contentParent: {fileID: 224748665833086352}
+  maxMessagesOnScreen: 8
 --- !u!114 &114808330596531044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,6 +501,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!223 &223997420324897794
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037032337205568}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!224 &224026155128978026
 RectTransform:
   m_ObjectHideFlags: 1
@@ -533,7 +556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50.615845, y: -3.1462555}
+  m_AnchoredPosition: {x: 50.615845, y: -4.9999695}
   m_SizeDelta: {x: 248.1, y: 53.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224326263448341372
@@ -646,8 +669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125.58429, y: -0.5462494}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: -125.58429, y: -2.4}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225565682620321718
 CanvasGroup:

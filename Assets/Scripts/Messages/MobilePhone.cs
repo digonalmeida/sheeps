@@ -8,15 +8,15 @@ using UnityEngine.UI;
 public class MobilePhone : Singleton<MobilePhone>
 {
     public MobilePhoneMessage messagePrefab;
+    public RectTransform phoneTrasform;
     public Transform contentParent;
     public int maxMessagesOnScreen = 8;
 
-    private Animator animator;
-	private Animator contentAnimator;
-    private RectTransform phoneTrasform;
-	private Vector2 localMousePosition;
-    private bool isHovered;
+    private Animator phoneAnimator;
+    private Animator contentAnimator;
 
+    private Vector2 localMousePosition;
+    private bool isHovered;
 
     void OnEnable()
     {
@@ -33,9 +33,8 @@ public class MobilePhone : Singleton<MobilePhone>
         base.Awake();
 
         // get references
-        animator = GetComponent<Animator>();
-		contentAnimator = contentParent.GetComponent<Animator>();
-        phoneTrasform = GetComponent<RectTransform>();
+        phoneAnimator = phoneTrasform.GetComponent<Animator>();
+        contentAnimator = contentParent.GetComponent<Animator>();
 
         // instantiate cards
         for (int i = 0; i < maxMessagesOnScreen; i++)
@@ -47,34 +46,36 @@ public class MobilePhone : Singleton<MobilePhone>
 
     internal void FinishedScrolling()
     {
-		Transform msgTransform = contentParent.GetChild(0).transform;
+        Transform msgTransform = contentParent.GetChild(0).transform;
         msgTransform.SetAsLastSibling();
         Debug.Log("voltou");
     }
 
-	private void StartScrolling(){
-		Transform msgTransform = contentParent.GetChild(0).transform;
-		msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(false);
-		contentAnimator.SetTrigger("scroll");
-	}
+    private void StartScrolling()
+    {
+        Transform msgTransform = contentParent.GetChild(0).transform;
+        msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(false);
+        contentAnimator.SetTrigger("scroll");
+        Debug.Log("triggered");
+    }
 
     void Update()
     {
-		// get mousePos
-		localMousePosition = phoneTrasform.InverseTransformPoint(Input.mousePosition);
+        // get mousePos
+        localMousePosition = phoneTrasform.InverseTransformPoint(Input.mousePosition);
         isHovered = phoneTrasform.rect.Contains(localMousePosition);
 
-		//update animator
-        animator.SetBool("hover", isHovered);
+        //update animator
+        phoneAnimator.SetBool("hover", isHovered);
     }
 
     private void AddMessage(MessageBlob blob)
     {
-        Transform msgTransform = contentParent.GetChild(contentParent.childCount-1).transform;
+        Transform msgTransform = contentParent.GetChild(contentParent.childCount - 1).transform;
         msgTransform.GetComponent<MobilePhoneMessage>().Setup(blob);
-		msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
+        msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
 
-		StartScrolling();
+        StartScrolling();
     }
 
     public void ClearAllMessages()
