@@ -51,5 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4737bab2102609442a031965ac2a675a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFile: {fileID: 4900000, guid: c47140b3102ce33459e5b50afb8a3f85, type: 3}
+  csvFiles:
+  - {fileID: 4900000, guid: c47140b3102ce33459e5b50afb8a3f85, type: 3}
+  - {fileID: 4900000, guid: 7173e94f4e5ee6a4db326eec29d07fa6, type: 3}
   currentLanguage: 0

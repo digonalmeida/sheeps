@@ -10,7 +10,7 @@ public enum availableLanguages
 public class LocalizationManager : Singleton<LocalizationManager>
 {
 
-    public TextAsset csvFile;
+    public List<TextAsset> csvFiles;
     private Dictionary<string, string> localizedTexts = new Dictionary<string, string>();
     private List<string> languages = new List<string>();
     [SerializeField] private availableLanguages currentLanguage = availableLanguages.enUS;
@@ -26,20 +26,27 @@ public class LocalizationManager : Singleton<LocalizationManager>
 
     private void ConstructLanguageDict()
     {
-        string[] linhas = csvFile.text.Split(lineSeperater);
 
-        string[] linguas = linhas[0].Split(fieldSeperator);
-        for (int j = 1; j < linguas.Length; j++)
+        for (int k = 0; k < csvFiles.Count; k++)
         {
-            languages.Add(linguas[j]);
-        }
+            TextAsset csvFile = csvFiles[k];
 
-        for (int i = 1; i < linhas.Length; i++)
-        {
-            string[] textos = linhas[i].Split(fieldSeperator);
-            for (int j = 1; j < textos.Length; j++)
+            string[] linhas = csvFile.text.Split(lineSeperater);
+
+            string[] linguas = linhas[0].Split(fieldSeperator);
+            for (int j = 1; j < linguas.Length; j++)
             {
-                localizedTexts.Add(textos[0] + "_" + linguas[j], textos[j]);
+                if (!languages.Contains(linguas[j]))
+                    languages.Add(linguas[j]);
+            }
+
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] textos = linhas[i].Split(fieldSeperator);
+                for (int j = 1; j < textos.Length; j++)
+                {
+                    localizedTexts.Add(textos[0] + "_" + linguas[j], textos[j]);
+                }
             }
         }
     }
