@@ -21,15 +21,11 @@ public class PlayerInput : MonoBehaviour
         sheepInputData.movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         //Action
-        if (Input.GetButton("Fire1"))
-        {
-            sheepInputData.attacking = true;
-        }
+        if (Input.GetButton("Fire1")) sheepInputData.attacking = true;
+        else sheepInputData.attacking = false;
 
         //Attack
-        if (Input.GetButton("Fire2"))
-        {
-            sheepInputData.grabThrow = true;
-        }
+        if (Input.GetButton("Fire2")) sheepInputData.grabThrow = true;
+        else sheepInputData.grabThrow = false;
     }
 }
