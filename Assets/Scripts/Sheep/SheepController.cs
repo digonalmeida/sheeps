@@ -5,7 +5,7 @@ using UnityEngine;
 public class SheepController : MonoBehaviour
 {
     //Controllers References
-    public SheepState sheepStateController;
+    public SheepState sheepState;
     public SheepInputData sheepInputData;
     public SheepAnimationController sheepAnimationController;
 
@@ -15,23 +15,47 @@ public class SheepController : MonoBehaviour
     public SheepMovementState sheepMovementState;
     public SheepGrabbingOtherState sheepGrabbingOtherState;
     public SheepCapturedOtherState sheepCapturedOtherState;
+    public SheepCapturedState sheepCapturedState;
+    public SheepBeingTossedState sheepBeingTossedState;
+    public SheepTossingOtherState sheepTossingOtherState;
 
     //Start
     private void Start()
     {
         //Get Controllers
-        sheepStateController = GetComponent<SheepState>();
+        sheepState = GetComponent<SheepState>();
         sheepInputData = GetComponent<SheepInputData>();
         sheepAnimationController = GetComponent<SheepAnimationController>();
-
-        //Set State Machine
-        stateMachine = new StateMachine();
-        stateMachine.Agent = this;
 
         //FSM States
         sheepIdleState = new SheepIdleState();
         sheepMovementState = new SheepMovementState();
         sheepGrabbingOtherState = new SheepGrabbingOtherState();
         sheepCapturedOtherState = new SheepCapturedOtherState();
+        sheepCapturedState = new SheepCapturedState();
+        sheepBeingTossedState = new SheepBeingTossedState();
+        sheepTossingOtherState = new SheepTossingOtherState();
+
+        //Set State Machine
+        stateMachine = new StateMachine();
+        stateMachine.Agent = this;
+        stateMachine.SetState(sheepIdleState);
+    }
+
+    public void getCaptured(GameObject capturor)
+    {
+        sheepState.capturor = capturor;
+        stateMachine.SetState(sheepCapturedState);
+    }
+
+    public void getTossed(Vector3 direction)
+    {
+        sheepInputData.movementDirection = direction;
+        stateMachine.SetState(sheepBeingTossedState);
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
     }
 }

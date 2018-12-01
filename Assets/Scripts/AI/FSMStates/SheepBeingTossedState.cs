@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepGrabbingOtherState : FSMState
+public class SheepBeingTossedState : FSMState
 {
     //Control Variables
     private SheepController agent;
@@ -11,12 +11,10 @@ public class SheepGrabbingOtherState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
-        PlayerInput.Instance.highlightTargetLocked = true;
     }
 
     public override void Update()
     {
-        //Transitions
-        if (agent.sheepAnimationController.checkEndOfAnimation("Grabbing")) agent.stateMachine.SetState(agent.sheepCapturedOtherState);
+        agent.transform.position = Vector3.MoveTowards(agent.transform.position, agent.transform.position + agent.sheepInputData.movementDirection, Time.deltaTime * agent.sheepState.movementSpeed * 2f);
     }
 }
