@@ -12,5 +12,6 @@ public class SheepTossingOtherState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         agent.sheepInputData.targetSheep.GetComponent<SheepController>().getTossed(agent.sheepInputData.lookDirection);
+        agent.sheepAnimationController.setTrigger("Attack");
     }
 }
