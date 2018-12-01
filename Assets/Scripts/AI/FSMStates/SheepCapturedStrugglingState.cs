@@ -13,6 +13,13 @@ public class SheepCapturedStrugglingState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         timer = agent.sheepState.struggleTime;
+        agent.sheepAnimationController.setBool("Struggling", true);
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        agent.sheepAnimationController.setBool("Struggling", false);
     }
 
     public override void Update()
