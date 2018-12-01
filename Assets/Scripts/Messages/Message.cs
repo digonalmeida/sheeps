@@ -3,6 +3,7 @@
 [System.Serializable]
 public enum messageType
 {
+    none,
     greeting,
     gossip,
     fear,
