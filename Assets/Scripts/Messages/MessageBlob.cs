@@ -1,7 +1,8 @@
 public enum messageStyle{
 	normal,
 	joined,
-	left
+	left,
+	user
 }
 
 public class MessageBlob {

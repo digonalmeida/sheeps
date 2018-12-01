@@ -14,9 +14,21 @@ MonoBehaviour:
   _id: 2
   _name: Beeernaaardo
   _description: 
-  _icon: {fileID: 21300000, guid: 302d2af54aec9c94ca84df159c05ab99, type: 3}
+  _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Beeernaaardo_greating
   - messageType: 5
     messageTextKey: Beeernaaardo_dumb
+  - messageType: 3
+    messageTextKey: Beeernaaardo_fear
+  - messageType: 2
+    messageTextKey: Beeernaaardo_gossip
+  - messageType: 4
+    messageTextKey: Beeernaaardo_relief
+  - messageType: 6
+    messageTextKey: Beeernaaardo_grief
+  - messageType: 7
+    messageTextKey: All_Tretas_5
+  - messageType: 7
+    messageTextKey: All_Tretas_6

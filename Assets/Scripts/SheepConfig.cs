@@ -28,6 +28,14 @@ public class SheepConfig : ScriptableObject {
         }
     }
 
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
+
     public MessageBlob GetMessage(messageType messageType){
 		Message[] filtered = messages.Where(m=>m.MessageType == messageType).ToArray();
 		if(filtered.Length>0){
