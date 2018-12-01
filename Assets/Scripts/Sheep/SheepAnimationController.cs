@@ -17,10 +17,15 @@ public class SheepAnimationController : MonoBehaviour
     //Check if An Animation has Ended
     public bool checkEndOfAnimation(string animation)
     {
+        //Temporary
+        return true;
+
+        /*
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(animation))
         {
             return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
         }
         else return false;
+        */
     }
 }
