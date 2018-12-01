@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMessageColor: {r: 0.19751519, g: 0.6985294, b: 0, a: 0}
+  fearMessageColor: {r: 0.99215686, g: 0.69411767, b: 0.69411767, a: 1}
   panel: {fileID: 224593906043143494}
   border: {fileID: 114364304603982690}
   icon: {fileID: 114806122175417140}

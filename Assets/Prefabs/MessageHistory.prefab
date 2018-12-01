@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4730317575505210}
-  - component: {fileID: 114215196150999762}
+  - component: {fileID: 114320185616299514}
   m_Layer: 0
   m_Name: MessageHistory
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114215196150999762
+--- !u!114 &114320185616299514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,6 +48,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1572091566683846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ac9751d969e3f49b18acd4346c79e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 025373e51a15c914f93bc7e45fa8f342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

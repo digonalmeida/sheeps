@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MobilePhoneMessage : MonoBehaviour
 {
     public Color playerMessageColor;
+    public Color fearMessageColor;
     public RectTransform panel;
     public Image border;
     public Image icon;
@@ -21,6 +22,10 @@ public class MobilePhoneMessage : MonoBehaviour
         if (blob.style == messageStyle.user)
         {
             border.color = playerMessageColor;
+        }
+        else if (blob.style == messageStyle.alert)
+        {
+            border.color = fearMessageColor;
         }
         else
         {
