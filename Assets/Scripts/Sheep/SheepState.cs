@@ -8,7 +8,8 @@ public class SheepState : MonoBehaviour
     //Control Variables
     public int healthPoints;
     public float movementSpeed;
-    public float grabDistance;
+    public float interactDistance;
+    public float tossDistanceMultiplier;
     public GameObject capturor;
     public bool isDead {get; private set;}
     public SheepConfig config {get; private set;}

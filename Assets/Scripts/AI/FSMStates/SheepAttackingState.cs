@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepCapturedState : FSMState
+public class SheepAttackingState : FSMState
 {
     //Control Variables
     private SheepController agent;
@@ -11,5 +11,13 @@ public class SheepCapturedState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
+    }
+
+    public override void Update()
+    {
+        if (agent.sheepAnimationController.checkEndOfAnimation("Attacking"))
+        {
+            agent.stateMachine.SetState(agent.sheepIdleState);
+        }
     }
 }
