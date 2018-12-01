@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4057639545869618}
   - component: {fileID: 212180820448883058}
   - component: {fileID: 95867009384026742}
+  - component: {fileID: 114073589639414772}
+  - component: {fileID: 114364037958159006}
+  - component: {fileID: 114717903587096778}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -58,6 +61,43 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114073589639414772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308517264654176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06abf822a124744e8a4a5a5569ace2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114364037958159006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308517264654176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bdd53d9ce74ac64fa0d5f833d0272ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: {x: 0, y: 0}
+  attacking: 0
+  grabThrow: 0
+--- !u!114 &114717903587096778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308517264654176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ed3fa24a5ecf04e92b07e308c3d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!212 &212180820448883058
 SpriteRenderer:
   m_ObjectHideFlags: 1
