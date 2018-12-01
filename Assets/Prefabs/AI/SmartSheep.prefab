@@ -139,10 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdd53d9ce74ac64fa0d5f833d0272ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDirection: {x: 0, y: 0}
+  movementDirection: {x: 0, y: 0, z: 0}
+  lookDirection: {x: 0, y: 0, z: 0}
+  targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
   target: {fileID: 0}
+  moveSpeed: 1
 --- !u!114 &114964766921247692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a171600e002311409e17ad6cf9195a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugUiText: {fileID: 0}
 --- !u!136 &136068448922807528
 CapsuleCollider:
   m_ObjectHideFlags: 1
