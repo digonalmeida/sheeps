@@ -52,3 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   csvFile: {fileID: 4900000, guid: ce1d67e2c17f3c64da419915687e3728, type: 3}
+  currentLanguage: enUS

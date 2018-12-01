@@ -8,7 +8,7 @@ public class MessagesHistory : Singleton<MessagesHistory>{
     public void AddMessage(MessageBlob blob)
     {
         messages.Add(blob);
-        GameEvents.Messages.NewMessage.SafeInvoke();
+        GameEvents.Messages.NewMessage.SafeInvoke(blob);
         Debug.Log(LocalizationManager.Instance.GetLocalizedText(blob.messageKey));
     }
 

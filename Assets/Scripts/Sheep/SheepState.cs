@@ -20,6 +20,5 @@ public class SheepState : MonoBehaviour
     {
         this.config = config;
         isDead = false;
-        SheepsManager.Instance.allSheeps.Add(this);
     }
 }
