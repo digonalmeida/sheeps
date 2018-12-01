@@ -37,15 +37,6 @@ public class MobilePhone : Singleton<MobilePhone>
         }
     }
 
-    private void Update()
-    {
-        animator.SetBool("hover", false);
-    }
-
-    private void OnMouseOver()
-    {
-        animator.SetBool("hover", true);
-    }
     private void AddMessage(MessageBlob blob)
     {
         Transform msgTransform = contentParent.GetChild(0).transform;

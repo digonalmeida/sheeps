@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class SheepIdleState : FSMState
 {
+    //Control Variables
+    private SheepController agent;
+
     public override void OnEnter()
     {
         base.OnEnter();
-        var agent = Agent as SheepAI;
-    }
-
-    public override void OnExit()
-    {
-        base.OnEnter();
-        var agent = Agent as SheepAI;
+        agent = Agent as SheepController;
     }
 
     public override void Update()
     {
-        base.OnEnter();
-        var agent = Agent as SheepAI;
-
         //Transitions
-        if (agent.sheepInputData.movementDirection != Vector3.zero) agent.stateMachine.SetState(agent.sheepStateController.sheepMovementState);
+        if (agent.sheepInputData.movementDirection != Vector3.zero) agent.stateMachine.SetState(agent.sheepMovementState);
+        if (agent.sheepInputData.grabThrow && agent.sheepInputData.targetSheep != null && Vector3.Distance(agent.transform.position, agent.sheepInputData.targetSheep.transform.position) <= agent.sheepState.grabDistance) agent.stateMachine.SetState(agent.sheepGrabbingOtherState);
     }
 }

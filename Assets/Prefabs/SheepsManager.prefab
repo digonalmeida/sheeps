@@ -56,5 +56,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa0e7c3a6849f144ba4080332bd292ef, type: 2}
   - {fileID: 11400000, guid: 8ce519fb3ccdfd94fba4e1a84a442b7e, type: 2}
   - {fileID: 11400000, guid: 0fb7977c0562da24e8b864779c8200de, type: 2}
-  sheepPrefab: {fileID: 1308517264654176, guid: 5a10f4b435564ba49b2e9c74d5cdfbd8,
+  sheepPrefab: {fileID: 1819377931532566, guid: 5a10f4b435564ba49b2e9c74d5cdfbd8,
     type: 2}
