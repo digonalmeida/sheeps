@@ -5,21 +5,56 @@ using UnityEngine;
 [RequireComponent(typeof(SheepState))]
 public class SheepAI : MonoBehaviour
 {
-    public StateMachine stateMachine = new StateMachine();
+    public SheepInputData InputData { get; private set; }
 
+    private StateMachine stateMachine = new StateMachine();
+    private SheepAIIdleState idle = new SheepAIIdleState();
+    private SheepAIAttackingTargetState attackingTarget = new SheepAIAttackingTargetState();
+    private SheepAIFleeingState fleeingState = new SheepAIFleeingState();
+    private SheepAIAttackingAnyoneState attackAnyone = new SheepAIAttackingAnyoneState();
+    private SheepAIGrabbingState grabbing = new SheepAIGrabbingState();
+
+    public GameObject SpecialTarget { get; private set; }
+ 
     public void Awake()
     {
+        SpecialTarget = GameObject.Find("mocktarget");
+        InputData = GetComponent<SheepInputData>();
         stateMachine.Agent = this;
     }
 
     private void Start()
     {
-        //FIX!
-        //stateMachine.SetState(stateMachine.sheepIdleState);
+        stateMachine.SetState(attackingTarget);
+        StartCoroutine(StateTeste());
     }
 
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    public IEnumerator StateTeste()
+    {
+        stateMachine.SetState(idle);
+        for (;;)
+        {
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(attackAnyone);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
+            stateMachine.SetState(fleeingState);
+            yield return new WaitForSeconds(Random.Range(0.0f, 0.3f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
+            stateMachine.SetState(attackingTarget);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(idle);
+            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            stateMachine.SetState(grabbing);
+        }
     }
 }
