@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6077d3613af7ccf4da39f045c15c8e63, type: 3}
-  m_Name: Sheep1
+  m_Name: Carlos Albeeerto
   m_EditorClassIdentifier: 
   _id: 1
-  _name: Beeeeeeeto
-  _description: Chato
+  _name: Carlos Albeeerto
+  _description: 
   _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
   messages:
   - messageType: 1
-    messageTextKey: greeting_1
+    messageTextKey: Carlos Albeeerto_greating
   - messageType: 5
-    messageTextKey: shitpost_0
+    messageTextKey: Carlos Albeeerto_dumb
   - messageType: 6
-    messageTextKey: grief_0
+    messageTextKey: Carlos Albeeerto_grief
