@@ -12,6 +12,7 @@ public class SheepAttackingAnyoneState : FSMState
         agent.InputData.movementDirection = Vector3.zero;
         agent.InputData.attacking = true;
         agent.InputData.grabThrow = false;
+        agent.InputData.moveSpeed = 1.0f;
 
         var sheeps = GameObject.FindObjectsOfType<MockSheep>();
         closestTarget = null;

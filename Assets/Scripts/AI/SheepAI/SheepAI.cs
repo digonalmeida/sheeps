@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SheepState))]
 public class SheepAI : MonoBehaviour
 {
+
+    [SerializeField]
+    private Text DebugUiText;
 
     public SheepInputData InputData { get; private set; }
 
@@ -16,46 +20,59 @@ public class SheepAI : MonoBehaviour
     private SheepAiGrabbingState grabbing = new SheepAiGrabbingState();
 
     public GameObject SpecialTarget { get; private set; }
+    
+    public enum EventTriggers
+    {
+        WolfAppeared,
+        WolfDisappeared,
+        ChangeBehaviour
+    }
  
     public void Awake()
     {
         SpecialTarget = GameObject.Find("mocktarget");
         InputData = GetComponent<SheepInputData>();
         stateMachine.Agent = this;
+
+        idle.AddTrigger((int)EventTriggers.WolfAppeared, fleeingState);
+
+        fleeingState.AddTrigger((int)EventTriggers.ChangeBehaviour, attackAnyone);
+        fleeingState.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
+
+        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, fleeingState);
+        attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
     }
 
     private void Start()
     {
-        stateMachine.SetState(attackingTarget);
+        stateMachine.SetState(idle);
         StartCoroutine(StateTeste());
+    }
+
+    public void SetDebugText()
+    {
+
     }
 
     private void Update()
     {
         stateMachine.Update();
     }
-
+    
     public IEnumerator StateTeste()
     {
         stateMachine.SetState(idle);
         for (;;)
         {
+            stateMachine.TriggerEvent((int)EventTriggers.WolfAppeared);
             yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            stateMachine.SetState(idle);
+            for(int i = 0; i < 5; i++)
+            {
+                stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
+                yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
+            }
+            stateMachine.TriggerEvent((int)EventTriggers.WolfDisappeared);
             yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            stateMachine.SetState(attackAnyone);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            stateMachine.SetState(idle);
-            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
-            stateMachine.SetState(fleeingState);
-            yield return new WaitForSeconds(Random.Range(0.0f, 0.3f));
-            stateMachine.SetState(idle);
-            yield return new WaitForSeconds(Random.Range(0.0f, 1.0f));
-            stateMachine.SetState(attackingTarget);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            stateMachine.SetState(idle);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            stateMachine.SetState(grabbing);
         }
     }
 }
