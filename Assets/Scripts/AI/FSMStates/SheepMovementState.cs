@@ -26,10 +26,10 @@ public class SheepMovementState : FSMState
         var agent = Agent as SheepAI;
 
         //Movement
-        target += agent.sheepInputData.movementDirection;
-        agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepStateController.movementSpeed);
+     //   target += agent.sheepInputData.movementDirection;
+     //   agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepStateController.movementSpeed);
 
         //Transitions
-        if (agent.sheepInputData.movementDirection == Vector3.zero) agent.stateMachine.SetState(agent.sheepStateController.sheepIdleState);
+      //  if (agent.sheepInputData.movementDirection == Vector3.zero) agent.stateMachine.SetState(agent.sheepStateController.sheepIdleState);
     }
 }

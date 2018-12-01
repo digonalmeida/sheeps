@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepIdleState : FSMState
+public class SheepAIIdleState : FSMState
 {
     public override void OnEnter()
     {
         base.OnEnter();
         var agent = Agent as SheepAI;
+
         agent.InputData.movementDirection = Vector3.zero;
         agent.InputData.attacking = false;
         agent.InputData.grabThrow = false;
@@ -16,6 +17,12 @@ public class SheepIdleState : FSMState
         agent.InputData.movementDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
     }
     public override void OnExit()
+    {
+        base.OnEnter();
+        var agent = Agent as SheepAI;
+    }
+
+    public override void Update()
     {
         base.OnExit();
         var agent = Agent as SheepAI;
