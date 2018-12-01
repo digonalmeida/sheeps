@@ -9,7 +9,8 @@ public enum messageType
     fear,
     relief,
     shitpost,
-    grief
+    grief,
+    blame
 }
 
 [System.Serializable]

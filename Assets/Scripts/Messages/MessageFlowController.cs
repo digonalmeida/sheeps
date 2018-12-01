@@ -15,7 +15,7 @@ public class MessageFlowController : Singleton<MessageFlowController>
         }
     }
 
-    private float messagesPerSecondDefault = 1f;
+    private float messagesPerSecondDefault = 0.5f;
     private float messagesPerSecondError = 0.2f;
     private float messagesPerSecond
     {
