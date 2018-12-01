@@ -6,12 +6,12 @@ public class SheepMovementState : FSMState
 {
     //Control Variables
     private Vector3 target;
-    private SheepAI agent;
+    private SheepController agent;
 
     public override void OnEnter()
     {
         base.OnEnter();
-        var agent = Agent as SheepAI;
+        var agent = Agent as SheepController;
         target = agent.transform.position;
     }
 
