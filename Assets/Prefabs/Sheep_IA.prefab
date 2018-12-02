@@ -200,7 +200,7 @@ MonoBehaviour:
   timeAnimationStunned: 1
   timeAnimationUncounscious: 3
   struggleTime: 3
-  wolfFightTime: 1
+  wolfFightTime: 2
 --- !u!114 &114072604602095288
 MonoBehaviour:
   m_ObjectHideFlags: 1
