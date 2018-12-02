@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class GameEvents
 {
@@ -27,5 +28,6 @@ public static class GameEvents
     public static class Sheeps
     {
         public static Action<SheepConfig> SheepDied;
+        public static Action<GameObject, GameObject> OnSheepAttack;
     }
 }

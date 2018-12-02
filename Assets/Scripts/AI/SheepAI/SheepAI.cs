@@ -19,6 +19,8 @@ public class SheepAI : MonoBehaviour
     private SheepAIAttackingAnyoneState attackAnyone = new SheepAIAttackingAnyoneState();
     private SheepAIGrabbingState grabbing = new SheepAIGrabbingState();
 
+    public GameObject Target { get; set; }
+
     public GameObject SpecialTarget { get; private set; }
     
     public enum EventTriggers
@@ -35,24 +37,36 @@ public class SheepAI : MonoBehaviour
         stateMachine.Agent = this;
 
         idle.AddTrigger((int)EventTriggers.WolfAppeared, fleeingState);
+        idle.AddTrigger((int)EventTriggers.ChangeBehaviour, attackAnyone);
 
         fleeingState.AddTrigger((int)EventTriggers.ChangeBehaviour, attackAnyone);
         fleeingState.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
 
-        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, fleeingState);
+        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
         attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
     }
 
     private void Start()
     {
         SpecialTarget = PlayerInput.Instance.gameObject;
-        stateMachine.SetState(idle);
+        stateMachine.SetState(attackAnyone);
         StartCoroutine(StateTeste());
     }
+
+    public void SetIdle()
+    {
+        stateMachine.SetState(idle);
+    }
+
 
     public void SetDebugText()
     {
 
+    }
+
+    public void ChangeBehaviour()
+    {
+        stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
     }
 
     private void Update()
@@ -67,7 +81,7 @@ public class SheepAI : MonoBehaviour
         {
             stateMachine.TriggerEvent((int)EventTriggers.WolfAppeared);
             yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            for(int i = 0; i < 5; i++)
+            for(;;)
             {
                 stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
                 yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));

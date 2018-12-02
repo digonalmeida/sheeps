@@ -154,7 +154,7 @@ public class SheepController : MonoBehaviour
                 else
                 {
                     //Other Sheep Found!
-                    sheepInputData.targetSheep = nearestSheep[0].gameObject;
+                    sheepInputData.targetSheep = nearestSheep[i].gameObject;
                     break;
                 }
             }
