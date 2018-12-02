@@ -807,6 +807,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114872349778213176, guid: b46333b366ea9334f815b93709349c30,
+        type: 2}
+      propertyPath: tossDistanceMultiplier
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b46333b366ea9334f815b93709349c30, type: 2}
   m_IsPrefabParent: 0

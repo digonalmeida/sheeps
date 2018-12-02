@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4318368688901742}
   - component: {fileID: 212368180252957312}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4373560517478038}
   - component: {fileID: 212137233068243582}
   - component: {fileID: 95167694381652180}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char_SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,8 +58,7 @@ GameObject:
   - component: {fileID: 114055150228268756}
   - component: {fileID: 143719453811143656}
   - component: {fileID: 114072604602095288}
-  - component: {fileID: 114000019457543174}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sheep_IA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,19 +123,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000019457543174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1737588425012664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039f85e8551485a4e8a86c57b27a17db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 212368180252957312}
-  mainSpriteRenderer: {fileID: 212137233068243582}
 --- !u!114 &114055150228268756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95167694381652180}
   timeAnimationStunned: 1
-  timeAnimationUncounscious: 1
-  struggleTime: 1
+  timeAnimationUncounscious: 3
+  struggleTime: 3
 --- !u!114 &114072604602095288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
+  burdened: 0
 --- !u!114 &114449075284356724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,9 +163,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
-  movementSpeed: 1
-  interactDistance: 5
-  tossDistanceMultiplier: 1
+  movementSpeed: 5
+  burdenedMovementSpeed: 3
+  interactDistance: 3
+  tossDistanceMultiplier: 5
   capturor: {fileID: 0}
 --- !u!114 &114724900416192124
 MonoBehaviour:
@@ -195,6 +183,7 @@ MonoBehaviour:
   sheepInputData: {fileID: 0}
   sheepAnimationController: {fileID: 0}
   sheepMovementController: {fileID: 0}
+  lockTarget: 0
 --- !u!114 &114966225244736138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +200,6 @@ MonoBehaviour:
   targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
-  target: {fileID: 0}
   moveSpeed: 1
 --- !u!143 &143719453811143656
 CharacterController:

@@ -9,6 +9,5 @@ public class SheepInputData : MonoBehaviour
     public GameObject targetSheep;
     public bool attacking;
     public bool grabThrow;
-    public GameObject target;
     public float moveSpeed = 1;
 }

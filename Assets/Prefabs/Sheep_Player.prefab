@@ -107,8 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95564407039313232}
   timeAnimationStunned: 1
-  timeAnimationUncounscious: 1
-  struggleTime: 1
+  timeAnimationUncounscious: 3
+  struggleTime: 3
 --- !u!114 &114192477420196418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,8 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06abf822a124744e8a4a5a5569ace2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  highlightTargetLocked: 0
 --- !u!114 &114359780279634626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +135,7 @@ MonoBehaviour:
   sheepInputData: {fileID: 0}
   sheepAnimationController: {fileID: 0}
   sheepMovementController: {fileID: 0}
+  lockTarget: 0
 --- !u!114 &114588263158795544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,7 +152,6 @@ MonoBehaviour:
   targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
-  target: {fileID: 0}
   moveSpeed: 1
 --- !u!114 &114604802987393592
 MonoBehaviour:
@@ -167,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
+  burdened: 0
 --- !u!114 &114872349778213176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,9 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
-  movementSpeed: 1
-  interactDistance: 5
-  tossDistanceMultiplier: 1
+  movementSpeed: 5
+  burdenedMovementSpeed: 3
+  interactDistance: 3
+  tossDistanceMultiplier: 5
   capturor: {fileID: 0}
 --- !u!143 &143875528107514982
 CharacterController:

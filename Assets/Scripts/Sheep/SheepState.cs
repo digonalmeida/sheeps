@@ -9,6 +9,7 @@ public class SheepState : MonoBehaviour
     private int currentHealthPoints;
     public int healthPoints = 3;
     public float movementSpeed = 1f;
+    public float burdenedMovementSpeed = 0.8f;
     public float interactDistance = 1f;
     public float tossDistanceMultiplier = 2f;
     public GameObject capturor;
