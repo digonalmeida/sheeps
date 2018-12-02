@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Beeeeeverly
   _kinshipKey: Beeeeeverly_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
+  _icon: {fileID: 21300000, guid: a6eb9a043e6d1f045b10a73270a774e5, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Beeeeeverly_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_9
   - messageType: 7
     messageTextKey: All_Tretas_3
+  - messageType: 8
+    messageTextKey: All_Positive_4
+  - messageType: 8
+    messageTextKey: All_Positive_5
+  - messageType: 8
+    messageTextKey: All_Positive_6
+  - messageType: 8
+    messageTextKey: All_Positive_7
+  - messageType: 9
+    messageTextKey: All_Negative_4
+  - messageType: 9
+    messageTextKey: All_Negative_5
+  - messageType: 9
+    messageTextKey: All_Negative_6
+  - messageType: 9
+    messageTextKey: All_Negative_7
+  - messageType: 8
+    messageTextKey: All_Positive_12
