@@ -18,4 +18,7 @@ public static class GameEvents{
         public static Action WolfAppeared;
         public static Action WolfDisappeared;
     }
+    public static class Sheeps{
+        public static Action<SheepConfig> SheepDied;
+    }
 }

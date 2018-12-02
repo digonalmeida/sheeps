@@ -65,3 +65,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8ce519fb3ccdfd94fba4e1a84a442b7e, type: 2}
   sheepPrefab: {fileID: 1819377931532566, guid: 5a10f4b435564ba49b2e9c74d5cdfbd8,
     type: 2}
+  sheepDieNotificationMessageKey: sheep_died_msg

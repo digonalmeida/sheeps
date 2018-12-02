@@ -46,14 +46,14 @@ public class MobilePhone : Singleton<MobilePhone>
 
     internal void FinishedScrolling()
     {
-        Transform msgTransform = contentParent.GetChild(0).transform;
-        msgTransform.SetAsLastSibling();
+        Transform msgTransform = contentParent.GetChild(contentParent.childCount-1).transform;
+        msgTransform.SetAsFirstSibling();
         Debug.Log("voltou");
     }
 
     private void StartScrolling()
     {
-        Transform msgTransform = contentParent.GetChild(0).transform;
+        Transform msgTransform = contentParent.GetChild(contentParent.childCount-1).transform;
         msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(false);
         contentAnimator.SetTrigger("scroll");
         Debug.Log("triggered");
@@ -71,7 +71,7 @@ public class MobilePhone : Singleton<MobilePhone>
 
     private void AddMessage(MessageBlob blob)
     {
-        Transform msgTransform = contentParent.GetChild(contentParent.childCount - 1).transform;
+        Transform msgTransform = contentParent.GetChild(0).transform;
         msgTransform.GetComponent<MobilePhoneMessage>().Setup(blob);
         msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
 

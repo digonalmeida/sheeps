@@ -12,10 +12,28 @@ public class NotificationsManager : Singleton<NotificationsManager>
 
 public class NotificationBlob
 {
+    private int sheepID;
     private string messageKey;
 
-    public NotificationBlob(string messageKey)
+    public NotificationBlob(int sheepID, string messageKey)
     {
+        this.sheepID = sheepID;
         this.messageKey = messageKey;
+    }
+
+    public int SheepID
+    {
+        get
+        {
+            return sheepID;
+        }
+    }
+
+    public string MessageKey
+    {
+        get
+        {
+            return messageKey;
+        }
     }
 }
