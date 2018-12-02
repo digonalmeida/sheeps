@@ -33,7 +33,7 @@ public class SheepBeingTossedState : FSMState
         }
         else
         {
-            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, agent.sheepState.tossSpeedMultiplier);
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.tossSpeedMultiplier);
         }
     }
 }
