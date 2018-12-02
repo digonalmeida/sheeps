@@ -50,8 +50,10 @@ public class SheepState : MonoBehaviour
         SheepsManager.Instance.NotificateSheepDied(this);
     }
 
-    public void startFightWithWolf(){
-      isFightingAgainstWolf = true;  
+    public void startFightWithWolf()
+    {
+        isFightingAgainstWolf = true;
+        GetComponent<SheepController>().stateMachine.TriggerEvent((int)FSMEventTriggers.Death);
     }
 
 }
