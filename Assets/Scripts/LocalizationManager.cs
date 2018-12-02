@@ -64,6 +64,11 @@ public class LocalizationManager : Singleton<LocalizationManager>
         }
     }
 
+    public availableLanguages GetLanguage()
+    {
+        return this.currentLanguage;
+    }
+
     public void ChangeLanguage(availableLanguages newLanguage)
     {
         currentLanguage = newLanguage;

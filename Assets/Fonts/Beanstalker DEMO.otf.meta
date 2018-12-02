@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9651110f7fe5b2b4cbafa61a072ff8ee
+timeCreated: 1543745227
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Beanstalker DEMO
+  fontNames:
+  - Beanstalker DEMO
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
