@@ -49,4 +49,10 @@ public class SheepState : MonoBehaviour
         SheepsManager.Instance.NotificateSheepDied(this);
     }
 
+    public void wentOffLimits(){
+      //Notify wolves
+
+        
+    }
+
 }
