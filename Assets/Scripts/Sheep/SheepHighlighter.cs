@@ -6,7 +6,7 @@ public class SheepHighlighter : MonoBehaviour
 {
     //Variables
     public SpriteRenderer highlight;
-
+    public SpriteRenderer mainSpriteRenderer;
 
     //On Mouse Over => Highlight
     private void OnMouseOver()
@@ -23,5 +23,10 @@ public class SheepHighlighter : MonoBehaviour
         {
             PlayerInput.Instance.target = null;
         }
+    }
+
+    private void Update()
+    {
+        if(highlight.sprite != mainSpriteRenderer.sprite) highlight.sprite = mainSpriteRenderer.sprite;
     }
 }
