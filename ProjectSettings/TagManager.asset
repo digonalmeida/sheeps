@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Colliders
+  - Floor
+  - Wolfs
+  - Sheep
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2739433827
+    locked: 0
+  - name: FrontFence
+    uniqueID: 266070653
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackFence
+    uniqueID: 2064029653
+    locked: 0
+  - name: ForeGround
+    uniqueID: 2897908717
     locked: 0

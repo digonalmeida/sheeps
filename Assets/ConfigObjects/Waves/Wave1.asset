@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21207dfb42ed5d8479b1c1634d03e78a, type: 3}
+  m_Name: Wave1
+  m_EditorClassIdentifier: 
+  tensionSequence:
+  - {fileID: 11400000, guid: 63d042ac4505fba4892657f019413393, type: 2}
+  - {fileID: 11400000, guid: 735880ac76737964c85f1883d25a3747, type: 2}
+  - {fileID: 11400000, guid: b00743543ec188249a62c7ea72c4232d, type: 2}
+  - {fileID: 11400000, guid: a6287a8aaa6506f4c9d2efd9d85aaf55, type: 2}
+  requiredSacrifices: 1
+  playerAtackerSheepsPercentage: 0.3
+  anyAttackerSheepsPercentage: 0.3

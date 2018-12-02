@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6077d3613af7ccf4da39f045c15c8e63, type: 3}
+  m_Name: Beeernaaardo
+  m_EditorClassIdentifier: 
+  _id: 2
+  _name: Beeernaaardo
+  _kinshipKey: Beeernaaardo_kinship
+  _description: 
+  _icon: {fileID: 21300000, guid: 0afa85a6976de274bb9959fd4b754cf1, type: 3}
+  messages:
+  - messageType: 1
+    messageTextKey: Beeernaaardo_greating
+  - messageType: 5
+    messageTextKey: Beeernaaardo_dumb
+  - messageType: 3
+    messageTextKey: Beeernaaardo_fear
+  - messageType: 2
+    messageTextKey: Beeernaaardo_gossip
+  - messageType: 4
+    messageTextKey: Beeernaaardo_relief
+  - messageType: 6
+    messageTextKey: Beeernaaardo_grief
+  - messageType: 7
+    messageTextKey: All_Tretas_5
+  - messageType: 7
+    messageTextKey: All_Tretas_6
+  - messageType: 8
+    messageTextKey: All_Positive_8
+  - messageType: 8
+    messageTextKey: All_Positive_9
+  - messageType: 8
+    messageTextKey: All_Positive_10
+  - messageType: 8
+    messageTextKey: All_Positive_11
+  - messageType: 9
+    messageTextKey: All_Negative_8
+  - messageType: 9
+    messageTextKey: All_Negative_9
+  - messageType: 9
+    messageTextKey: All_Negative_10
+  - messageType: 9
+    messageTextKey: All_Negative_11
+  - messageType: 8
+    messageTextKey: All_Positive_13

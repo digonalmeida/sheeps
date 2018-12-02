@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6077d3613af7ccf4da39f045c15c8e63, type: 3}
+  m_Name: Blaaaair
+  m_EditorClassIdentifier: 
+  _id: 6
+  _name: Blaaaair
+  _kinshipKey: Blaaaair_kinship
+  _description: 
+  _icon: {fileID: 21300000, guid: 21542bec51b571f4989adad69d15d1d1, type: 3}
+  messages:
+  - messageType: 1
+    messageTextKey: Blaaaair_greating
+  - messageType: 5
+    messageTextKey: Blaaaair_dumb
+  - messageType: 3
+    messageTextKey: Blaaaair_fear
+  - messageType: 2
+    messageTextKey: Blaaaair_gossip
+  - messageType: 4
+    messageTextKey: Blaaaair_relief
+  - messageType: 6
+    messageTextKey: Blaaaair_grief
+  - messageType: 7
+    messageTextKey: All_Tretas_10
+  - messageType: 7
+    messageTextKey: All_Tretas_2
+  - messageType: 8
+    messageTextKey: All_Positive_8
+  - messageType: 8
+    messageTextKey: All_Positive_9
+  - messageType: 8
+    messageTextKey: All_Positive_10
+  - messageType: 8
+    messageTextKey: All_Positive_11
+  - messageType: 9
+    messageTextKey: All_Negative_8
+  - messageType: 9
+    messageTextKey: All_Negative_9
+  - messageType: 9
+    messageTextKey: All_Negative_10
+  - messageType: 9
+    messageTextKey: All_Negative_11
+  - messageType: 8
+    messageTextKey: All_Positive_13
