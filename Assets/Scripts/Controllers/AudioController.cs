@@ -31,28 +31,9 @@ public class AudioController : SingletonDestroy<AudioController>
     public AudioClip clipMusic_ChaosPhase;
     public AudioClip clipMusic_GameOver;
 
-    private static AudioController instance;
-    public static AudioController Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
-    //On Object Awake
-    protected override void Awake()
-    {
-        base.Awake();
-        
-        //Check Singleton
-        if (instance != null && instance != this) Destroy(this);
-        else instance = this;
-    }
-
     public void playRoosterSFX()
     {
-        AudioSource.PlayClipAtPoint(clipSFX_Rooster, Camera.main.transform.position);
+        audioSourceSFX.PlayOneShot(clipSFX_Rooster);
     }
 
     private void Start()
