@@ -6,7 +6,8 @@ public class SheepsManager : Singleton<SheepsManager>
 {
     [HideInInspector] public List<SheepState> allSheeps = new List<SheepState>();
 
-    public SheepConfig[] configsToStart;
+    public List<Transform> spawnPoints;
+    public SheepConfig[] sheepConfigsToStart;
     public GameObject sheepPrefab;
     public string sheepDieNotificationMessageKey;
 
@@ -14,19 +15,18 @@ public class SheepsManager : Singleton<SheepsManager>
     {
         base.Awake();
 
-        InstantiateSheeps(configsToStart);
-    }
+        spawnPoints = Extensions.ShuffleList(spawnPoints);
 
-    public void InstantiateSheeps(SheepConfig[] sheepsToSpawn)
-    {
-        foreach (SheepConfig config in sheepsToSpawn)
+        for (int i = 0; i < sheepConfigsToStart.Length; i++)
         {
-            GameObject go = Instantiate(sheepPrefab, Vector3.zero, Quaternion.identity);
+           SheepConfig config = sheepConfigsToStart[i];
+            GameObject go = Instantiate(sheepPrefab, spawnPoints[i].position, Quaternion.identity,transform);
             SheepState sheep = go.GetComponent<SheepState>();
             sheep.SetupSheep(config);
             allSheeps.Add(sheep);
         }
     }
+
 
     public SheepConfig GetSheepConfigById(int id)
     {

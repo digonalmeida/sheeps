@@ -46,16 +46,25 @@ public class SheepConfig : ScriptableObject {
     }
 
     public MessageBlob GetMessage(messageType messageType){
-		Message[] filtered = messages.Where(m=>m.MessageType == messageType).ToArray();
+		Message[] filtered = messages.Where(m=>m.MessageType == messageType && !m.WasUsed).ToArray();
 		if(filtered.Length>0){
+            Message m = filtered[Random.Range(0,filtered.Length)];
+            m.WasUsed = true;
             messageStyle style = messageType == messageType.fear ? messageStyle.alert : messageStyle.normal;
-			return new MessageBlob(_id, filtered[Random.Range(0,filtered.Length)].MessageTextKey,style);
+			return new MessageBlob(_id, m.MessageTextKey,style);
 		} else {
 			return null;
 		}
 	}
 
 	public bool HasMessageType(messageType messageType){
-		return messages.Where(m=>m.MessageType == messageType).ToArray().Length > 0;
+		return messages.Where(m=>m.MessageType == messageType && !m.WasUsed).ToArray().Length > 0;
 	}
+
+    public void ResetUsedMessages(){
+        foreach (Message m in messages)
+        {
+            m.WasUsed = false;
+        }
+    }
 }

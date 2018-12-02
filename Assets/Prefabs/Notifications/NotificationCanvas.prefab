@@ -458,8 +458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ccfbed9d6984846a2cfc05b44c70c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathNotificationPanel: {fileID: 0}
-  warningNotificationPanel: {fileID: 0}
+  deathNotificationPanel: {fileID: 224190506439881190}
+  warningNotificationPanel: {fileID: 224104760165977338}
   animator: {fileID: 95510417237318392}
   deathNotificationDuration: 0
   notificationSheepIcon: {fileID: 114643407670784330}

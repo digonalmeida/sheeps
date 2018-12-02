@@ -52,7 +52,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allSheeps: []
-  configsToStart:
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sheepConfigsToStart:
   - {fileID: 11400000, guid: ba30d46f7264d0b47a2e19d7f2eac82a, type: 2}
   - {fileID: 11400000, guid: 9011ebaf693d0aa48ac5b58888059df6, type: 2}
   - {fileID: 11400000, guid: 609de89d40cff664cabb0892ad0e48ee, type: 2}
@@ -63,6 +77,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0fb7977c0562da24e8b864779c8200de, type: 2}
   - {fileID: 11400000, guid: 1a903a7173cf66f4480be5bed8c1f11b, type: 2}
   - {fileID: 11400000, guid: 8ce519fb3ccdfd94fba4e1a84a442b7e, type: 2}
-  sheepPrefab: {fileID: 1819377931532566, guid: 5a10f4b435564ba49b2e9c74d5cdfbd8,
+  sheepPrefab: {fileID: 1737588425012664, guid: 80bb607099f67fc48b517ca471910d87,
     type: 2}
   sheepDieNotificationMessageKey: sheep_died_msg

@@ -13,32 +13,14 @@ public class AiDirector : MonoBehaviour
     [SerializeField]
     private float _anyAttackers = .2f;
 
-    private void Awake()
+    private void Start()
     {
         sheepsAI = new List<SheepAI>(FindObjectsOfType<SheepAI>());
         playerInput = FindObjectOfType<PlayerInput>();
-        sheepsAI = ShuffleList(sheepsAI);
-    }
-
-    private List<E> ShuffleList<E>(List<E> inputList)
-    {
-        List<E> randomList = new List<E>();
-
-        int randomIndex = 0;
-        while (inputList.Count > 0)
-        {
-            randomIndex = Random.Range(0, inputList.Count); //Choose a random object in the list
-            randomList.Add(inputList[randomIndex]); //add it to the new, random list
-            inputList.RemoveAt(randomIndex); //remove to avoid duplicates
-        }
-
-        return randomList; //return the new random list
-    }
-
-    private void Start()
-    {
+        sheepsAI = Extensions.ShuffleList(sheepsAI);
         InitializeSheepsStrategy();
     }
+
 
     public void InitializeSheepsStrategy()
     {
