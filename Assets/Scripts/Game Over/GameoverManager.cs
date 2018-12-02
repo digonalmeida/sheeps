@@ -8,8 +8,7 @@ public class GameoverManager : MonoBehaviour
 	
     public void ReStart()
     {
-        PlayerPrefs.SetString("NextScene", "main");
-        SceneManager.LoadSceneAsync("loading");
+        SceneManager.LoadScene("main");
     }
 
     public void GoToMenu()
@@ -17,4 +16,13 @@ public class GameoverManager : MonoBehaviour
         SceneManager.LoadScene("menu");
     }
 
+    public void LoseGame()
+    {
+        SceneManager.LoadScene("gameOver");
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("ending");
+    }
 }

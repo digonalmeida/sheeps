@@ -16,13 +16,12 @@ public class MenuManger : MonoBehaviour
 
     public void StartNewGame()
     {
-        PlayerPrefs.SetString("NextScene", "main");
-        SceneManager.LoadSceneAsync("loading");
+        SceneManager.LoadScene("main");
     }
 
     public void ShowCredits()
     {
-        SceneManager.LoadSceneAsync("credits");
+        SceneManager.LoadScene("credits");
     }
 
     public void QuitGame()
