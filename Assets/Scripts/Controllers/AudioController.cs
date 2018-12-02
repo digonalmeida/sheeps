@@ -54,12 +54,12 @@ public class AudioController : MonoBehaviour
 
     public void playSFX(AudioClip sfxClip)
     {
-        audioSourceSFX.PlayOneShot(sfxClip);
+        if(sfxClip != null) audioSourceSFX.PlayOneShot(sfxClip);
     }
 
     public void playSFX(List<AudioClip> sfxClip)
     {
-        audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+        if (sfxClip != null && sfxClip.Count > 0) audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
     }
 
     public void playMusic(AudioClip musicClip)

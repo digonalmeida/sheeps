@@ -7,10 +7,6 @@ public class PlayerInput : MonoBehaviour
 {
     //Variables
     private SheepInputData sheepInputData;
-    public GameObject target;
-    public bool highlightTargetLocked;
-    private int layerMask;
-    RaycastHit hitInfo;
 
     private static PlayerInput instance;
     public static PlayerInput Instance
@@ -27,14 +23,11 @@ public class PlayerInput : MonoBehaviour
         //Check Singleton
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
-
-        layerMask = LayerMask.GetMask("Floor");
     }
 
     //Start
     private void Start()
     {
-        highlightTargetLocked = false;
         sheepInputData = GetComponent<SheepInputData>();
     }
 
@@ -51,17 +44,5 @@ public class PlayerInput : MonoBehaviour
         //Attack
         if (Input.GetButtonDown("Fire2")) sheepInputData.grabThrow = true;
         else sheepInputData.grabThrow = false;
-
-        //Update Target
-        if(!highlightTargetLocked) sheepInputData.targetSheep = target;
-        
-        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 1000, layerMask))
-        {
-            //Update Look Direction
-            Vector3 vect = (hitInfo.point - this.transform.position);
-            vect.y = 0;
-            vect.Normalize();
-            sheepInputData.lookDirection = vect;
-        }
     }
 }

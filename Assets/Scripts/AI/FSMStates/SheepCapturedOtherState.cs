@@ -20,7 +20,7 @@ public class SheepCapturedOtherState : FSMState
     public override void OnExit()
     {
         base.OnExit();
-        PlayerInput.Instance.highlightTargetLocked = false;
+        agent.lockTarget = false;
     }
 
     public override void Update()

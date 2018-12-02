@@ -11,6 +11,7 @@ public class SheepMovementController : MonoBehaviour
     SheepAnimationController sheepAnimationController;
     float speed = 5;
     Vector3 gSpeed = new Vector3();
+
     void Awake()
     {
         charController = GetComponent<CharacterController>();
