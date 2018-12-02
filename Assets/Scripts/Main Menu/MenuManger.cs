@@ -12,6 +12,8 @@ public class MenuManger : MonoBehaviour
     private void Start()
     {
         CheckLanguage();
+
+        AudioController.Instance.playMusic(AudioController.Instance.clipMusic_CalmPhase);
     }
 
     public void StartNewGame()
