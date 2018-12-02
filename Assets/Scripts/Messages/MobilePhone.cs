@@ -52,7 +52,6 @@ public class MobilePhone : Singleton<MobilePhone>
 
         msgTransform = contentParent.GetChild(contentParent.childCount - 1).transform;
         msgTransform.SetAsFirstSibling();
-        Debug.Log("voltou");
     }
 
     private void StartScrolling()
@@ -60,7 +59,6 @@ public class MobilePhone : Singleton<MobilePhone>
         Transform msgTransform = contentParent.GetChild(contentParent.childCount - 1).transform;
         msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(false);
         contentAnimator.SetTrigger("scroll");
-        Debug.Log("triggered");
     }
 
     void Update()
@@ -91,6 +89,16 @@ public class MobilePhone : Singleton<MobilePhone>
         {
             contentParent.GetChild(i).gameObject.SetActive(false);
         }
+    }
+
+    public void FeatureMobile()
+    {
+        phoneAnimator.SetBool("featured", true);
+    }
+
+    public void UnfeatureMobile()
+    {
+        phoneAnimator.SetBool("featured", false);
     }
 
 }

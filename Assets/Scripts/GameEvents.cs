@@ -15,9 +15,10 @@ public static class GameEvents
 
     public static class Notifications
     {
-        public static Action<NotificationBlob> NewNotification;
+        public static Action<NotificationBlob> NewDeathNotification;
         public static Action StartWarning;
         public static Action StopWarning;
+        public static Action<string> NewNotification;
     }
 
     public static class AI

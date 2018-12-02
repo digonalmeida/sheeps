@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public bool CanUse = false;
     public float timerNoInput {get; private set;}
 
     //On Object Awake
@@ -25,6 +26,17 @@ public class PlayerInput : MonoBehaviour
         //Check Singleton
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
+    }
+
+    public void DisableInput(){
+        sheepInputData.movementDirection = Vector3.zero;
+        sheepInputData.attacking = false;
+        sheepInputData.grabThrow = false;
+        enabled = false;
+    }
+
+    public void EnableInput(){
+        enabled = true;
     }
 
     //Start
@@ -38,6 +50,12 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if(!enabled)
+        {
+            sheepInputData.movementDirection = Vector3.zero;
+            return;
+        }
+
         //Movement
         sheepInputData.movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         if(sheepInputData.movementDirection.sqrMagnitude <= 0.1f){
