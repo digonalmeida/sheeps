@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     //Control Variables
-    public float audioFadeOutFactor = 1.5f;
+    public float audioFadeOutFactor = 0.15f;
 
     //Audio Source Reference
     public AudioSource audioSourceSFX;
@@ -83,7 +83,7 @@ public class AudioController : MonoBehaviour
     {
         while(audioSourceMusic.volume > 0f)
         {
-            audioSourceMusic.volume -= audioFadeOutFactor;
+            audioSourceMusic.volume -= audioFadeOutFactor * Time.deltaTime;
             yield return 0;
         }
 
@@ -94,8 +94,25 @@ public class AudioController : MonoBehaviour
 
         while (audioSourceMusic.volume < 1f)
         {
-            audioSourceMusic.volume += audioFadeOutFactor;
+            audioSourceMusic.volume += audioFadeOutFactor * Time.deltaTime;
             yield return 0;
         }
+    }
+
+    public void stopMusicWithFadeOut()
+    {
+        StopAllCoroutines();
+        StartCoroutine(fadeOutMusic());
+    }
+
+    public IEnumerator fadeOutMusic()
+    {
+        while (audioSourceMusic.volume > 0f)
+        {
+            audioSourceMusic.volume -= audioFadeOutFactor * Time.deltaTime;
+            yield return 0;
+        }
+
+        audioSourceMusic.Stop();
     }
 }
