@@ -8,27 +8,49 @@ public class SheepsManager : Singleton<SheepsManager>
 
     public SheepConfig[] configsToStart;
     public GameObject sheepPrefab;
+    public string sheepDieNotificationMessageKey;
 
-    protected override void Awake(){
+    protected override void Awake()
+    {
         base.Awake();
 
-        foreach (SheepConfig config in configsToStart)
+        InstantiateSheeps(configsToStart);
+    }
+
+    public void InstantiateSheeps(SheepConfig[] sheepsToSpawn)
+    {
+        foreach (SheepConfig config in sheepsToSpawn)
         {
-            GameObject go = Instantiate(sheepPrefab,Vector3.zero,Quaternion.identity);
+            GameObject go = Instantiate(sheepPrefab, Vector3.zero, Quaternion.identity);
             SheepState sheep = go.GetComponent<SheepState>();
             sheep.SetupSheep(config);
             allSheeps.Add(sheep);
         }
     }
 
-    public SheepConfig GetSheepConfigById(int id){
-        SheepState[] sheeps = allSheeps.Where(s=>s.config.Id == id).ToArray();
-        if(sheeps.Length != 1){
-            Debug.LogError(sheeps.Length<=0?"Sheep " + id + " not found.":"More than one sheep with id " + id);
+    public SheepConfig GetSheepConfigById(int id)
+    {
+        SheepState[] sheeps = allSheeps.Where(s => s.config.Id == id).ToArray();
+        if (sheeps.Length != 1)
+        {
+            Debug.LogError(sheeps.Length <= 0 ? "Sheep " + id + " not found." : "More than one sheep with id " + id);
             return null;
-        } else {
+        }
+        else
+        {
             return sheeps[0].config;
         }
+    }
+
+    public void NotificateSheepDied(SheepState sheep)
+    {
+        NotificationBlob notif = new NotificationBlob(sheep.config.Id, sheepDieNotificationMessageKey);
+        NotificationsManager.Instance.AddNotification(notif);
+    }
+
+    public void ResetManager()
+    {
+        allSheeps.Clear();
     }
 
 }
