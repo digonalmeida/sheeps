@@ -9,9 +9,9 @@ public class SheepAnimationController : MonoBehaviour
     private Animator animator;
 
     //Timing Animations
-    public float timeAnimationStunned = 1f;
-    public float timeAnimationUncounscious = 1f;
-    public float struggleTime = 1f;
+    public float timeAnimationStunned;
+    public float timeAnimationUncounscious;
+    public float struggleTime;
 
     //Start
     private void Start()

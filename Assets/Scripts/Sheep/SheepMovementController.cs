@@ -9,8 +9,9 @@ public class SheepMovementController : MonoBehaviour
     SheepInputData sheepInputData;
     SpriteRenderer spriteRenderer;
     SheepAnimationController sheepAnimationController;
-    float speed = 5;
+    SheepState sheepState;
     Vector3 gSpeed = new Vector3();
+    public bool burdened;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class SheepMovementController : MonoBehaviour
         sheepInputData = GetComponent<SheepInputData>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         sheepAnimationController = GetComponent<SheepAnimationController>();
+        sheepState = GetComponent<SheepState>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class SheepMovementController : MonoBehaviour
         direction.y = 0;
         direction.Normalize();
         gSpeed += Time.deltaTime * Physics.gravity;
-        charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * speed));
+        charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * sheepState.movementSpeed));
 
         //Flip Sprite
         if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);
