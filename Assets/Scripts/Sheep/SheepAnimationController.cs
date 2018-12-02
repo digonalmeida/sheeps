@@ -7,6 +7,8 @@ public class SheepAnimationController : MonoBehaviour
     //Animator Reference
     [SerializeField]
     private Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public ParticleSystemRenderer particleSystemRenderer;
 
     //Timing Animations
     public float timeAnimationStunned;

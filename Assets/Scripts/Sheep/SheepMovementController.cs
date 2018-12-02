@@ -11,6 +11,18 @@ public class SheepMovementController : MonoBehaviour
     SheepAnimationController sheepAnimationController;
     SheepState sheepState;
     Vector3 gSpeed = new Vector3();
+    Vector3 KnockbackDirection = new Vector3();
+    public bool flipped;
+
+    [SerializeField]
+    float MaxKnockbackForce = 1;
+
+    [SerializeField]
+    float KnockbackDeasceleration = 1;
+
+    float _knockbackForce = 0;
+    
+
     public Vector3 lastNormalizedMovement;
     public bool burdened;
 
@@ -23,19 +35,27 @@ public class SheepMovementController : MonoBehaviour
         sheepState = GetComponent<SheepState>();
     }
 
-    public void knockback(Vector3 attackerPos)
+    public void knockback(Vector3 direction)
     {
-        charController.Move((this.transform.position - attackerPos).normalized * 2f);
+        KnockbackDirection = direction;
+        _knockbackForce = MaxKnockbackForce;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!CanMove)
+        
+        if(_knockbackForce > 0)
+        {
+            _knockbackForce -= Mathf.Max(0, KnockbackDeasceleration * Time.deltaTime);
+            charController.Move(_knockbackForce * KnockbackDirection * Time.deltaTime);
+        }
+
+        if (!CanMove)
         {
             return;
         }
-
+        
         Vector3 direction = sheepInputData.movementDirection;
         direction.y = 0;
         direction.Normalize();
@@ -44,8 +64,16 @@ public class SheepMovementController : MonoBehaviour
         if (direction.magnitude == 1) lastNormalizedMovement = direction;
 
         //Flip Sprite
-        if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);
-        else if(direction.x > 0f) sheepAnimationController.setBool("FlippedX", false);
+        if (direction.x < 0f)
+        {
+            flipped = true;
+            sheepAnimationController.setBool("FlippedX", true);
+        }
+        else if (direction.x > 0f)
+        {
+            flipped = false;
+            sheepAnimationController.setBool("FlippedX", false);
+        }
 
         if (charController.isGrounded)
         {
