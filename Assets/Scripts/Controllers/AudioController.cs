@@ -6,24 +6,27 @@ public class AudioController : MonoBehaviour
 {
     //Control Variables
     public float audioFadeOutFactor = 1.5f;
+    public float deltayBetweenPunches = 0.5f;
+    private float timerAvailablePunch;
 
     //Audio Source Reference
     public AudioSource audioSourceSFX;
     public AudioSource audioSourceMusic;
 
     //SFX Clips
-    public AudioClip clipSFX_YellToss;
+   
     public AudioClip clipSFX_WolfKill;
     public AudioClip clipSFX_TossLanding;
     public AudioClip clipSFX_FallUncounscious;
-    public AudioClip clipSFX_CaptureOther;
-    public AudioClip clipSFX_DeathSheep;
     public AudioClip clipSFX_Meesenger;
 
     //SFX Clips (Random)
     public List<AudioClip> clipSFX_BleatNeutral;
     public List<AudioClip> clipSFX_BleatFear;
     public List<AudioClip> clipSFX_HowlWolves;
+    public List<AudioClip> clipSFX_CaptureOther;
+    public List<AudioClip> clipSFX_YellToss;
+    public List<AudioClip> clipSFX_Punch;
 
     //Music Clips
     public AudioClip clipMusic_CalmPhase;
@@ -50,6 +53,12 @@ public class AudioController : MonoBehaviour
     private void Start()
     {
         playMusic(clipMusic_CalmPhase);
+        timerAvailablePunch = deltayBetweenPunches;
+    }
+
+    private void Update()
+    {
+        if(timerAvailablePunch > 0f) timerAvailablePunch -= Time.deltaTime;
     }
 
     public void playSFX(AudioClip sfxClip)
@@ -59,7 +68,18 @@ public class AudioController : MonoBehaviour
 
     public void playSFX(List<AudioClip> sfxClip)
     {
-        if (sfxClip != null && sfxClip.Count > 0) audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+        if (sfxClip != null && sfxClip.Count > 0)
+        {
+            if(sfxClip == clipSFX_Punch)
+            {
+                if (timerAvailablePunch <= 0f)
+                {
+                    timerAvailablePunch = deltayBetweenPunches;
+                    audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+                }
+            }
+            else audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+        }
     }
 
     public void playMusic(AudioClip musicClip)
