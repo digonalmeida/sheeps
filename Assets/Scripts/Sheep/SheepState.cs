@@ -19,7 +19,6 @@ public class SheepState : MonoBehaviour
     public bool isDead {get; private set;}
     public SheepConfig config {get; private set;}
     public bool isFightingAgainstWolf = false;
-    public ImageSetter imageSetter;
 
     //Initialize Variables
     private void Start()
@@ -31,7 +30,6 @@ public class SheepState : MonoBehaviour
     {
         this.config = config;
         isDead = false;
-        if(imageSetter != null) imageSetter.setImage(config.Icon);
     }
 
     public void takeDamage()
