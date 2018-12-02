@@ -14,6 +14,7 @@ public class SheepAttackingState : FSMState
         agent.sheepAnimationController.setTrigger("Attack");
         agent.sheepMovementController.CanMove = true;
         agent.OnAnimationFinished += OnAttack;
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_Punch);
     }
 
     public void OnAttack()

@@ -13,5 +13,6 @@ public class SheepDyingState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         agent.sheepAnimationController.setTrigger("Die");
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_WolfKill);
     }
 }

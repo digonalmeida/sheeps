@@ -220,6 +220,31 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_YellToss.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatFear.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_HowlWolves.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_CaptureOther.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -267,6 +292,81 @@ Prefab:
       propertyPath: clipMusic_ChaosPhase
       value: 
       objectReference: {fileID: 8300000, guid: cf830e211279ad34a80ffcb7571e57c2, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_WolfKill
+      value: 
+      objectReference: {fileID: 8300000, guid: a3d39cbec8f8acf42b7a70848bfea11e, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d1d003336d741434ead4f718197d1a83, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d81ff75b6dc46e4f87aa7b32319f38e, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e1fea0d2b3e6c84eb02c413450f45aa, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3cea35ce23b9109489079ee119a4b8a0, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69e0b3200ece8ef4f878ed8d0dc05a28, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: fa0a089e6c77ef8468cc394bbf543332, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatNeutral.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: fa99c2a6ba1173f49ad092817a4d3d3b, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_BleatFear.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ea32761bc121b8468cd70992debce6d, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_HowlWolves.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c243a1c4b0b8f14ba0429feebcaaa80, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_CaptureOther.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 46adda75164467a48b3832d06b34b736, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_CaptureOther.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: bd1e763c5f3e05e438506db3257c755a, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_CaptureOther.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 91bb1df40e20d314294f34b143cdc441, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_YellToss.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 84d2870eb9a3e894b98984a39daaca50, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipSFX_YellToss.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: cf4de1b3257a9254fad7729cf10326bf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f34d6140722c11543870e6710fcef216, type: 2}
   m_IsPrefabParent: 0
