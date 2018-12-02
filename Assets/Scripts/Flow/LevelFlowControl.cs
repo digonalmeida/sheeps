@@ -13,6 +13,9 @@ public class LevelFlowControl : MonoBehaviour
     private Dictionary<messageType, float> currentMessageTypeDict;
 
     private float timer = 0f;
+    private float waveTimer = 0f;
+    private float waveTimerPerc = 0f;
+    private float waveTotalTime = 0f;
     private float tensionValue;
     private float msgRateValue;
     private int sacrificesMade = 0;
@@ -21,6 +24,31 @@ public class LevelFlowControl : MonoBehaviour
     private bool gameStarted, gameEnded, victory;
 
     private AiDirector aiDirector;
+    private RedOverlayPulsing redOverlay;
+
+    public float WaveTimerPerc
+    {
+        get
+        {
+            return waveTimerPerc;
+        }
+    }
+
+    public bool GameStarted
+    {
+        get
+        {
+            return gameStarted;
+        }
+    }
+
+    public bool GameEnded
+    {
+        get
+        {
+            return gameEnded;
+        }
+    }
 
     void OnEnable()
     {
@@ -59,6 +87,9 @@ public class LevelFlowControl : MonoBehaviour
     {
         // reset values
         timer = 0f;
+        waveTimer = 0f;
+        waveTimerPerc = 0f;
+        waveTotalTime = 0;
         sacrificesMade = 0;
         gameStarted = true;
         gameEnded = false;
@@ -70,9 +101,9 @@ public class LevelFlowControl : MonoBehaviour
 
         // initialize director 
         AiDirector.Instance.Initialize(sequence.playerAtackerSheepsPercentage, sequence.anyAttackerSheepsPercentage);
-    
+
         PlayerInput.Instance.EnableInput();
-        
+
         // load sequence
         sacrificesNeeded = sequence.requiredSacrifices;
         currentTensionSequence = new List<TensionCurve>(sequence.tensionSequence);
@@ -89,6 +120,9 @@ public class LevelFlowControl : MonoBehaviour
 
         // notify wave start
         GameEvents.Notifications.NewNotification.SafeInvoke("wave_start");
+
+        // total time
+        waveTotalTime = currentTensionSequence.Select(t => t.duration).Sum();
 
         // start evaluating values
         StartCoroutine(EvaluateFlow());
@@ -117,7 +151,7 @@ public class LevelFlowControl : MonoBehaviour
         MobilePhone.Instance.FeatureMobile();
 
         // scheddule notification
-        StartCoroutine(this.WaitAndAct(3f,()=>GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
+        StartCoroutine(this.WaitAndAct(3f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
 
         // wait to deactivate
         StartCoroutine(this.WaitAndAct(intermediaryWave.tensionSequence[0].duration, () => FinalizeIntermediaryFlow()));
@@ -153,18 +187,39 @@ public class LevelFlowControl : MonoBehaviour
         // hide wolves
         if (isVictorious)
         {
-            // start mid wave
-            StartIntermediaryFlow();
+            if (wavesSequences.Count > 0)
+            {
+                // start mid wave
+                StartIntermediaryFlow();
 
-            // stop wolves
-            WolvesManager.Instance.HideWolves();
+                // stop wolves
+                WolvesManager.Instance.HideWolves();
+            }
+            else
+            {
+                GameWin();
+            }
 
         }
         else
         {
-            // notify wave end
-            GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
+            GameLose();
+
         }
+    }
+
+    private void GameWin()
+    {
+        // You Win
+        // notify game win
+        GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
+    }
+
+    private void GameLose()
+    {
+        // You Die
+        // notify game end
+        GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
     }
 
     IEnumerator EvaluateFlow()
@@ -179,31 +234,32 @@ public class LevelFlowControl : MonoBehaviour
                 {
                     msgRateValue = currentTensionSequence[0].messageRateCurve.Evaluate(1);
                     tensionValue = currentTensionSequence[0].tensionCurve.Evaluate(1);
+                    currentMessageTypeDict = null;
+                    currentTensionSequence = null;
+                    FinalizeTensionFlow(false);
                     yield break;
                 }
                 currentTensionSequence.RemoveAt(0);
                 currentMessageTypeDict = RebuildMsgTypeDict(currentTensionSequence[0]);
             }
 
-            float perc = timer / currentTensionSequence[0].duration;
+            float timerPerc = timer / currentTensionSequence[0].duration;
 
-            msgRateValue = currentTensionSequence[0].messageRateCurve.Evaluate(perc);
-            tensionValue = currentTensionSequence[0].tensionCurve.Evaluate(perc);
+            msgRateValue = currentTensionSequence[0].messageRateCurve.Evaluate(timerPerc);
+            tensionValue = currentTensionSequence[0].tensionCurve.Evaluate(timerPerc);
             for (int i = 0; i < currentTensionSequence[0].messageCurves.Count; i++)
             {
-                currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(perc);
+                currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(timerPerc);
             }
 
             UpdateMessageFlowController();
 
             timer += Time.deltaTime;
+            waveTimer += Time.deltaTime;
+            waveTimerPerc = waveTimer / waveTotalTime;
             yield return null;
         }
 
-        currentMessageTypeDict = null;
-        currentTensionSequence = null;
-
-        FinalizeTensionFlow(false);
     }
 
     private void UpdateMessageFlowController()

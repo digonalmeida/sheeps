@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270075e87407130418343f27e5ddead2, type: 3}
   m_Name: RisingTension1
   m_EditorClassIdentifier: 
-  duration: 30
+  duration: 10
   tensionCurve:
     serializedVersion: 2
     m_Curve:

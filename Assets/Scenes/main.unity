@@ -1318,11 +1318,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114341070367949628, guid: bc8abfd0b195adb41b06cc9432118e4a,
-        type: 2}
-      propertyPath: wavesSequences.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4082933189895100, guid: bc8abfd0b195adb41b06cc9432118e4a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1355,24 +1350,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 114341070367949628, guid: bc8abfd0b195adb41b06cc9432118e4a,
-        type: 2}
-      propertyPath: wavesSequences.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 871db5dfefd99ef4db9143e39ca20995,
-        type: 2}
-    - target: {fileID: 114341070367949628, guid: bc8abfd0b195adb41b06cc9432118e4a,
-        type: 2}
-      propertyPath: intermediaryWave
-      value: 
-      objectReference: {fileID: 11400000, guid: c82dcbfa37f3cc44a99056632ab4e0b1,
-        type: 2}
-    - target: {fileID: 114341070367949628, guid: bc8abfd0b195adb41b06cc9432118e4a,
-        type: 2}
-      propertyPath: wavesSequences.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 40fa4de884f357f4393d8be779bd24c0,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc8abfd0b195adb41b06cc9432118e4a, type: 2}
   m_IsPrefabParent: 0
