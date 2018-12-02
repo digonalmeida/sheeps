@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Blaaaair
   _kinshipKey: Blaaaair_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 302d2af54aec9c94ca84df159c05ab99, type: 3}
+  _icon: {fileID: 21300000, guid: 21542bec51b571f4989adad69d15d1d1, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Blaaaair_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_10
   - messageType: 7
     messageTextKey: All_Tretas_2
+  - messageType: 8
+    messageTextKey: All_Positive_8
+  - messageType: 8
+    messageTextKey: All_Positive_9
+  - messageType: 8
+    messageTextKey: All_Positive_10
+  - messageType: 8
+    messageTextKey: All_Positive_11
+  - messageType: 9
+    messageTextKey: All_Negative_8
+  - messageType: 9
+    messageTextKey: All_Negative_9
+  - messageType: 9
+    messageTextKey: All_Negative_10
+  - messageType: 9
+    messageTextKey: All_Negative_11
+  - messageType: 8
+    messageTextKey: All_Positive_13

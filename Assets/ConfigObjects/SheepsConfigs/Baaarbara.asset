@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Baaarbara
   _kinshipKey: Baaarbara_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
+  _icon: {fileID: 21300000, guid: 10fcfccd320d2d846af295d50c986de5, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Baaarbara_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_11
   - messageType: 7
     messageTextKey: All_Tretas_1
+  - messageType: 8
+    messageTextKey: All_Positive_0
+  - messageType: 8
+    messageTextKey: All_Positive_1
+  - messageType: 8
+    messageTextKey: All_Positive_2
+  - messageType: 8
+    messageTextKey: All_Positive_3
+  - messageType: 9
+    messageTextKey: All_Negative_0
+  - messageType: 9
+    messageTextKey: All_Negative_1
+  - messageType: 9
+    messageTextKey: All_Negative_2
+  - messageType: 9
+    messageTextKey: All_Negative_3
+  - messageType: 8
+    messageTextKey: All_Positive_12

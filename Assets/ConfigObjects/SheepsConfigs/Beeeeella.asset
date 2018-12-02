@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Beeeeella
   _kinshipKey: Beeeeella_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 302d2af54aec9c94ca84df159c05ab99, type: 3}
+  _icon: {fileID: 21300000, guid: 915acba5268df3043b4e7d743dc4c2e3, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Beeeeella_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_7
   - messageType: 7
     messageTextKey: All_Tretas_5
+  - messageType: 8
+    messageTextKey: All_Positive_0
+  - messageType: 8
+    messageTextKey: All_Positive_1
+  - messageType: 8
+    messageTextKey: All_Positive_2
+  - messageType: 8
+    messageTextKey: All_Positive_3
+  - messageType: 9
+    messageTextKey: All_Negative_0
+  - messageType: 9
+    messageTextKey: All_Negative_1
+  - messageType: 9
+    messageTextKey: All_Negative_2
+  - messageType: 9
+    messageTextKey: All_Negative_3
+  - messageType: 8
+    messageTextKey: All_Positive_12

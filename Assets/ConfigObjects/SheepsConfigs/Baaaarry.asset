@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Baaaarry
   _kinshipKey: Baaaarry_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 3c5ff36de1fcfcf46a09efb88629b657, type: 3}
+  _icon: {fileID: 21300000, guid: 07b139153a84622449e209ddaf75c834, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Baaaarry_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_7
   - messageType: 7
     messageTextKey: All_Tretas_8
+  - messageType: 8
+    messageTextKey: All_Positive_0
+  - messageType: 8
+    messageTextKey: All_Positive_1
+  - messageType: 8
+    messageTextKey: All_Positive_2
+  - messageType: 8
+    messageTextKey: All_Positive_3
+  - messageType: 9
+    messageTextKey: All_Negative_0
+  - messageType: 9
+    messageTextKey: All_Negative_1
+  - messageType: 9
+    messageTextKey: All_Negative_2
+  - messageType: 9
+    messageTextKey: All_Negative_3
+  - messageType: 8
+    messageTextKey: All_Positive_12
