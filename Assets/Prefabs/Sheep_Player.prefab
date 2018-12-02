@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  lookDirection: {x: 0, y: 0, z: 0}
   targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
@@ -181,7 +180,7 @@ MonoBehaviour:
   movementSpeed: 5
   burdenedMovementSpeed: 3
   interactDistance: 3
-  tossDistanceMultiplier: 5
+  tossDistanceMultiplier: 6
   capturor: {fileID: 0}
 --- !u!143 &143875528107514982
 CharacterController:

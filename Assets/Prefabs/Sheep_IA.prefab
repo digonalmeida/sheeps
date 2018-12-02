@@ -166,7 +166,7 @@ MonoBehaviour:
   movementSpeed: 5
   burdenedMovementSpeed: 3
   interactDistance: 3
-  tossDistanceMultiplier: 5
+  tossDistanceMultiplier: 6
   capturor: {fileID: 0}
 --- !u!114 &114724900416192124
 MonoBehaviour:
@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0, z: 0}
-  lookDirection: {x: 0, y: 0, z: 0}
   targetSheep: {fileID: 0}
   attacking: 0
   grabThrow: 0
