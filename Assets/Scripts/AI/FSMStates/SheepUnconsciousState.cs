@@ -15,6 +15,7 @@ public class SheepUnconsciousState : FSMState
         timer = agent.sheepAnimationController.timeAnimationUncounscious;
         agent.sheepAnimationController.setBool("Unconscious", true);
         AudioController.Instance.playSFX(AudioController.Instance.clipSFX_FallUncounscious);
+        agent.transform.position = new Vector3(agent.transform.position.x, agent.transform.position.y, agent.transform.position.z - 0.5f);
     }
 
     public override void OnExit()

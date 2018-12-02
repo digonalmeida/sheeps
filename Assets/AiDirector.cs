@@ -29,6 +29,9 @@ public class AiDirector : Singleton<AiDirector>
 
         sheepsAI = Extensions.ShuffleList(sheepsAI);
 
+        GameEvents.Sheeps.OnSheepAttack += OnSheepAttack;
+        GameEvents.Sheeps.SheepDied += OnSheepDied;
+
         InitializeSheepsStrategy();
     }
 
