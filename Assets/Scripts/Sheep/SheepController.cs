@@ -43,6 +43,7 @@ public class SheepController : MonoBehaviour
     private int nearestSheepCount;
     private LayerMask sheepLayerMask;
     public bool lockTarget;
+    private Vector3 offsetGlove;
     
     private void Awake()
     {
@@ -150,6 +151,9 @@ public class SheepController : MonoBehaviour
         //Seek Nearest Sheep
         if(!lockTarget)
         {
+            if (sheepMovementController.flipped) offsetGlove = new Vector3(0.5f, 0f, 0f);
+            else offsetGlove = offsetGlove = new Vector3(-0.5f, 0f, 0f);
+
             nearestSheepCount = Physics.OverlapSphereNonAlloc(this.transform.position, sheepState.interactDistance, nearestSheep, sheepLayerMask);
             for (int i = 0; i <= nearestSheepCount; i++)
             {

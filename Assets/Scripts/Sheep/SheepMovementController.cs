@@ -12,6 +12,7 @@ public class SheepMovementController : MonoBehaviour
     SheepState sheepState;
     Vector3 gSpeed = new Vector3();
     Vector3 KnockbackDirection = new Vector3();
+    public bool flipped;
 
     [SerializeField]
     float MaxKnockbackForce = 1;
@@ -63,8 +64,16 @@ public class SheepMovementController : MonoBehaviour
         if (direction.magnitude == 1) lastNormalizedMovement = direction;
 
         //Flip Sprite
-        if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);
-        else if(direction.x > 0f) sheepAnimationController.setBool("FlippedX", false);
+        if (direction.x < 0f)
+        {
+            flipped = true;
+            sheepAnimationController.setBool("FlippedX", true);
+        }
+        else if (direction.x > 0f)
+        {
+            flipped = false;
+            sheepAnimationController.setBool("FlippedX", false);
+        }
 
         if (charController.isGrounded)
         {
