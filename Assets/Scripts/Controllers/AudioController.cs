@@ -6,8 +6,6 @@ public class AudioController : MonoBehaviour
 {
     //Control Variables
     public float audioFadeOutFactor = 1.5f;
-    public float deltayBetweenPunches = 0.5f;
-    private float timerAvailablePunch;
 
     //Audio Source Reference
     public AudioSource audioSourceSFX;
@@ -53,12 +51,6 @@ public class AudioController : MonoBehaviour
     private void Start()
     {
         playMusic(clipMusic_CalmPhase);
-        timerAvailablePunch = deltayBetweenPunches;
-    }
-
-    private void Update()
-    {
-        if(timerAvailablePunch > 0f) timerAvailablePunch -= Time.deltaTime;
     }
 
     public void playSFX(AudioClip sfxClip)
@@ -70,15 +62,7 @@ public class AudioController : MonoBehaviour
     {
         if (sfxClip != null && sfxClip.Count > 0)
         {
-            if(sfxClip == clipSFX_Punch)
-            {
-                if (timerAvailablePunch <= 0f)
-                {
-                    timerAvailablePunch = deltayBetweenPunches;
-                    audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
-                }
-            }
-            else audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+            AudioSource.PlayClipAtPoint(sfxClip[Random.Range(0, sfxClip.Count)], Camera.main.transform.position);
         }
     }
 
