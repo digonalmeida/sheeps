@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : Singleton<AudioController>
+public class AudioController : MonoBehaviour
 {
     //Control Variables
     public float audioFadeOutFactor = 1.5f;
@@ -18,29 +18,48 @@ public class AudioController : Singleton<AudioController>
     public AudioClip clipSFX_FallUncounscious;
     public AudioClip clipSFX_CaptureOther;
     public AudioClip clipSFX_DeathSheep;
+    public AudioClip clipSFX_Meesenger;
 
     //SFX Clips (Random)
-    public List<AudioClip> clipSFX_TakeDamage;
     public List<AudioClip> clipSFX_BleatNeutral;
-    public List<AudioClip> clipSFX_SheepAttack;
     public List<AudioClip> clipSFX_BleatFear;
     public List<AudioClip> clipSFX_HowlWolves;
 
     //Music Clips
     public AudioClip clipMusic_CalmPhase;
-    public AudioClip clipMusic_TensePhase;
     public AudioClip clipMusic_ChaosPhase;
     public AudioClip clipMusic_GameOver;
 
+    private static AudioController instance;
+    public static AudioController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    //On Object Awake
+    private void Awake()
+    {
+        //Check Singleton
+        if (instance != null && instance != this) Destroy(this);
+        else instance = this;
+    }
+
     private void Start()
     {
-        audioSourceSFX = Camera.main.GetComponent<AudioSource>();
-        audioSourceMusic = Camera.main.transform.GetChild(0).GetComponent<AudioSource>();
+        playMusic(clipMusic_CalmPhase);
     }
 
     public void playSFX(AudioClip sfxClip)
     {
         audioSourceSFX.PlayOneShot(sfxClip);
+    }
+
+    public void playSFX(List<AudioClip> sfxClip)
+    {
+        audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
     }
 
     public void playMusic(AudioClip musicClip)

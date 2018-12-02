@@ -14,6 +14,7 @@ public class SheepCapturedOtherState : FSMState
         agent = Agent as SheepController;
         target = agent.transform.position;
         agent.sheepInputData.targetSheep.GetComponent<SheepController>().getCaptured(agent.gameObject);
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_CaptureOther);
     }
 
     public override void OnExit()

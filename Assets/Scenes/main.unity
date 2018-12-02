@@ -256,6 +256,63 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44363605}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &69716473
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810929106358140, guid: f34d6140722c11543870e6710fcef216, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipMusic_GameOver
+      value: 
+      objectReference: {fileID: 8300000, guid: c60deec56e165f3499e11721c9b0f639, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipMusic_CalmPhase
+      value: 
+      objectReference: {fileID: 8300000, guid: f09c79b453e6d5141bda64c4178005a8, type: 3}
+    - target: {fileID: 114130162275409908, guid: f34d6140722c11543870e6710fcef216,
+        type: 2}
+      propertyPath: clipMusic_ChaosPhase
+      value: 
+      objectReference: {fileID: 8300000, guid: cf830e211279ad34a80ffcb7571e57c2, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f34d6140722c11543870e6710fcef216, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &106086784
 GameObject:
   m_ObjectHideFlags: 0
