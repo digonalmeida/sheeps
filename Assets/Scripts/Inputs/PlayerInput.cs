@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     private SheepInputData sheepInputData;
     public GameObject target;
     public bool highlightTargetLocked;
+    private int layerMask;
+    RaycastHit hitInfo;
 
     private static PlayerInput instance;
     public static PlayerInput Instance
@@ -25,6 +27,8 @@ public class PlayerInput : MonoBehaviour
         //Check Singleton
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
+
+        layerMask = LayerMask.GetMask("Floor");
     }
 
     //Start
@@ -38,7 +42,7 @@ public class PlayerInput : MonoBehaviour
     void Update ()
     {
         //Movement
-        sheepInputData.movementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+        sheepInputData.movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
         //Action
         if (Input.GetButtonDown("Fire1")) sheepInputData.attacking = true;
@@ -50,9 +54,14 @@ public class PlayerInput : MonoBehaviour
 
         //Update Target
         if(!highlightTargetLocked) sheepInputData.targetSheep = target;
-
-        //Update Look Direction
-        Vector3 vect = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-        sheepInputData.lookDirection = new Vector3(vect.x, vect.y, 0f).normalized;
+        
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 1000, layerMask))
+        {
+            //Update Look Direction
+            Vector3 vect = (hitInfo.point - this.transform.position);
+            vect.y = 0;
+            vect.Normalize();
+            sheepInputData.lookDirection = vect;
+        }
     }
 }

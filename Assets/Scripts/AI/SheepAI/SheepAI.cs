@@ -30,7 +30,7 @@ public class SheepAI : MonoBehaviour
  
     public void Awake()
     {
-        SpecialTarget = GameObject.Find("mocktarget");
+        
         InputData = GetComponent<SheepInputData>();
         stateMachine.Agent = this;
 
@@ -45,6 +45,7 @@ public class SheepAI : MonoBehaviour
 
     private void Start()
     {
+        SpecialTarget = PlayerInput.Instance.gameObject;
         stateMachine.SetState(idle);
         StartCoroutine(StateTeste());
     }

@@ -11,12 +11,10 @@ public class SheepState : MonoBehaviour
     public float movementSpeed = 1f;
     public float interactDistance = 1f;
     public float tossDistanceMultiplier = 2f;
-    public float struggleTime = 1f;
     public GameObject capturor;
     public bool isDead {get; private set;}
     public SheepConfig config {get; private set;}
 
-    public bool kill = false;
 
     //Initialize Variables
     private void Start()
@@ -51,10 +49,4 @@ public class SheepState : MonoBehaviour
         SheepsManager.Instance.NotificateSheepDied(this);
     }
 
-    void Update(){
-        if(kill){
-            kill = false;
-            die();   
-        }
-    }
 }

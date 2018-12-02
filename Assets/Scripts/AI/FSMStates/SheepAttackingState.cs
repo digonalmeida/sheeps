@@ -6,23 +6,25 @@ public class SheepAttackingState : FSMState
 {
     //Control Variables
     private SheepController agent;
-    private float timer;
 
     public override void OnEnter()
     {
         base.OnEnter();
         agent = Agent as SheepController;
-        timer = agent.sheepAnimationController.timeAnimationAttacking;
         agent.sheepAnimationController.setTrigger("Attack");
+        agent.sheepMovementController.CanMove = true;
+        agent.OnAnimationFinished += OnAttack;
     }
 
-    public override void Update()
+    public void OnAttack()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0f)
-        {
-            if (agent.checkInteractDistance()) agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
-            agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
-        }
+        if (agent.checkInteractDistance()) agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        agent.sheepMovementController.CanMove = false;
+        agent.OnAnimationFinished -= OnAttack;
     }
 }

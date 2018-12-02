@@ -14,7 +14,7 @@ public class SheepAIAttackingAnyoneState : FSMState
         agent.InputData.grabThrow = false;
         agent.InputData.moveSpeed = 1.0f;
 
-        var sheeps = GameObject.FindObjectsOfType<MockSheep>();
+        var sheeps = GameObject.FindObjectsOfType<SheepController>();
         closestTarget = null;
         float closestDistance = float.MaxValue;
 
@@ -44,7 +44,6 @@ public class SheepAIAttackingAnyoneState : FSMState
             agent.InputData.movementDirection = (target.transform.position - agent.transform.position);
             agent.InputData.movementDirection.y = 0;
             agent.InputData.movementDirection = agent.InputData.movementDirection.normalized;
-            Debug.Log(closestTarget.name);
         }
     }
 

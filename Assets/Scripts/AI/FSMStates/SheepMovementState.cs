@@ -13,16 +13,14 @@ public class SheepMovementState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         target = agent.transform.position;
+        agent.sheepMovementController.CanMove = true;
+        agent.sheepAnimationController.setBool("Walking", true);
     }
 
-    public override void Update()
+    public override void OnExit()
     {
-        target = agent.transform.position + agent.sheepInputData.movementDirection;
-        if (Vector3.Distance(agent.transform.position, target) >= 0f)
-        {
-            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.movementSpeed);
-            agent.sheepAnimationController.setBool("Walking", true);
-        }
-        else agent.sheepAnimationController.setBool("Walking", false);
+        base.OnExit();
+        agent.sheepMovementController.CanMove = false;
+        agent.sheepAnimationController.setBool("Walking", false);
     }
 }
