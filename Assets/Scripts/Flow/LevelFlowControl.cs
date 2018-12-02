@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelFlowControl : MonoBehaviour
 {
@@ -219,6 +220,7 @@ public class LevelFlowControl : MonoBehaviour
         // You Win
         // notify game win
         GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
+        SceneManager.LoadScene("ending");
         Debug.Log("Win");
     }
 
@@ -228,6 +230,7 @@ public class LevelFlowControl : MonoBehaviour
         // notify game end
         GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
         AudioController.Instance.stopMusicWithFadeOut();
+        SceneManager.LoadScene("gameOver");
         Debug.Log("Lose");
     }
 
