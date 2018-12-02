@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+public class AudioController : SingletonDestroy<AudioController>
 {
     //Control Variables
     public float audioFadeOutFactor = 0.15f;
@@ -12,7 +12,7 @@ public class AudioController : MonoBehaviour
     public AudioSource audioSourceMusic;
 
     //SFX Clips
-   
+    public AudioClip clipSFX_Rooster;
     public AudioClip clipSFX_WolfKill;
     public AudioClip clipSFX_TossLanding;
     public AudioClip clipSFX_FallUncounscious;
@@ -31,21 +31,9 @@ public class AudioController : MonoBehaviour
     public AudioClip clipMusic_ChaosPhase;
     public AudioClip clipMusic_GameOver;
 
-    private static AudioController instance;
-    public static AudioController Instance
+    public void playRoosterSFX()
     {
-        get
-        {
-            return instance;
-        }
-    }
-
-    //On Object Awake
-    private void Awake()
-    {
-        //Check Singleton
-        if (instance != null && instance != this) Destroy(this);
-        else instance = this;
+        audioSourceSFX.PlayOneShot(clipSFX_Rooster);
     }
 
     private void Start()

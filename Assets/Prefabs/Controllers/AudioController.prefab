@@ -245,6 +245,7 @@ MonoBehaviour:
   audioFadeOutFactor: 1.5
   audioSourceSFX: {fileID: 82310871466497044}
   audioSourceMusic: {fileID: 82184003301956240}
+  clipSFX_Rooster: {fileID: 8300000, guid: 544954abe3e1ada418c89687e0d5812f, type: 3}
   clipSFX_WolfKill: {fileID: 8300000, guid: a3d39cbec8f8acf42b7a70848bfea11e, type: 3}
   clipSFX_TossLanding: {fileID: 8300000, guid: c4dcab0eacd10e7499975d3e6fc5ae55, type: 3}
   clipSFX_FallUncounscious: {fileID: 0}

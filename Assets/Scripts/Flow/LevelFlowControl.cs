@@ -9,6 +9,7 @@ public class LevelFlowControl : MonoBehaviour
 {
 
     public List<LevelWaveSequence> wavesSequences;
+    private LevelWaveSequence currentWave;
     public LevelWaveSequence intermediaryWave;
     private List<TensionCurve> currentTensionSequence;
     private Dictionary<messageType, float> currentMessageTypeDict;
@@ -111,6 +112,7 @@ public class LevelFlowControl : MonoBehaviour
         currentMessageTypeDict = RebuildMsgTypeDict(currentTensionSequence[0]);
 
         // trim waves
+        currentWave = wavesSequences[0];
         wavesSequences.RemoveAt(0);
 
         // activate wolves
@@ -217,6 +219,8 @@ public class LevelFlowControl : MonoBehaviour
 
     private void GameWin()
     {
+        DataSingleton.Instance.allSheeps = new List<SheepState>(SheepsManager.Instance.allSheeps);
+
         // You Win
         // notify game win
         GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
@@ -266,7 +270,7 @@ public class LevelFlowControl : MonoBehaviour
 
             for (int i = 0; i < currentTensionSequence[0].messageCurves.Count; i++)
             {
-                if(currentTensionSequence.Count>0)
+                if (currentTensionSequence.Count > 0)
                     currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(timerPerc);
             }
 
@@ -280,7 +284,7 @@ public class LevelFlowControl : MonoBehaviour
             if (aiUpdateTimer > 3)
             {
                 // initialize director 
-                AiDirector.Instance.Initialize(wavesSequences[0].playerAtackerSheepsPercentage * tensionValue, wavesSequences[0].anyAttackerSheepsPercentage * tensionValue);
+                AiDirector.Instance.Initialize(currentWave.playerAtackerSheepsPercentage * tensionValue, currentWave.anyAttackerSheepsPercentage * tensionValue);
                 aiUpdateTimer = 0;
             }
 
