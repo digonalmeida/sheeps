@@ -247,18 +247,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9651110f7fe5b2b4cbafa61a072ff8ee, type: 3}
-    m_FontSize: 25
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 65
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cancel
+  m_Text: No
 --- !u!114 &114225866299155044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,11 +411,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9651110f7fe5b2b4cbafa61a072ff8ee, type: 3}
-    m_FontSize: 25
+    m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 65
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -854,8 +854,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 57.207886, y: -55.55}
-  m_SizeDelta: {x: 94.41577, y: 91.1}
+  m_AnchoredPosition: {x: 57.207886, y: -65.3}
+  m_SizeDelta: {x: 94.41577, y: 110.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224845955005289796
 RectTransform:
@@ -873,8 +873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200.30789, y: -55.55}
-  m_SizeDelta: {x: 171.78424, y: 91.1}
+  m_AnchoredPosition: {x: 200.30789, y: -65.3}
+  m_SizeDelta: {x: 171.78424, y: 110.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224900049881947510
 RectTransform:
@@ -911,6 +911,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 444.30002, y: -55.55}
-  m_SizeDelta: {x: 296.2, y: 111.1}
+  m_AnchoredPosition: {x: 449.30002, y: -70.3}
+  m_SizeDelta: {x: 296.2, y: 130.6}
   m_Pivot: {x: 0.5, y: 0.5}
