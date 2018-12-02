@@ -8,6 +8,7 @@ public class SheepConfig : ScriptableObject {
 
 	[SerializeField] private int _id;
 	[SerializeField] private string _name;
+    [SerializeField] private string _kinshipKey;
 	[SerializeField] private string _description;
 	[SerializeField] private Sprite _icon;
 	[SerializeField] private List<Message> messages;
@@ -33,6 +34,14 @@ public class SheepConfig : ScriptableObject {
         get
         {
             return _name;
+        }
+    }
+
+    public string KinshipKey
+    {
+        get
+        {
+            return _kinshipKey;
         }
     }
 

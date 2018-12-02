@@ -11,6 +11,7 @@ public class NotificationPanel : Singleton<NotificationPanel>
     public Animator animator;
     public Image notificationSheepIcon;
     public Text notificationNameField;
+    public LocalizedText notificationKinshipField;
     public LocalizedText notificationMessageField;
 
     private Coroutine currentCoroutine;
@@ -30,6 +31,7 @@ public class NotificationPanel : Singleton<NotificationPanel>
         SheepConfig config = SheepsManager.Instance.GetSheepConfigById(blob.SheepID);
         notificationSheepIcon.sprite = config.Icon;
         notificationNameField.text = config.Name;
+        notificationKinshipField.SetupText(config.KinshipKey);
         notificationMessageField.SetupText(blob.MessageKey);
         animator.SetBool("open", true);
 

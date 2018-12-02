@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 4
   _name: Beeenjamin
+  _kinshipKey: Beeenjamin_kinship
   _description: 
   _icon: {fileID: 21300000, guid: 3c5ff36de1fcfcf46a09efb88629b657, type: 3}
   messages:

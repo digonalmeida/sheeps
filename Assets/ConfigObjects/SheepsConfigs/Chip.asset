@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 100
   _name: Chip
+  _kinshipKey: Chip_kinship
   _description: Player
   _icon: {fileID: 21300000, guid: 302d2af54aec9c94ca84df159c05ab99, type: 3}
   messages: []
