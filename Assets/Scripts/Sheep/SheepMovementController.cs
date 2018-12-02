@@ -11,6 +11,7 @@ public class SheepMovementController : MonoBehaviour
     SheepAnimationController sheepAnimationController;
     SheepState sheepState;
     Vector3 gSpeed = new Vector3();
+    public Vector3 lastNormalizedMovement;
     public bool burdened;
 
     void Awake()
@@ -35,6 +36,7 @@ public class SheepMovementController : MonoBehaviour
         direction.Normalize();
         gSpeed += Time.deltaTime * Physics.gravity;
         charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * sheepState.movementSpeed));
+        if (direction.magnitude == 1) lastNormalizedMovement = direction;
 
         //Flip Sprite
         if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);

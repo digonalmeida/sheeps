@@ -196,7 +196,6 @@ public class SheepController : MonoBehaviour
 
     public bool checkInteractDistance()
     {
-        Debug.Log(sheepInputData.targetSheep);
         return sheepInputData.targetSheep != null && Vector3.Distance(transform.position, sheepInputData.targetSheep.transform.position) <= sheepState.interactDistance;
     }
 
