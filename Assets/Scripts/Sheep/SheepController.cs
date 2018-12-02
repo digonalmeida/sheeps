@@ -175,7 +175,7 @@ public class SheepController : MonoBehaviour
     public void takeDamage(Vector3 attackerPos)
     {
         sheepState.takeDamage();
-        sheepMovementController.knockback(attackerPos);
+        sheepMovementController.knockback((transform.position - attackerPos).normalized);
 
         if (sheepState.checkUncounscious())
         {
