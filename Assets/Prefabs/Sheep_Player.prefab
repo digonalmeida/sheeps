@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
+  MaxKnockbackForce: 1
+  KnockbackDeasceleration: 1
   lastNormalizedMovement: {x: 0, y: 0, z: 0}
   burdened: 0
 --- !u!114 &114872349778213176
@@ -244,12 +246,11 @@ MonoBehaviour:
   burdenedMovementSpeed: 0.8
   interactDistance: 3
   tossDistanceMultiplier: 15
-  tossSpeedMultiplier: 2
+  tossSpeedMultiplier: 0.25
   knockbackDistance: 1
   knockbackSpeed: 1
   capturor: {fileID: 0}
   isFightingAgainstWolf: 0
-  imageSetter: {fileID: 0}
 --- !u!143 &143875528107514982
 CharacterController:
   m_ObjectHideFlags: 1
