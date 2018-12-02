@@ -20,6 +20,7 @@ public class SheepUnconsciousState : FSMState
     {
         base.OnExit();
         agent.sheepAnimationController.setBool("Unconscious", false);
+        agent.sheepState.recover();
     }
 
     public override void Update()
@@ -27,7 +28,6 @@ public class SheepUnconsciousState : FSMState
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            agent.sheepState.recover();
             agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
         }
     }

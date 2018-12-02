@@ -25,6 +25,10 @@ public class SheepStunnedState : FSMState
 
     public override void Update()
     {
-        if (timer <= 0f) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
+        timer -= Time.deltaTime;
+        if (timer <= 0f)
+        {
+            agent.stateMachine.TriggerEvent((int)FSMEventTriggers.FinishedAnimation);
+        }
     }
 }
