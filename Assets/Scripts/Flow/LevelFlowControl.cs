@@ -219,7 +219,6 @@ public class LevelFlowControl : MonoBehaviour
         // You Win
         // notify game win
         GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
-
         Debug.Log("Win");
     }
 
@@ -228,7 +227,7 @@ public class LevelFlowControl : MonoBehaviour
         // You Die
         // notify game end
         GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
-
+        AudioController.Instance.stopMusicWithFadeOut();
         Debug.Log("Lose");
     }
 
