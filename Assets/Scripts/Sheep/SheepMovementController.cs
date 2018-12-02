@@ -23,6 +23,11 @@ public class SheepMovementController : MonoBehaviour
         sheepState = GetComponent<SheepState>();
     }
 
+    public void knockback(Vector3 attackerPos)
+    {
+        charController.Move((this.transform.position - attackerPos).normalized * 2f);
+    }
+
     // Update is called once per frame
     void Update()
     {

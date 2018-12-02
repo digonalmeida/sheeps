@@ -162,9 +162,10 @@ public class SheepController : MonoBehaviour
     }
 
     //Sheep Controller Aux Methods
-    public void takeDamage()
+    public void takeDamage(Vector3 attackerPos)
     {
         sheepState.takeDamage();
+        sheepMovementController.knockback(attackerPos);
 
         if (sheepState.checkUncounscious())
         {
