@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiDirector : MonoBehaviour
+public class AiDirector : Singleton<AiDirector>
 {
     private List<SheepAI> sheepsAI;
     private PlayerInput playerInput;
@@ -13,15 +13,23 @@ public class AiDirector : MonoBehaviour
     [SerializeField]
     private float _anyAttackers = .2f;
 
-    private void Start()
+    void Start()
     {
+        GameEvents.Sheeps.OnSheepAttack += OnSheepAttack;
+        GameEvents.Sheeps.SheepDied += OnSheepDied;
+    }
+
+    public void Initialize(float playerAttackers, float anyAttackers)
+    {
+        this._playerAttackers = playerAttackers;
+        this._anyAttackers = anyAttackers;
+
         sheepsAI = new List<SheepAI>(FindObjectsOfType<SheepAI>());
         playerInput = FindObjectOfType<PlayerInput>();
 
         sheepsAI = Extensions.ShuffleList(sheepsAI);
 
-        GameEvents.Sheeps.OnSheepAttack += OnSheepAttack;
-        GameEvents.Sheeps.SheepDied += OnSheepDied;
+        InitializeSheepsStrategy();
     }
 
     private void OnDestroy()
@@ -38,9 +46,9 @@ public class AiDirector : MonoBehaviour
     public void RemoveDeadSheeps()
     {
         var newList = new List<SheepAI>();
-        foreach(var sheep in sheepsAI)
+        foreach (var sheep in sheepsAI)
         {
-            if(sheep.GetComponent<SheepState>().isDead)
+            if (sheep.GetComponent<SheepState>().isDead)
             {
                 continue;
             }
@@ -53,7 +61,7 @@ public class AiDirector : MonoBehaviour
     {
         var ai = s2.GetComponent<SheepAI>();
 
-        if(ai != null)
+        if (ai != null)
         {
             ai.SetRevenge(s1);
         }
@@ -72,11 +80,6 @@ public class AiDirector : MonoBehaviour
         }
 
         return randomList; //return the new random list
-    }
-
-    private void Start()
-    {
-        InitializeSheepsStrategy();
     }
 
 

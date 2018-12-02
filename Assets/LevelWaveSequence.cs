@@ -6,4 +6,7 @@ using UnityEngine;
 public class LevelWaveSequence : ScriptableObject {
 	public List<TensionCurve> tensionSequence = new List<TensionCurve>();
 	public int requiredSacrifices;
+	public float playerAtackerSheepsPercentage;
+	public float anyAttackerSheepsPercentage;
+
 }

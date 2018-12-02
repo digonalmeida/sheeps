@@ -19,6 +19,8 @@ public class LevelFlowControl : MonoBehaviour
 
     private bool gameStarted, gameEnded, victory;
 
+    private AiDirector aiDirector;
+
     void OnEnable()
     {
         GameEvents.Sheeps.SheepDied += IncrementSacrificed;
@@ -28,6 +30,7 @@ public class LevelFlowControl : MonoBehaviour
     {
         GameEvents.Sheeps.SheepDied -= IncrementSacrificed;
     }
+
 
 
     private void Start()
@@ -64,6 +67,9 @@ public class LevelFlowControl : MonoBehaviour
             sheep.config.ResetUsedMessages();
         }
 
+        AiDirector.Instance.Initialize(sequence.playerAtackerSheepsPercentage, sequence.anyAttackerSheepsPercentage);
+
+
         // load sequence
         sacrificesNeeded = sequence.requiredSacrifices;
         currentTensionSequence = new List<TensionCurve>(sequence.tensionSequence);
@@ -83,6 +89,12 @@ public class LevelFlowControl : MonoBehaviour
 
         // finalize messages
         MessageFlowController.Instance.StopMessaging();
+
+        // hide wolves
+        if (isVictorious)
+        {
+            WolvesManager.Instance.HideWolves();
+        }
     }
 
     IEnumerator EvaluateFlow()

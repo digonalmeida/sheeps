@@ -23,7 +23,10 @@ public class WolfController : MonoBehaviour
     private int currentWaypointIndex;
     private WolfState state = WolfState.idle;
     private SheepState followingSheep;
-	private Animator animator;
+    private Animator animator;
+
+    public float speedIdle = 5;
+    public float speedRun = 20;
 
 
     void Awake()
@@ -31,7 +34,7 @@ public class WolfController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         waypoints = FindObjectsOfType<WolfWaypoint>().Select(w => w.transform).ToArray();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-		animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -53,7 +56,7 @@ public class WolfController : MonoBehaviour
             }
         }
 
-        if (followingSheep!=null && followingSheep.isDead)
+        if (followingSheep != null && followingSheep.isDead)
         {
             StartIdle();
         }
@@ -64,12 +67,16 @@ public class WolfController : MonoBehaviour
 
     public void Exit(WolfExitWaypoint wolfExitWaypoint)
     {
-        throw new NotImplementedException();
+        StartIdle();
+        state = WolfState.hiding;
+        agent.destination = wolfExitWaypoint.transform.position;
+        agent.speed = speedRun;
     }
 
-    void LateUpdate(){
-		spriteRenderer.transform.rotation = Quaternion.Euler(45,0,0);
-	}
+    void LateUpdate()
+    {
+        spriteRenderer.transform.rotation = Quaternion.Euler(45, 0, 0);
+    }
 
     void SetNextWaypoint()
     {
@@ -80,7 +87,7 @@ public class WolfController : MonoBehaviour
         }
         agent.destination = waypoints[currentWaypointIndex].position;
 
-		animator.SetBool("run",true);
+        animator.SetBool("run", true);
     }
 
     public void FollowSheep(SheepState sheep)
@@ -88,16 +95,19 @@ public class WolfController : MonoBehaviour
         state = WolfState.following;
         followingSheep = sheep;
         agent.destination = sheep.transform.position;
-        agent.speed *= 5;
-		animator.SetFloat("velMult",5);
+        agent.speed = speedRun;
+        animator.SetFloat("velMult", 5);
     }
 
-    private void ReachSheep(){
-        if(!followingSheep.isFightingAgainstWolf){
+    private void ReachSheep()
+    {
+        if (!followingSheep.isFightingAgainstWolf)
+        {
             StartFigth();
             followingSheep.startFightWithWolf();
         }
-        else {
+        else
+        {
             StartIdle();
         }
     }
@@ -105,15 +115,16 @@ public class WolfController : MonoBehaviour
     public void StartFigth()
     {
         state = WolfState.fighting;
-        animator.SetBool("invisible",true);
+        animator.SetBool("invisible", true);
     }
 
     public void StartIdle()
     {
         state = WolfState.idle;
-		agent.speed /= 5;
-		followingSheep = null;
-		animator.SetBool("invisible",false);
-		animator.SetFloat("velMult",1);
+        agent.speed = speedIdle;
+        followingSheep = null;
+        animator.SetBool("invisible", false);
+        animator.SetFloat("velMult", 1);
     }
+
 }
