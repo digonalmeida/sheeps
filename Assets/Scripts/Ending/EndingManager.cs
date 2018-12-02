@@ -11,15 +11,12 @@ public class EndingManager : MonoBehaviour
 
     void Start ()
     {
-        if (SheepsManager.Instance == null)
-            return;
-
         KillSheeps();
     }
 
     void KillSheeps()
     {
-        var deadSheep = SheepsManager.Instance.allSheeps.Where(sheep => sheep.isDead).Select(sheepState => sheepState.config);
+        var deadSheep = DataSingleton.Instance.allSheeps.Where(sheep => sheep.isDead).Select(sheepState => sheepState.config);
 
         for (int i=0; i<sheeps.Count; i++)
         {

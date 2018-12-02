@@ -217,6 +217,8 @@ public class LevelFlowControl : MonoBehaviour
 
     private void GameWin()
     {
+        DataSingleton.Instance.allSheeps = new List<SheepState>(SheepsManager.Instance.allSheeps);
+
         // You Win
         // notify game win
         GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
@@ -266,7 +268,7 @@ public class LevelFlowControl : MonoBehaviour
 
             for (int i = 0; i < currentTensionSequence[0].messageCurves.Count; i++)
             {
-                if(currentTensionSequence.Count>0)
+                if (currentTensionSequence.Count > 0)
                     currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(timerPerc);
             }
 

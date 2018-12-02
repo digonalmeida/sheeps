@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+public class AudioController : SingletonDestroy<AudioController>
 {
     //Control Variables
     public float audioFadeOutFactor = 0.15f;
@@ -41,8 +41,10 @@ public class AudioController : MonoBehaviour
     }
 
     //On Object Awake
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         //Check Singleton
         if (instance != null && instance != this) Destroy(this);
         else instance = this;

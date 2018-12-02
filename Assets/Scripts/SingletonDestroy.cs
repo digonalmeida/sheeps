@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+public class SingletonDestroy<T> : MonoBehaviour where T : Component
 {
 
     public static T Instance
@@ -17,7 +17,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         else
         {
             Instance = this as T;
-            //DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
         }
     }
 }
