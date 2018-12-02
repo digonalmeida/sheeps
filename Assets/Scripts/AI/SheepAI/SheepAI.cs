@@ -44,6 +44,9 @@ public class SheepAI : MonoBehaviour
 
         attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
         attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
+
+        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
+        attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
     }
 
     private void Start()

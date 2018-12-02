@@ -24,7 +24,7 @@ public class SheepAttackingState : FSMState
             agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
         }
 
-        GameEvents.Sheeps.OnSheepAttack(agent.gameObject, agent.sheepInputData.targetSheep.gameObject);
+        GameEvents.Sheeps.OnSheepAttack.SafeInvoke(agent.gameObject, agent.sheepInputData.targetSheep.gameObject);
     }
 
     public override void OnExit()
