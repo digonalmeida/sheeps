@@ -7,7 +7,7 @@ public enum availableLanguages
     ptBR
 }
 
-public class LocalizationManager : Singleton<LocalizationManager>
+public class LocalizationManager : SingletonDestroy<LocalizationManager>
 {
 
     public List<TextAsset> csvFiles;
