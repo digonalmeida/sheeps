@@ -10,7 +10,9 @@ public enum messageType
     relief,
     shitpost,
     grief,
-    blame
+    blame,
+    agree,
+    disagree
 }
 
 [System.Serializable]

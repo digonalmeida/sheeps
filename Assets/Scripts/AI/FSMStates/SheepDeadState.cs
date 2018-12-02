@@ -12,5 +12,6 @@ public class SheepDeadState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         agent.sheepAnimationController.setTrigger("Die");
+        agent.sheepState.die();
     }
 }

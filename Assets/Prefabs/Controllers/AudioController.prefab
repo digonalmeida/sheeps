@@ -243,11 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioFadeOutFactor: 1.5
-  deltayBetweenPunches: 0.5
   audioSourceSFX: {fileID: 82310871466497044}
   audioSourceMusic: {fileID: 82184003301956240}
   clipSFX_WolfKill: {fileID: 8300000, guid: a3d39cbec8f8acf42b7a70848bfea11e, type: 3}
-  clipSFX_TossLanding: {fileID: 0}
+  clipSFX_TossLanding: {fileID: 8300000, guid: c4dcab0eacd10e7499975d3e6fc5ae55, type: 3}
   clipSFX_FallUncounscious: {fileID: 0}
   clipSFX_Meesenger: {fileID: 0}
   clipSFX_BleatNeutral:
@@ -267,9 +266,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bd1e763c5f3e05e438506db3257c755a, type: 3}
   - {fileID: 8300000, guid: 91bb1df40e20d314294f34b143cdc441, type: 3}
   clipSFX_YellToss:
-  - {fileID: 0}
   - {fileID: 8300000, guid: cf4de1b3257a9254fad7729cf10326bf, type: 3}
-  clipSFX_Punch: []
+  clipSFX_Punch:
+  - {fileID: 8300000, guid: ab146494d9dc88440a5553240964eda9, type: 3}
+  - {fileID: 8300000, guid: 101f90ab93f2f1e4bbe0bc6ff0aa339e, type: 3}
+  - {fileID: 8300000, guid: f050020febd019545a9e4611c4c4935f, type: 3}
+  - {fileID: 8300000, guid: f8f9f62876578674f9b6b28165ca27fc, type: 3}
+  - {fileID: 8300000, guid: dbaeb741cbf578b469d49c6f607e55dd, type: 3}
   clipMusic_CalmPhase: {fileID: 8300000, guid: f09c79b453e6d5141bda64c4178005a8, type: 3}
   clipMusic_ChaosPhase: {fileID: 8300000, guid: cf830e211279ad34a80ffcb7571e57c2,
     type: 3}

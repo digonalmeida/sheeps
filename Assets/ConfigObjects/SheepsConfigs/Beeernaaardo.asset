@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Beeernaaardo
   _kinshipKey: Beeernaaardo_kinship
   _description: 
-  _icon: {fileID: 21300000, guid: 593be64776a26ad438b57a86a28ed008, type: 3}
+  _icon: {fileID: 21300000, guid: 0afa85a6976de274bb9959fd4b754cf1, type: 3}
   messages:
   - messageType: 1
     messageTextKey: Beeernaaardo_greating
@@ -33,3 +33,21 @@ MonoBehaviour:
     messageTextKey: All_Tretas_5
   - messageType: 7
     messageTextKey: All_Tretas_6
+  - messageType: 8
+    messageTextKey: All_Positive_8
+  - messageType: 8
+    messageTextKey: All_Positive_9
+  - messageType: 8
+    messageTextKey: All_Positive_10
+  - messageType: 8
+    messageTextKey: All_Positive_11
+  - messageType: 9
+    messageTextKey: All_Negative_8
+  - messageType: 9
+    messageTextKey: All_Negative_9
+  - messageType: 9
+    messageTextKey: All_Negative_10
+  - messageType: 9
+    messageTextKey: All_Negative_11
+  - messageType: 8
+    messageTextKey: All_Positive_13
