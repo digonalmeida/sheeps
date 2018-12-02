@@ -100,7 +100,7 @@ public class LevelFlowControl : MonoBehaviour
         }
 
         // initialize director 
-        AiDirector.Instance.Initialize(sequence.playerAtackerSheepsPercentage, sequence.anyAttackerSheepsPercentage);
+        AiDirector.Instance.Initialize(0, 0);
 
         PlayerInput.Instance.EnableInput();
 
@@ -236,6 +236,9 @@ public class LevelFlowControl : MonoBehaviour
     {
         while (currentTensionSequence.Count > 0)
         {
+
+            float aiUpdateTimer = 0;
+
             if (timer > currentTensionSequence[0].duration)
             {
                 timer -= currentTensionSequence[0].duration;
@@ -267,6 +270,15 @@ public class LevelFlowControl : MonoBehaviour
             timer += Time.deltaTime;
             waveTimer += Time.deltaTime;
             waveTimerPerc = waveTimer / waveTotalTime;
+            aiUpdateTimer += Time.deltaTime;
+
+            if (aiUpdateTimer > 3)
+            {
+                // initialize director 
+                AiDirector.Instance.Initialize(wavesSequences[0].playerAtackerSheepsPercentage * tensionValue, wavesSequences[0].anyAttackerSheepsPercentage * tensionValue);
+                aiUpdateTimer = 0;
+            }
+
             yield return null;
         }
 

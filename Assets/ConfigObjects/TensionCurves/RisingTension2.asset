@@ -9,23 +9,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270075e87407130418343f27e5ddead2, type: 3}
-  m_Name: RisingTension1
+  m_Name: RisingTension2
   m_EditorClassIdentifier: 
-  duration: 20
+  duration: 25
   tensionCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -0.0083351135
+      value: 0.28125
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      time: 0.5144104
+      value: 0.9859299
+      inSlope: 0.49204797
+      outSlope: 0.49204797
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9916687
+      value: 0.6812515
+      inSlope: -1.1170015
+      outSlope: -1.1170015
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

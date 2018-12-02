@@ -14,6 +14,8 @@ MonoBehaviour:
   tensionSequence:
   - {fileID: 11400000, guid: 63d042ac4505fba4892657f019413393, type: 2}
   - {fileID: 11400000, guid: 735880ac76737964c85f1883d25a3747, type: 2}
+  - {fileID: 11400000, guid: b00743543ec188249a62c7ea72c4232d, type: 2}
+  - {fileID: 11400000, guid: a6287a8aaa6506f4c9d2efd9d85aaf55, type: 2}
   requiredSacrifices: 1
-  playerAtackerSheepsPercentage: 0.2
-  anyAttackerSheepsPercentage: 0.3
+  playerAtackerSheepsPercentage: 0.3
+  anyAttackerSheepsPercentage: 0.4
