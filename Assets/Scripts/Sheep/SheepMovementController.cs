@@ -34,8 +34,8 @@ public class SheepMovementController : MonoBehaviour
         charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * speed));
 
         //Flip Sprite
-        if (direction.x <= 0f) sheepAnimationController.setBool("FlippedX", true);
-        else sheepAnimationController.setBool("FlippedX", false);
+        if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);
+        else if(direction.x > 0f) sheepAnimationController.setBool("FlippedX", false);
 
         if (charController.isGrounded)
         {
