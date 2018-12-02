@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugUiText: {fileID: 0}
---- !u!114 &125730068
+--- !u!114 &125730058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -798,7 +798,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: highlight
       value: 
-      objectReference: {fileID: 1805379956}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588263158795544, guid: b46333b366ea9334f815b93709349c30,
         type: 2}
       propertyPath: target
@@ -1040,7 +1040,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4194518455320876, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.15
+      value: -7.67
       objectReference: {fileID: 0}
     - target: {fileID: 4194518455320876, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1048,7 +1048,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4194518455320876, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 8.76
+      value: 8.69
       objectReference: {fileID: 0}
     - target: {fileID: 4194518455320876, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1070,47 +1070,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114248954483821462, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: velocity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1573963968429396, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190794112334546, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 195977801650150220, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: m_ObstacleAvoidanceType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95515570038552556, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1f0dae7d346d6284aa8d02b932590b87, type: 2}
-    - target: {fileID: 195977801650150220, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195977801650150220, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195977801650150220, guid: 1a262a2ba51a30340aaa5a98eaabd890,
-        type: 2}
-      propertyPath: m_StoppingDistance
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 212206683507274864, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
-    - {fileID: 95515570038552556, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a262a2ba51a30340aaa5a98eaabd890, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1386864585 stripped
@@ -1173,11 +1133,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4488535707938990, guid: 8064eb2174a94844180ebcc2276128b9,
     type: 2}
   m_PrefabInternal: {fileID: 1999740213}
---- !u!1 &1805379956 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1905801228379736, guid: b46333b366ea9334f815b93709349c30,
-    type: 2}
-  m_PrefabInternal: {fileID: 1155082044}
 --- !u!1001 &1806554842
 Prefab:
   m_ObjectHideFlags: 0

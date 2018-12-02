@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: OtherAnimator
+  m_Name: AIAnimator
   m_Controller: {fileID: 9100000, guid: fc1e885fb100a234db01f3c3dc74a213, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 713d47550bee6ec42a9063ff99d7e104, type: 2}
