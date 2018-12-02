@@ -45,7 +45,8 @@ public class SheepState : MonoBehaviour
         currentHealthPoints = healthPoints;
     }
 
-    public void die(){
+    public void die()
+    {
         isDead = true;
         SheepsManager.Instance.NotificateSheepDied(this);
     }
@@ -53,7 +54,9 @@ public class SheepState : MonoBehaviour
     public void startFightWithWolf()
     {
         isFightingAgainstWolf = true;
-        GetComponent<SheepController>().stateMachine.TriggerEvent((int)FSMEventTriggers.Death);
+        SheepController controller = GetComponent<SheepController>();
+        controller.stateMachine.TriggerEvent((int)FSMEventTriggers.Death);
+        controller.sheepMovementController.CanMove = false;
     }
 
 }
