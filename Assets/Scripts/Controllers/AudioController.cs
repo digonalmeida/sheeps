@@ -50,7 +50,7 @@ public class AudioController : MonoBehaviour
 
     private void Start()
     {
-        playMusic(clipMusic_CalmPhase);
+        //playMusic(clipMusic_CalmPhase);
     }
 
     public void playSFX(AudioClip sfxClip)
@@ -73,15 +73,18 @@ public class AudioController : MonoBehaviour
             audioSourceMusic.clip = musicClip;
             audioSourceMusic.Play();
         }
-        else StartCoroutine("changeMusic", musicClip);
+        else {
+            StopAllCoroutines();
+            StartCoroutine(changeMusic(musicClip));
+        }
     }
 
     public IEnumerator changeMusic(AudioClip musicClip)
     {
-        while(audioSourceMusic.volume >= 0f)
+        while(audioSourceMusic.volume > 0f)
         {
             audioSourceMusic.volume -= audioFadeOutFactor;
-            yield return null;
+            yield return 0;
         }
 
         //Change Music
@@ -89,10 +92,10 @@ public class AudioController : MonoBehaviour
         audioSourceMusic.clip = musicClip;
         audioSourceMusic.Play();
 
-        while (audioSourceMusic.volume <= 100f)
+        while (audioSourceMusic.volume < 1f)
         {
             audioSourceMusic.volume += audioFadeOutFactor;
-            yield return null;
+            yield return 0;
         }
     }
 }

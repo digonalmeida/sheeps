@@ -50,11 +50,11 @@ public class RedOverlayPulsing : MonoBehaviour
     {
         isBlinking = false;
         animator.SetBool("pulsing", false);
+        GameEvents.Notifications.StopWarning.SafeInvoke();
     }
 
     void UpdateRate(float val)
     {
-        animator.SetFloat("vel", val);
-		GameEvents.Notifications.StopWarning.SafeInvoke();
+        animator.SetFloat("vel", val);	
     }
 }

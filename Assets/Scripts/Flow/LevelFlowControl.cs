@@ -124,6 +124,9 @@ public class LevelFlowControl : MonoBehaviour
         // total time
         waveTotalTime = currentTensionSequence.Select(t => t.duration).Sum();
 
+        // start audio
+        AudioController.Instance.playMusic(AudioController.Instance.clipMusic_ChaosPhase);
+
         // start evaluating values
         StartCoroutine(EvaluateFlow());
     }
@@ -149,6 +152,9 @@ public class LevelFlowControl : MonoBehaviour
 
         // feature mobile
         MobilePhone.Instance.FeatureMobile();
+
+        // start audio
+        AudioController.Instance.playMusic(AudioController.Instance.clipMusic_CalmPhase);
 
         // scheddule notification
         StartCoroutine(this.WaitAndAct(3f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
@@ -213,6 +219,8 @@ public class LevelFlowControl : MonoBehaviour
         // You Win
         // notify game win
         GameEvents.Notifications.NewNotification.SafeInvoke("game_win");
+
+        Debug.Log("Win");
     }
 
     private void GameLose()
@@ -220,6 +228,8 @@ public class LevelFlowControl : MonoBehaviour
         // You Die
         // notify game end
         GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
+
+        Debug.Log("Lose");
     }
 
     IEnumerator EvaluateFlow()
