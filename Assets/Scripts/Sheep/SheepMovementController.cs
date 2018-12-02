@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepMovementController : MonoBehaviour {
+public class SheepMovementController : MonoBehaviour
+{
     public bool CanMove = false;
     CharacterController charController;
     SheepInputData sheepInputData;
     SpriteRenderer spriteRenderer;
-    float speed = 5;
+    SheepAnimationController sheepAnimationController;
+    SheepState sheepState;
     Vector3 gSpeed = new Vector3();
+    public Vector3 lastNormalizedMovement;
+    public bool burdened;
+
     void Awake()
     {
         charController = GetComponent<CharacterController>();
         sheepInputData = GetComponent<SheepInputData>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        sheepAnimationController = GetComponent<SheepAnimationController>();
+        sheepState = GetComponent<SheepState>();
     }
 
     // Update is called once per frame
@@ -28,7 +35,13 @@ public class SheepMovementController : MonoBehaviour {
         direction.y = 0;
         direction.Normalize();
         gSpeed += Time.deltaTime * Physics.gravity;
-        charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * speed));
+        charController.Move((gSpeed * Time.deltaTime) + (direction * Time.deltaTime * sheepInputData.moveSpeed * sheepState.movementSpeed));
+        if (direction.magnitude == 1) lastNormalizedMovement = direction;
+
+        //Flip Sprite
+        if (direction.x < 0f) sheepAnimationController.setBool("FlippedX", true);
+        else if(direction.x > 0f) sheepAnimationController.setBool("FlippedX", false);
+
         if (charController.isGrounded)
         {
             gSpeed = Vector3.zero;

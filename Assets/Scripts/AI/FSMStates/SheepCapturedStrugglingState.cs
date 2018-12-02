@@ -14,6 +14,7 @@ public class SheepCapturedStrugglingState : FSMState
         agent = Agent as SheepController;
         timer = agent.sheepAnimationController.struggleTime;
         agent.sheepAnimationController.setBool("Struggling", true);
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_BleatFear);
     }
 
     public override void OnExit()

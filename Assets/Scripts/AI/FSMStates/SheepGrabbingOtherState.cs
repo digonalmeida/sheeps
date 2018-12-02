@@ -12,7 +12,7 @@ public class SheepGrabbingOtherState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
-        PlayerInput.Instance.highlightTargetLocked = true;
+        agent.lockTarget = true;
         agent.sheepAnimationController.setTrigger("Attack");
     }
 }

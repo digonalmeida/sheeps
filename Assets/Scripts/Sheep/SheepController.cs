@@ -39,10 +39,17 @@ public class SheepController : MonoBehaviour
     public Action OnAnimationFinished;
 
     public Vector3 TossDirection { get; private set; }
+    private Collider[] nearestSheep;
+    private int nearestSheepCount;
+    private LayerMask sheepLayerMask;
+    public bool lockTarget;
     
     private void Awake()
     {
         sheepMovementController = GetComponent<SheepMovementController>();
+        nearestSheep = new Collider[2];
+        sheepLayerMask = LayerMask.GetMask("Sheep");
+        lockTarget = false;
     }
 
     //Start
@@ -129,6 +136,29 @@ public class SheepController : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+
+        //Seek Nearest Sheep
+        if(!lockTarget)
+        {
+            nearestSheepCount = Physics.OverlapSphereNonAlloc(this.transform.position, sheepState.interactDistance, nearestSheep, sheepLayerMask);
+            for (int i = 0; i <= nearestSheepCount; i++)
+            {
+                //No Other Sheep Found
+                if (i == nearestSheepCount)
+                {
+                    sheepInputData.targetSheep = null;
+                    break;
+                }
+                //Ignore Self
+                if (nearestSheep[i].gameObject == this.gameObject) continue;
+                else
+                {
+                    //Other Sheep Found!
+                    sheepInputData.targetSheep = nearestSheep[i].gameObject;
+                    break;
+                }
+            }
+        }
     }
 
     //Sheep Controller Aux Methods
@@ -144,11 +174,6 @@ public class SheepController : MonoBehaviour
         {
             stateMachine.TriggerEvent((int)FSMEventTriggers.Stun);
         }
-    }
-
-    public void Move()
-    {
-
     }
 
     public void getCaptured(GameObject capturor)
