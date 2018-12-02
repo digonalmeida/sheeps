@@ -44,6 +44,19 @@ public class WolfController : MonoBehaviour
 
     void Update()
     {
+        //Set Sorting in Layer
+        if (this.transform.position.z < 0f)
+        {
+            spriteRenderer.sortingLayerName = "ForeGround";
+            spriteRenderer.sortingOrder = -1;
+        }
+        else
+        {
+            spriteRenderer.sortingLayerName = "FrontFence";
+            spriteRenderer.sortingOrder = -1;
+        }
+
+
         if (agent.remainingDistance <= Mathf.Abs(0.2f))
         {
             if (state == WolfState.idle)
