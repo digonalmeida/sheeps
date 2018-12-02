@@ -12,7 +12,7 @@ public class SheepBeingTossedState : FSMState
     {
         base.OnEnter();
         agent = Agent as SheepController;
-        target = agent.transform.position + (agent.sheepInputData.movementDirection * agent.sheepState.tossDistanceMultiplier);
+        target = agent.transform.position + (agent.TossDirection * agent.sheepState.tossDistanceMultiplier);
         agent.sheepAnimationController.setBool("BeingTossed", true);
     }
 
@@ -24,7 +24,13 @@ public class SheepBeingTossedState : FSMState
 
     public override void Update()
     {
-        if (Vector3.Distance(agent.transform.position, target) <= 0.1f) agent.stateMachine.TriggerEvent((int)FSMEventTriggers.Stun);
-        else agent.transform.position = Vector3.MoveTowards(agent.transform.position, agent.transform.position + agent.sheepInputData.movementDirection, Time.deltaTime * agent.sheepState.movementSpeed * 2f);
+        if (Vector3.Distance(agent.transform.position, target) <= 0.1f)
+        {
+            agent.stateMachine.TriggerEvent((int)FSMEventTriggers.Stun);
+        }
+        else
+        {
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * 5f);
+        }
     }
 }

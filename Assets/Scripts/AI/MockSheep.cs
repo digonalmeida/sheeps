@@ -16,7 +16,8 @@ public class MockSheep : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         Vector3 direction = sheepInputData.movementDirection;
         direction.y = 0;
         direction.Normalize();

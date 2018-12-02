@@ -14,7 +14,7 @@ public class SheepAIIdleState : FSMState
         agent.InputData.grabThrow = false;
         agent.InputData.target = null;
         agent.InputData.moveSpeed = 0.1f;
-        agent.InputData.movementDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
+       // agent.InputData.movementDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
     }
     public override void OnExit()
     {
