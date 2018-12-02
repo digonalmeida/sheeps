@@ -13,11 +13,50 @@ public class AiDirector : MonoBehaviour
     [SerializeField]
     private float _anyAttackers = .2f;
 
-    private void Awake()
+    private void Start()
     {
         sheepsAI = new List<SheepAI>(FindObjectsOfType<SheepAI>());
         playerInput = FindObjectOfType<PlayerInput>();
-        sheepsAI = ShuffleList(sheepsAI);
+
+        sheepsAI = Extensions.ShuffleList(sheepsAI);
+
+        GameEvents.Sheeps.OnSheepAttack += OnSheepAttack;
+        GameEvents.Sheeps.SheepDied += OnSheepDied;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Sheeps.OnSheepAttack -= OnSheepAttack;
+        GameEvents.Sheeps.SheepDied -= OnSheepDied;
+    }
+
+    public void OnSheepDied(SheepConfig config)
+    {
+        InitializeSheepsStrategy();
+    }
+
+    public void RemoveDeadSheeps()
+    {
+        var newList = new List<SheepAI>();
+        foreach(var sheep in sheepsAI)
+        {
+            if(sheep.GetComponent<SheepState>().isDead)
+            {
+                continue;
+            }
+            newList.Add(sheep);
+        }
+        sheepsAI = newList;
+    }
+
+    public void OnSheepAttack(GameObject s1, GameObject s2)
+    {
+        var ai = s2.GetComponent<SheepAI>();
+
+        if(ai != null)
+        {
+            ai.SetRevenge(s1);
+        }
     }
 
     private List<E> ShuffleList<E>(List<E> inputList)
@@ -39,6 +78,7 @@ public class AiDirector : MonoBehaviour
     {
         InitializeSheepsStrategy();
     }
+
 
     public void InitializeSheepsStrategy()
     {

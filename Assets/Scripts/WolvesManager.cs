@@ -9,6 +9,7 @@ public class WolvesManager : Singleton<WolvesManager>
     public int wolvesToSpawn = 4;
 
     private WolfWaypoint[] waypoints;
+    private WolfExitWaypoint[] exitWaypoints;
     private List<WolfController> wolvesSpawned = new List<WolfController>();
 
     protected override void Awake()
@@ -16,6 +17,7 @@ public class WolvesManager : Singleton<WolvesManager>
         base.Awake();
 
         waypoints = FindObjectsOfType<WolfWaypoint>();
+        exitWaypoints= FindObjectsOfType<WolfExitWaypoint>();
     }
 
     private void Start()
@@ -36,6 +38,13 @@ public class WolvesManager : Singleton<WolvesManager>
         for (int i = 0; i < wolvesSpawned.Count; i++)
         {
             wolvesSpawned[i].FollowSheep(sheep);
+        }
+    }
+
+    public void HideWolves(){
+        for (int i = 0; i < wolvesSpawned.Count; i++)
+        {
+            wolvesSpawned[i].Exit(exitWaypoints[Random.Range(0,exitWaypoints.Length)]);
         }
     }
 

@@ -59,26 +59,16 @@ public class SheepAI : MonoBehaviour
 
         InputData = GetComponent<SheepInputData>();
         stateMachine.Agent = this;
-
-        //idle.AddTrigger((int)EventTriggers.WolfAppeared, fleeingState);
-        idle.AddTransition((int)EventTriggers.ChangeBehaviour, () => CurrentStrategy == Strategy.AttackAny, attackAnyone);
-        idle.AddTransition((int)EventTriggers.ChangeBehaviour, () => CurrentStrategy == Strategy.AttackPlayer, attackingTarget);
-
-      //  fleeingState.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
-      //  fleeingState.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
-
-        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
-      //  attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
-
-        attackingTarget.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
-      //  attackingTarget.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
     }
 
     private void Start()
     {
-       // SpecialTarget = PlayerInput.Instance.gameObject;
         stateMachine.SetState(idle);
-      //  StartCoroutine(StateTeste());
+    }
+
+    public void SetAttacking()
+    {
+        stateMachine.SetState(attackingTarget);
     }
 
     public void SetIdle()
@@ -86,12 +76,16 @@ public class SheepAI : MonoBehaviour
         stateMachine.SetState(idle);
     }
 
-
     public void SetDebugText()
     {
 
     }
 
+    public void SetRevenge(GameObject target)
+    {
+        Target = target;
+        stateMachine.SetState(attackingTarget);
+    }
     public void ChangeBehaviour()
     {
         stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
@@ -102,27 +96,4 @@ public class SheepAI : MonoBehaviour
         stateMachine.Update();
     }
     
-    public IEnumerator StateTeste()
-    {
-        for (;;)
-        {
-            stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
-            yield return new WaitForSeconds(Random.Range(4.0f, 4.0f));
-        }
-        yield return null;
-        /*
-        stateMachine.SetState(idle);
-        for (;;)
-        {
-            stateMachine.TriggerEvent((int)EventTriggers.WolfAppeared);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            for(;;)
-            {
-                stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
-                yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            }
-            stateMachine.TriggerEvent((int)EventTriggers.WolfDisappeared);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-        }*/
-    }
 }
