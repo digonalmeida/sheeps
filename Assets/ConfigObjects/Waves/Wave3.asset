@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21207dfb42ed5d8479b1c1634d03e78a, type: 3}
-  m_Name: Wave2
+  m_Name: Wave3
   m_EditorClassIdentifier: 
   tensionSequence:
-  - {fileID: 11400000, guid: 803fa09fe2039b849b63795d94c37c10, type: 2}
-  - {fileID: 11400000, guid: 6a6ad9c779c5d7a43ba966f0b42d9d26, type: 2}
-  - {fileID: 11400000, guid: 8e7d815eb044ebc4885df98b8c68f7c4, type: 2}
+  - {fileID: 11400000, guid: 594fc7d9b95c1da4391cddca51c6fc5b, type: 2}
+  - {fileID: 11400000, guid: 390b3a60d12167640ae5c3c1be3c680f, type: 2}
+  - {fileID: 11400000, guid: 585eae3425f50154b9d8f782a50744cb, type: 2}
   requiredSacrifices: 3
-  playerAtackerSheepsPercentage: 0.4
-  anyAttackerSheepsPercentage: 0.4
+  playerAtackerSheepsPercentage: 0.5
+  anyAttackerSheepsPercentage: 0.5

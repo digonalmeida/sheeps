@@ -233,10 +233,11 @@ public class LevelFlowControl : MonoBehaviour
 
     IEnumerator EvaluateFlow()
     {
+
+        float aiUpdateTimer = 0;
+
         while (currentTensionSequence.Count > 0)
         {
-
-            float aiUpdateTimer = 0;
 
             if (timer > currentTensionSequence[0].duration)
             {
@@ -259,9 +260,11 @@ public class LevelFlowControl : MonoBehaviour
 
             msgRateValue = currentTensionSequence[0].messageRateCurve.Evaluate(timerPerc);
             tensionValue = currentTensionSequence[0].tensionCurve.Evaluate(timerPerc);
+
             for (int i = 0; i < currentTensionSequence[0].messageCurves.Count; i++)
             {
-                currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(timerPerc);
+                if(currentTensionSequence.Count>0)
+                    currentMessageTypeDict[currentTensionSequence[0].messageCurves[i].messageType] = currentTensionSequence[0].messageCurves[i].curve.Evaluate(timerPerc);
             }
 
             UpdateMessageFlowController();

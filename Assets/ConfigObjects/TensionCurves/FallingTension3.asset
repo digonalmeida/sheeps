@@ -9,23 +9,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270075e87407130418343f27e5ddead2, type: 3}
-  m_Name: RisingTension2
+  m_Name: FallingTension3
   m_EditorClassIdentifier: 
-  duration: 15
+  duration: 7
   tensionCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: -0.02973175
-      value: 0.4988861
-      inSlope: 0.16330266
-      outSlope: 0.16330266
+      time: 0
+      value: 1
+      inSlope: -1.7346376
+      outSlope: -1.7346376
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 1.6259371
-      outSlope: 1.6259371
+      time: 0.9958048
+      value: 0.48752838
+      inSlope: -0.026023732
+      outSlope: -0.026023732
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -34,14 +34,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.00956574
-      value: 3.5008337
-      inSlope: -3.1194282
-      outSlope: -3.1194282
+      time: 0
+      value: 2.0249634
+      inSlope: -2.0818934
+      outSlope: -2.0818934
       tangentMode: 0
     - serializedVersion: 2
-      time: 1.0082865
-      value: 2.030024
+      time: 1.0041666
+      value: 1.0250039
       inSlope: -0.026023732
       outSlope: -0.026023732
       tangentMode: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   messageCurves:
-  - {fileID: 11400000, guid: 72ea2e95ca07e0441b8e817db415cc40, type: 2}
+  - {fileID: 11400000, guid: 5685a195937d88849a3ae0a7443150ed, type: 2}
+  - {fileID: 11400000, guid: 373ee907694eae944a84799bc649163d, type: 2}
   - {fileID: 11400000, guid: 25965beb4f9ec5649a383d2485a7cd40, type: 2}
   - {fileID: 11400000, guid: 6461b0d331740be48aedf073110879c6, type: 2}

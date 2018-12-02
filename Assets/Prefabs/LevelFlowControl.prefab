@@ -129,6 +129,7 @@ MonoBehaviour:
   wavesSequences:
   - {fileID: 11400000, guid: 871db5dfefd99ef4db9143e39ca20995, type: 2}
   - {fileID: 11400000, guid: 40fa4de884f357f4393d8be779bd24c0, type: 2}
+  - {fileID: 11400000, guid: 90c480b7134f2d5498776168fc9b7c4b, type: 2}
   intermediaryWave: {fileID: 11400000, guid: c82dcbfa37f3cc44a99056632ab4e0b1, type: 2}
 --- !u!114 &114793485428884836
 MonoBehaviour:
