@@ -11,6 +11,17 @@ public class SheepMovementController : MonoBehaviour
     SheepAnimationController sheepAnimationController;
     SheepState sheepState;
     Vector3 gSpeed = new Vector3();
+    Vector3 KnockbackDirection = new Vector3();
+
+    [SerializeField]
+    float MaxKnockbackForce = 1;
+
+    [SerializeField]
+    float KnockbackDeasceleration = 1;
+
+    float _knockbackForce = 0;
+    
+
     public Vector3 lastNormalizedMovement;
     public bool burdened;
 
@@ -23,19 +34,27 @@ public class SheepMovementController : MonoBehaviour
         sheepState = GetComponent<SheepState>();
     }
 
-    public void knockback(Vector3 attackerPos)
+    public void knockback(Vector3 direction)
     {
-        charController.Move((this.transform.position - attackerPos).normalized * 2f);
+        KnockbackDirection = direction;
+        _knockbackForce = MaxKnockbackForce;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!CanMove)
+        
+        if(_knockbackForce > 0)
+        {
+            _knockbackForce -= Mathf.Max(0, KnockbackDeasceleration * Time.deltaTime);
+            charController.Move(_knockbackForce * KnockbackDirection * Time.deltaTime);
+        }
+
+        if (!CanMove)
         {
             return;
         }
-
+        
         Vector3 direction = sheepInputData.movementDirection;
         direction.y = 0;
         direction.Normalize();
