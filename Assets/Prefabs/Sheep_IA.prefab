@@ -216,8 +216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanMove: 0
   flipped: 0
-  MaxKnockbackForce: 1
-  KnockbackDeasceleration: 1
+  MaxKnockbackForce: 50
+  KnockbackDeasceleration: 300
   lastNormalizedMovement: {x: 0, y: 0, z: 0}
   burdened: 0
 --- !u!114 &114449075284356724
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
-  movementSpeed: 1
+  movementSpeed: 4.2
   burdenedMovementSpeed: 3
   interactDistance: 3
   tossDistanceMultiplier: 6
