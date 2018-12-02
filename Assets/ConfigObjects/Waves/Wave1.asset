@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6287a8aaa6506f4c9d2efd9d85aaf55, type: 2}
   requiredSacrifices: 1
   playerAtackerSheepsPercentage: 0.3
-  anyAttackerSheepsPercentage: 0.4
+  anyAttackerSheepsPercentage: 0.3

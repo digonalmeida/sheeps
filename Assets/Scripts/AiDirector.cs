@@ -95,8 +95,8 @@ public class AiDirector : Singleton<AiDirector>
     }
     public void InitializeSheepsStrategy()
     {
-        int playerAttackers = Mathf.CeilToInt(Mathf.Max(_playerAttackers * sheepsAI.Count, 1));
-        int anyAttackers = Mathf.CeilToInt(Mathf.Max(_playerAttackers * sheepsAI.Count, 2));
+        int playerAttackers = Mathf.CeilToInt(_playerAttackers * sheepsAI.Count);
+        int anyAttackers = Mathf.CeilToInt(_playerAttackers * sheepsAI.Count);
 
         int i = 0;
 
