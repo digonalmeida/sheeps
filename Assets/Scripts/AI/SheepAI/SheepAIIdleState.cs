@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SheepAIIdleState : FSMState
 {
+    Coroutine _coroutine;
     public override void OnEnter()
     {
         base.OnEnter();
@@ -14,18 +15,29 @@ public class SheepAIIdleState : FSMState
         agent.InputData.grabThrow = false;
         agent.InputData.targetSheep = null;
         agent.InputData.moveSpeed = 0.1f;
-       // agent.InputData.movementDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
-    }
-    public override void OnExit()
-    {
-        base.OnEnter();
-        var agent = Agent as SheepAI;
+        agent.InputData.movementDirection = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
+        _coroutine = agent.StartCoroutine(IdleWait());
     }
 
     public override void Update()
     {
+        base.Update();
+    }
+
+    IEnumerator IdleWait()
+    {
+        yield return new WaitForSeconds(2);
+        var agent = Agent as SheepAI;
+        agent.ChangeBehaviour();
+    }
+    public override void OnExit()
+    {
         base.OnExit();
         var agent = Agent as SheepAI;
         agent.InputData.moveSpeed = 1.0f;
+        if(_coroutine != null)
+        {
+            agent.StopCoroutine(_coroutine);
+        }
     }
 }
