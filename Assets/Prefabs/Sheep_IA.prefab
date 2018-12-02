@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114055150228268756}
   - component: {fileID: 143719453811143656}
   - component: {fileID: 114072604602095288}
+  - component: {fileID: 114594455244864104}
   m_Layer: 11
   m_Name: Sheep_IA
   m_TagString: Untagged
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 0
+  lastNormalizedMovement: {x: 0, y: 0, z: 0}
   burdened: 0
 --- !u!114 &114449075284356724
 MonoBehaviour:
@@ -168,6 +170,19 @@ MonoBehaviour:
   interactDistance: 3
   tossDistanceMultiplier: 6
   capturor: {fileID: 0}
+  isFightingAgainstWolf: 0
+--- !u!114 &114594455244864104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1737588425012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a171600e002311409e17ad6cf9195a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugUiText: {fileID: 0}
 --- !u!114 &114724900416192124
 MonoBehaviour:
   m_ObjectHideFlags: 1

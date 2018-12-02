@@ -18,7 +18,11 @@ public class SheepAttackingState : FSMState
 
     public void OnAttack()
     {
-        
+        if(agent.sheepInputData.targetSheep == null)
+        {
+            return;
+        }
+
         if (agent.checkInteractDistance())
         {
             agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
