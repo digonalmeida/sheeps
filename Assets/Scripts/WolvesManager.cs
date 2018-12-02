@@ -29,7 +29,7 @@ public class WolvesManager : Singleton<WolvesManager>
     {
         for (int i = 0; i < numberWolves; i++)
         {
-            wolvesSpawned.Add(Instantiate(wolfPrefab, waypoints[Random.Range(0, waypoints.Length)].transform.position, Quaternion.identity));
+            wolvesSpawned.Add(Instantiate(wolfPrefab, exitWaypoints[Random.Range(0, exitWaypoints.Length)].transform.position, Quaternion.identity));
         }
     }
 
@@ -45,6 +45,13 @@ public class WolvesManager : Singleton<WolvesManager>
         for (int i = 0; i < wolvesSpawned.Count; i++)
         {
             wolvesSpawned[i].Exit(exitWaypoints[Random.Range(0,exitWaypoints.Length)]);
+        }
+    }
+
+    public void Initialize(){
+         for (int i = 0; i < wolvesSpawned.Count; i++)
+        {
+            wolvesSpawned[i].StartIdle();;
         }
     }
 

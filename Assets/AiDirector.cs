@@ -82,13 +82,19 @@ public class AiDirector : Singleton<AiDirector>
         return randomList; //return the new random list
     }
 
+    public void ResetSheepsStrategy(){
+        foreach( var sheep in sheepsAI)
+        {
+            sheep.CurrentStrategy = SheepAI.Strategy.Idle;
+            sheep.SetIdle();
 
+        }
+    }
     public void InitializeSheepsStrategy()
     {
         int playerAttackers = Mathf.CeilToInt(Mathf.Max(_playerAttackers * sheepsAI.Count, 1));
         int anyAttackers = Mathf.CeilToInt(Mathf.Max(_playerAttackers * sheepsAI.Count, 2));
 
-        Debug.Log(playerAttackers);
         int i = 0;
 
         for (; i < playerAttackers; i++)

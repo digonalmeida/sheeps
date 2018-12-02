@@ -8,6 +8,7 @@ public class LevelFlowControl : MonoBehaviour
 {
 
     public List<LevelWaveSequence> wavesSequences;
+    public LevelWaveSequence intermediaryWave;
     private List<TensionCurve> currentTensionSequence;
     private Dictionary<messageType, float> currentMessageTypeDict;
 
@@ -42,9 +43,9 @@ public class LevelFlowControl : MonoBehaviour
     {
         if (gameStarted && !gameEnded)
         {
-            if (sacrificesMade > sacrificesNeeded)
+            if (sacrificesMade >= sacrificesNeeded)
             {
-                FinalizeTensionFlow(false);
+                FinalizeTensionFlow(true);
             }
         }
     }
@@ -67,33 +68,102 @@ public class LevelFlowControl : MonoBehaviour
             sheep.config.ResetUsedMessages();
         }
 
+        // initialize director 
         AiDirector.Instance.Initialize(sequence.playerAtackerSheepsPercentage, sequence.anyAttackerSheepsPercentage);
-
-
+    
+        PlayerInput.Instance.EnableInput();
+        
         // load sequence
         sacrificesNeeded = sequence.requiredSacrifices;
         currentTensionSequence = new List<TensionCurve>(sequence.tensionSequence);
         currentMessageTypeDict = RebuildMsgTypeDict(currentTensionSequence[0]);
 
+        // trim waves
+        wavesSequences.RemoveAt(0);
+
+        // activate wolves
+        WolvesManager.Instance.Initialize();
+
         // activate messages
         MessageFlowController.Instance.StartMessaging();
+
+        // notify wave start
+        GameEvents.Notifications.NewNotification.SafeInvoke("wave_start");
 
         // start evaluating values
         StartCoroutine(EvaluateFlow());
     }
 
+    public void StartIntermediaryFlow()
+    {
+        // reset values
+        timer = 0f;
+        sacrificesMade = 0;
+        gameStarted = false;
+        gameEnded = false;
+        victory = false;
+        foreach (SheepState sheep in SheepsManager.Instance.allSheeps)
+        {
+            sheep.config.ResetUsedMessages();
+        }
+
+        // load sequence
+        currentMessageTypeDict = RebuildMsgTypeDict(currentTensionSequence[0]);
+
+        // activate messages
+        MessageFlowController.Instance.StartMessaging();
+
+        // feature mobile
+        MobilePhone.Instance.FeatureMobile();
+
+        // scheddule notification
+        StartCoroutine(this.WaitAndAct(3f,()=>GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
+
+        // wait to deactivate
+        StartCoroutine(this.WaitAndAct(intermediaryWave.tensionSequence[0].duration, () => FinalizeIntermediaryFlow()));
+
+    }
+
+    private void FinalizeIntermediaryFlow()
+    {
+        // unfeature mobile
+        MobilePhone.Instance.UnfeatureMobile();
+
+        // next wave
+        StartTensionFlow(wavesSequences[0]);
+    }
+
     private void FinalizeTensionFlow(bool isVictorious)
     {
+        // finish coroutines
+        StopAllCoroutines();
+
         gameEnded = true;
         victory = isVictorious;
 
         // finalize messages
         MessageFlowController.Instance.StopMessaging();
 
+        // finalize ai director
+        AiDirector.Instance.ResetSheepsStrategy();
+
+        // desabilita input
+        PlayerInput.Instance.DisableInput();
+
         // hide wolves
         if (isVictorious)
         {
+            // start mid wave
+            StartIntermediaryFlow();
+
+            // stop wolves
             WolvesManager.Instance.HideWolves();
+
+        }
+        else
+        {
+            // notify wave end
+            GameEvents.Notifications.NewNotification.SafeInvoke("game_end");
         }
     }
 

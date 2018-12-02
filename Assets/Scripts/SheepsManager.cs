@@ -44,6 +44,7 @@ public class SheepsManager : Singleton<SheepsManager>
 
     public void NotificateSheepDied(SheepState sheep)
     {
+        GameEvents.Sheeps.SheepDied.SafeInvoke(sheep.config);
         NotificationBlob notif = new NotificationBlob(sheep.config.Id, sheepDieNotificationMessageKey);
         NotificationsManager.Instance.AddNotification(notif);
     }
