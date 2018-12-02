@@ -15,7 +15,7 @@ public class StateMachine
             CurrentState.OnExit();
         }
         
-        Debug.Log((Agent as Component).gameObject.name + " TROCANDO DE ESTADO -> " + state.GetType().ToString());
+        //Debug.Log((Agent as Component).gameObject.name + " TROCANDO DE ESTADO -> " + state.GetType().ToString());
         CurrentState = state;
 
         if(CurrentState != null)

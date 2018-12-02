@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1737588425012664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.14, y: 0, z: 1.79}
+  m_LocalPosition: {x: 6.14, y: 0, z: 4.9}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4373560517478038}
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
-  movementSpeed: 2
+  movementSpeed: 7
   burdenedMovementSpeed: 3
   interactDistance: 3
   tossDistanceMultiplier: 6
@@ -355,7 +355,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -253766012
+  randomSeed: -2046811511
   InitialModule:
     serializedVersion: 3
     enabled: 1
