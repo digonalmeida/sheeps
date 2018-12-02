@@ -12,7 +12,7 @@ public class AudioController : SingletonDestroy<AudioController>
     public AudioSource audioSourceMusic;
 
     //SFX Clips
-   
+    public AudioClip clipSFX_Rooster;
     public AudioClip clipSFX_WolfKill;
     public AudioClip clipSFX_TossLanding;
     public AudioClip clipSFX_FallUncounscious;
@@ -48,6 +48,11 @@ public class AudioController : SingletonDestroy<AudioController>
         //Check Singleton
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
+    }
+
+    public void playRoosterSFX()
+    {
+        AudioSource.PlayClipAtPoint(clipSFX_Rooster, Camera.main.transform.position);
     }
 
     private void Start()
