@@ -21,8 +21,31 @@ public class SheepAI : MonoBehaviour
 
     public GameObject Target { get; set; }
 
-    public GameObject SpecialTarget { get; private set; }
+    public GameObject SpecialTarget { get; set; }
     
+    public enum Strategy
+    {
+        Idle,
+        AttackAny,
+        AttackPlayer
+    }
+
+    [SerializeField]
+    private Strategy _currentStrategy = Strategy.Idle;
+
+    public Strategy CurrentStrategy
+    {
+        get
+        {
+            return _currentStrategy;
+        }
+        set
+        {
+            _currentStrategy = value;
+            stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
+        }
+    }
+
     public enum EventTriggers
     {
         WolfAppeared,
@@ -32,28 +55,20 @@ public class SheepAI : MonoBehaviour
  
     public void Awake()
     {
-        
+        CurrentStrategy = Strategy.Idle;
+
         InputData = GetComponent<SheepInputData>();
         stateMachine.Agent = this;
-
-        idle.AddTrigger((int)EventTriggers.WolfAppeared, fleeingState);
-        idle.AddTrigger((int)EventTriggers.ChangeBehaviour, attackAnyone);
-
-        fleeingState.AddTrigger((int)EventTriggers.ChangeBehaviour, attackAnyone);
-        fleeingState.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
-
-        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
-        attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
-
-        attackAnyone.AddTrigger((int)EventTriggers.ChangeBehaviour, idle);
-        attackAnyone.AddTrigger((int)EventTriggers.WolfDisappeared, idle);
     }
 
     private void Start()
     {
-        SpecialTarget = PlayerInput.Instance.gameObject;
-        stateMachine.SetState(attackAnyone);
-        StartCoroutine(StateTeste());
+        stateMachine.SetState(idle);
+    }
+
+    public void SetAttacking()
+    {
+        stateMachine.SetState(attackingTarget);
     }
 
     public void SetIdle()
@@ -61,12 +76,16 @@ public class SheepAI : MonoBehaviour
         stateMachine.SetState(idle);
     }
 
-
     public void SetDebugText()
     {
 
     }
 
+    public void SetRevenge(GameObject target)
+    {
+        Target = target;
+        stateMachine.SetState(attackingTarget);
+    }
     public void ChangeBehaviour()
     {
         stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
@@ -77,20 +96,4 @@ public class SheepAI : MonoBehaviour
         stateMachine.Update();
     }
     
-    public IEnumerator StateTeste()
-    {
-        stateMachine.SetState(idle);
-        for (;;)
-        {
-            stateMachine.TriggerEvent((int)EventTriggers.WolfAppeared);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            for(;;)
-            {
-                stateMachine.TriggerEvent((int)EventTriggers.ChangeBehaviour);
-                yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-            }
-            stateMachine.TriggerEvent((int)EventTriggers.WolfDisappeared);
-            yield return new WaitForSeconds(Random.Range(0.0f, 4.0f));
-        }
-    }
 }

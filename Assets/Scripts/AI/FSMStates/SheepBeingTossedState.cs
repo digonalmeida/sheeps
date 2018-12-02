@@ -13,6 +13,7 @@ public class SheepBeingTossedState : FSMState
         base.OnEnter();
         agent = Agent as SheepController;
         target = agent.transform.position + (agent.TossDirection * agent.sheepState.tossDistanceMultiplier);
+        target.y = 0f;
         agent.sheepAnimationController.setBool("BeingTossed", true);
         AudioController.Instance.playSFX(AudioController.Instance.clipSFX_YellToss);
     }
@@ -32,7 +33,7 @@ public class SheepBeingTossedState : FSMState
         }
         else
         {
-            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.movementSpeed * 2f);
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, target, Time.deltaTime * agent.sheepState.tossSpeedMultiplier);
         }
     }
 }

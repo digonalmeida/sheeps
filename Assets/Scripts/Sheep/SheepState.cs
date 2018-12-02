@@ -12,6 +12,7 @@ public class SheepState : MonoBehaviour
     public float burdenedMovementSpeed = 0.8f;
     public float interactDistance = 1f;
     public float tossDistanceMultiplier = 2f;
+    public float tossSpeedMultiplier = 2f;
     public GameObject capturor;
     public bool isDead {get; private set;}
     public SheepConfig config {get; private set;}
@@ -45,13 +46,18 @@ public class SheepState : MonoBehaviour
         currentHealthPoints = healthPoints;
     }
 
-    public void die(){
+    public void die()
+    {
         isDead = true;
         SheepsManager.Instance.NotificateSheepDied(this);
     }
 
-    public void startFightWithWolf(){
-      isFightingAgainstWolf = true;  
+    public void startFightWithWolf()
+    {
+        isFightingAgainstWolf = true;
+        SheepController controller = GetComponent<SheepController>();
+        controller.stateMachine.TriggerEvent((int)FSMEventTriggers.Death);
+        controller.sheepMovementController.CanMove = false;
     }
 
 }

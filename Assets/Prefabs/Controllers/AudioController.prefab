@@ -245,16 +245,35 @@ MonoBehaviour:
   audioFadeOutFactor: 1.5
   audioSourceSFX: {fileID: 82310871466497044}
   audioSourceMusic: {fileID: 82184003301956240}
-  clipSFX_YellToss: {fileID: 0}
-  clipSFX_WolfKill: {fileID: 0}
-  clipSFX_TossLanding: {fileID: 0}
+  clipSFX_WolfKill: {fileID: 8300000, guid: a3d39cbec8f8acf42b7a70848bfea11e, type: 3}
+  clipSFX_TossLanding: {fileID: 8300000, guid: c4dcab0eacd10e7499975d3e6fc5ae55, type: 3}
   clipSFX_FallUncounscious: {fileID: 0}
-  clipSFX_CaptureOther: {fileID: 0}
-  clipSFX_DeathSheep: {fileID: 0}
-  clipSFX_BleatNeutral: []
-  clipSFX_BleatFear: []
-  clipSFX_HowlWolves: []
-  clipMusic_CalmPhase: {fileID: 0}
-  clipMusic_TensePhase: {fileID: 0}
-  clipMusic_ChaosPhase: {fileID: 0}
-  clipMusic_GameOver: {fileID: 0}
+  clipSFX_Meesenger: {fileID: 0}
+  clipSFX_BleatNeutral:
+  - {fileID: 8300000, guid: d1d003336d741434ead4f718197d1a83, type: 3}
+  - {fileID: 8300000, guid: 8d81ff75b6dc46e4f87aa7b32319f38e, type: 3}
+  - {fileID: 8300000, guid: 2e1fea0d2b3e6c84eb02c413450f45aa, type: 3}
+  - {fileID: 8300000, guid: 3cea35ce23b9109489079ee119a4b8a0, type: 3}
+  - {fileID: 8300000, guid: 69e0b3200ece8ef4f878ed8d0dc05a28, type: 3}
+  - {fileID: 8300000, guid: fa0a089e6c77ef8468cc394bbf543332, type: 3}
+  - {fileID: 8300000, guid: fa99c2a6ba1173f49ad092817a4d3d3b, type: 3}
+  clipSFX_BleatFear:
+  - {fileID: 8300000, guid: 0ea32761bc121b8468cd70992debce6d, type: 3}
+  clipSFX_HowlWolves:
+  - {fileID: 8300000, guid: 8c243a1c4b0b8f14ba0429feebcaaa80, type: 3}
+  clipSFX_CaptureOther:
+  - {fileID: 8300000, guid: 46adda75164467a48b3832d06b34b736, type: 3}
+  - {fileID: 8300000, guid: bd1e763c5f3e05e438506db3257c755a, type: 3}
+  - {fileID: 8300000, guid: 91bb1df40e20d314294f34b143cdc441, type: 3}
+  clipSFX_YellToss:
+  - {fileID: 8300000, guid: cf4de1b3257a9254fad7729cf10326bf, type: 3}
+  clipSFX_Punch:
+  - {fileID: 8300000, guid: ab146494d9dc88440a5553240964eda9, type: 3}
+  - {fileID: 8300000, guid: 101f90ab93f2f1e4bbe0bc6ff0aa339e, type: 3}
+  - {fileID: 8300000, guid: f050020febd019545a9e4611c4c4935f, type: 3}
+  - {fileID: 8300000, guid: f8f9f62876578674f9b6b28165ca27fc, type: 3}
+  - {fileID: 8300000, guid: dbaeb741cbf578b469d49c6f607e55dd, type: 3}
+  clipMusic_CalmPhase: {fileID: 8300000, guid: f09c79b453e6d5141bda64c4178005a8, type: 3}
+  clipMusic_ChaosPhase: {fileID: 8300000, guid: cf830e211279ad34a80ffcb7571e57c2,
+    type: 3}
+  clipMusic_GameOver: {fileID: 8300000, guid: c60deec56e165f3499e11721c9b0f639, type: 3}

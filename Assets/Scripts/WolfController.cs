@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class WolfController : MonoBehaviour
         idle,
         following,
         fighting,
+        hiding,
 
     }
 
@@ -60,7 +62,12 @@ public class WolfController : MonoBehaviour
         spriteRenderer.flipX = agent.velocity.x < 0;
     }
 
-	void LateUpdate(){
+    public void Exit(WolfExitWaypoint wolfExitWaypoint)
+    {
+        throw new NotImplementedException();
+    }
+
+    void LateUpdate(){
 		spriteRenderer.transform.rotation = Quaternion.Euler(45,0,0);
 	}
 
@@ -69,7 +76,7 @@ public class WolfController : MonoBehaviour
         int c = currentWaypointIndex;
         while (currentWaypointIndex == c)
         {
-            currentWaypointIndex = Random.Range(0, waypoints.Length);
+            currentWaypointIndex = UnityEngine.Random.Range(0, waypoints.Length);
         }
         agent.destination = waypoints[currentWaypointIndex].position;
 
@@ -81,7 +88,7 @@ public class WolfController : MonoBehaviour
         state = WolfState.following;
         followingSheep = sheep;
         agent.destination = sheep.transform.position;
-        agent.speed *= 10;
+        agent.speed *= 5;
 		animator.SetFloat("velMult",5);
     }
 
@@ -104,7 +111,7 @@ public class WolfController : MonoBehaviour
     public void StartIdle()
     {
         state = WolfState.idle;
-		agent.speed /= 10;
+		agent.speed /= 5;
 		followingSheep = null;
 		animator.SetBool("invisible",false);
 		animator.SetFloat("velMult",1);

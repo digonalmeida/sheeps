@@ -17,6 +17,8 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public float timerNoInput {get; private set;}
+
     //On Object Awake
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         sheepInputData = GetComponent<SheepInputData>();
+
+        timerNoInput = 99999f;
     }
 
     // Update is called once per frame
@@ -36,6 +40,12 @@ public class PlayerInput : MonoBehaviour
     {
         //Movement
         sheepInputData.movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        if(sheepInputData.movementDirection.sqrMagnitude <= 0.1f){
+            timerNoInput+= Time.deltaTime;
+        } else {
+            timerNoInput = 0f;
+        }
+
 
         //Action
         if (Input.GetButtonDown("Fire1")) sheepInputData.attacking = true;

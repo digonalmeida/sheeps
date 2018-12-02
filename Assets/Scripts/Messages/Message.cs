@@ -10,7 +10,9 @@ public enum messageType
     relief,
     shitpost,
     grief,
-    blame
+    blame,
+    agree,
+    disagree
 }
 
 [System.Serializable]
@@ -18,6 +20,7 @@ public class Message
 {
     [SerializeField] private messageType messageType;
     [SerializeField] private string messageTextKey;
+    private bool wasUsed = false;
 
     public messageType MessageType
     {
@@ -32,6 +35,19 @@ public class Message
         get
         {
             return messageTextKey;
+        }
+    }
+
+    public bool WasUsed
+    {
+        get
+        {
+            return wasUsed;
+        }
+
+        set
+        {
+            wasUsed = value;
         }
     }
 }

@@ -12,18 +12,19 @@ public class AudioController : MonoBehaviour
     public AudioSource audioSourceMusic;
 
     //SFX Clips
-    public AudioClip clipSFX_YellToss;
+   
     public AudioClip clipSFX_WolfKill;
     public AudioClip clipSFX_TossLanding;
     public AudioClip clipSFX_FallUncounscious;
-    public AudioClip clipSFX_CaptureOther;
-    public AudioClip clipSFX_DeathSheep;
     public AudioClip clipSFX_Meesenger;
 
     //SFX Clips (Random)
     public List<AudioClip> clipSFX_BleatNeutral;
     public List<AudioClip> clipSFX_BleatFear;
     public List<AudioClip> clipSFX_HowlWolves;
+    public List<AudioClip> clipSFX_CaptureOther;
+    public List<AudioClip> clipSFX_YellToss;
+    public List<AudioClip> clipSFX_Punch;
 
     //Music Clips
     public AudioClip clipMusic_CalmPhase;
@@ -59,7 +60,10 @@ public class AudioController : MonoBehaviour
 
     public void playSFX(List<AudioClip> sfxClip)
     {
-        if (sfxClip != null && sfxClip.Count > 0) audioSourceSFX.PlayOneShot(sfxClip[Random.Range(0, sfxClip.Count)]);
+        if (sfxClip != null && sfxClip.Count > 0)
+        {
+            AudioSource.PlayClipAtPoint(sfxClip[Random.Range(0, sfxClip.Count)], Camera.main.transform.position);
+        }
     }
 
     public void playMusic(AudioClip musicClip)

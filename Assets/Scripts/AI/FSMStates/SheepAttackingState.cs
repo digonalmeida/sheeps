@@ -14,17 +14,22 @@ public class SheepAttackingState : FSMState
         agent.sheepAnimationController.setTrigger("Attack");
         agent.sheepMovementController.CanMove = true;
         agent.OnAnimationFinished += OnAttack;
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_Punch);
     }
 
     public void OnAttack()
     {
-        
-        if (agent.checkInteractDistance())
+        if(agent.sheepInputData.targetSheep == null)
         {
-            agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage();
+            return;
         }
 
-        GameEvents.Sheeps.OnSheepAttack.SafeInvoke(agent.gameObject, agent.sheepInputData.targetSheep.gameObject);
+        if (agent.checkInteractDistance())
+        {
+            agent.sheepInputData.targetSheep.GetComponent<SheepController>().takeDamage(agent.transform.position);
+            GameEvents.Sheeps.OnSheepAttack.SafeInvoke(agent.gameObject, agent.sheepInputData.targetSheep.gameObject);
+        }
+        
     }
 
     public override void OnExit()

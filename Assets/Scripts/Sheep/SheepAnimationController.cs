@@ -12,6 +12,7 @@ public class SheepAnimationController : MonoBehaviour
     public float timeAnimationStunned;
     public float timeAnimationUncounscious;
     public float struggleTime;
+    public float wolfFightTime;
 
     //Start
     private void Start()
