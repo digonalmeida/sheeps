@@ -47,7 +47,7 @@ public class WolfController : MonoBehaviour
             }
             else if (state == WolfState.following)
             {
-                StartFigth();
+                ReachSheep();
             }
         }
 
@@ -56,6 +56,7 @@ public class WolfController : MonoBehaviour
             StartIdle();
         }
 
+        // turn
         spriteRenderer.flipX = agent.velocity.x < 0;
     }
 
@@ -82,6 +83,16 @@ public class WolfController : MonoBehaviour
         agent.destination = sheep.transform.position;
         agent.speed *= 10;
 		animator.SetFloat("velMult",5);
+    }
+
+    private void ReachSheep(){
+        if(!followingSheep.isFightingAgainstWolf){
+            StartFigth();
+            followingSheep.startFightWithWolf();
+        }
+        else {
+            StartIdle();
+        }
     }
 
     public void StartFigth()

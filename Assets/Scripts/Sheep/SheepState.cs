@@ -15,7 +15,7 @@ public class SheepState : MonoBehaviour
     public GameObject capturor;
     public bool isDead {get; private set;}
     public SheepConfig config {get; private set;}
-
+    public bool isFightingAgainstWolf = false;
 
     //Initialize Variables
     private void Start()
@@ -50,10 +50,8 @@ public class SheepState : MonoBehaviour
         SheepsManager.Instance.NotificateSheepDied(this);
     }
 
-    public void wentOffLimits(){
-      //Notify wolves
-
-        
+    public void startFightWithWolf(){
+      isFightingAgainstWolf = true;  
     }
 
 }
