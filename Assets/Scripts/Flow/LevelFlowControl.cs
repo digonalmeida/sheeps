@@ -93,6 +93,12 @@ public class LevelFlowControl : MonoBehaviour
     private void IncrementSacrificed(SheepConfig config)
     {
         sacrificesMade++;
+        if(sacrificesMade < sacrificesNeeded) StartCoroutine(this.WaitAndAct(1f, callBackSacrifice));
+    }
+
+    private void callBackSacrifice()
+    {
+        if (gameStarted && !gameEnded) GameEvents.Notifications.NewNotification.SafeInvoke("sacrifice_made");
     }
 
     public void StartTensionFlow(LevelWaveSequence sequence)

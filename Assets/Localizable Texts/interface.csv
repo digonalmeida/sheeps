@@ -3,3 +3,6 @@ wave_start;Os lobos estão chegando...;The wolves are coming...
 wave_end;Os lobos foram embora, por enquanto...;For now, the wolves are gone...
 game_end;Os lobos fizeram um delicioso banquete!;Wolves had a delicious feist!
 game_win;Os lobos cansaram e foram embora;Wolves got tires and ran away
+sacrifice_made;Os lobos ainda continuam famintos!;The wolves are still hungry!
+string_yes;Sim;Yes
+string_no;Não;No
