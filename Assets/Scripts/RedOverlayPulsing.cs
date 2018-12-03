@@ -27,14 +27,14 @@ public class RedOverlayPulsing : MonoBehaviour
                 StartPulsing();
             }
         }
-        else if(levelFlowControl.GameStarted && levelFlowControl.GameEnded || levelFlowControl.CalmPhase)
+        else if (isBlinking)
         {
-           StopPulsing();
+            StopPulsing();
         }
 
         if (isBlinking)
         {
-            UpdateRate(maxBlinkSpeed * (levelFlowControl.WaveTimerPerc- timerPercentageToBlink)/(1-timerPercentageToBlink));
+            UpdateRate(maxBlinkSpeed * (levelFlowControl.WaveTimerPerc - timerPercentageToBlink) / (1 - timerPercentageToBlink));
 
         }
     }
@@ -43,7 +43,7 @@ public class RedOverlayPulsing : MonoBehaviour
     {
         isBlinking = true;
         animator.SetBool("pulsing", true);
-		GameEvents.Notifications.StartWarning.SafeInvoke();
+        GameEvents.Notifications.StartWarning.SafeInvoke();
     }
 
     void StopPulsing()
@@ -55,6 +55,6 @@ public class RedOverlayPulsing : MonoBehaviour
 
     void UpdateRate(float val)
     {
-        animator.SetFloat("vel", val);	
+        animator.SetFloat("vel", val);
     }
 }

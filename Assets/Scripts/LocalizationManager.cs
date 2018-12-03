@@ -30,6 +30,8 @@ public class LocalizationManager : SingletonDestroy<LocalizationManager>
         for (int k = 0; k < csvFiles.Count; k++)
         {
             TextAsset csvFile = csvFiles[k];
+            csvFile.text.Replace("\r","");
+            csvFile.text.Replace("/r","");
 
             string[] linhas = csvFile.text.Split(lineSeperater);
 
