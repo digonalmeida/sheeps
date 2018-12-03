@@ -27,7 +27,7 @@ public class RedOverlayPulsing : MonoBehaviour
                 StartPulsing();
             }
         }
-        else if(levelFlowControl.GameStarted && levelFlowControl.GameEnded)
+        else if(levelFlowControl.GameStarted && levelFlowControl.GameEnded || levelFlowControl.CalmPhase)
         {
            StopPulsing();
         }

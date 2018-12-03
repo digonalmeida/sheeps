@@ -22,6 +22,7 @@ public class LevelFlowControl : MonoBehaviour
     private float msgRateValue;
     private int sacrificesMade = 0;
     private int sacrificesNeeded = 0;
+    private bool calmPhase = false;
 
     private bool gameStarted, gameEnded, victory;
 
@@ -51,6 +52,15 @@ public class LevelFlowControl : MonoBehaviour
             return gameEnded;
         }
     }
+
+    public bool CalmPhase
+    {
+        get
+        {
+            return calmPhase;
+        }
+    }
+
 
     void OnEnable()
     {
@@ -142,6 +152,8 @@ public class LevelFlowControl : MonoBehaviour
         gameStarted = false;
         gameEnded = false;
         victory = false;
+        calmPhase = true;
+
         foreach (SheepState sheep in SheepsManager.Instance.allSheeps)
         {
             sheep.config.ResetUsedMessages();
@@ -171,6 +183,7 @@ public class LevelFlowControl : MonoBehaviour
     {
         // unfeature mobile
         MobilePhone.Instance.UnfeatureMobile();
+        calmPhase = false;
 
         // next wave
         StartTensionFlow(wavesSequences[0]);
