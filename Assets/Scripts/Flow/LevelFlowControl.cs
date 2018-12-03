@@ -178,7 +178,7 @@ public class LevelFlowControl : MonoBehaviour
         AudioController.Instance.playMusic(AudioController.Instance.clipMusic_CalmPhase);
 
         // scheddule notification
-        StartCoroutine(this.WaitAndAct(3f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
+        StartCoroutine(this.WaitAndAct(1.5f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
 
         // wait to deactivate
         StartCoroutine(this.WaitAndAct(intermediaryWave.tensionSequence[0].duration, () => FinalizeIntermediaryFlow()));

@@ -85,8 +85,6 @@ public class NotificationPanel : Singleton<NotificationPanel>
 
     public void OpenNotification(string textKey)
     {
-
-        Debug.Log("Notif");
         notificationTextField.SetupText(textKey);
         isNotificating = true;
         deathNotificationPanel.gameObject.SetActive(false);
