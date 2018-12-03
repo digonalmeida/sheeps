@@ -31,11 +31,6 @@ public class AudioController : SingletonDestroy<AudioController>
     public AudioClip clipMusic_ChaosPhase;
     public AudioClip clipMusic_GameOver;
 
-    public void playRoosterSFX()
-    {
-        audioSourceSFX.PlayOneShot(clipSFX_Rooster);
-    }
-
     private void Start()
     {
         //playMusic(clipMusic_CalmPhase);

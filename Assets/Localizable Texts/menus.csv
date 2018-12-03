@@ -17,3 +17,7 @@ credits_description;Esta é uma peça de trabalho colaborativo. Todos nós contr
 gameover_restart;Recomeçar;Restart
 gameover_menu;Menu;Menu
 ending_again;Jogar Novamente;Play Again
+controls_fire1;Socar - Crtl ou Botão Esquerdo;Punch - Crtl or Left Click
+controls_fire2;Agarrar/Jogar - Alt ou Botão Direito;Grab/Toss - Alt or Right Click
+controls_movement;Movimentação - WASD ou Setas;Movement - WASD or Arrows
+control_pressKey;Pressione Qualquer Tecla para Continuar;Press any Key to Continue
