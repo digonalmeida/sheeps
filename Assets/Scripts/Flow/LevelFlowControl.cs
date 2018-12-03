@@ -23,6 +23,10 @@ public class LevelFlowControl : MonoBehaviour
     private int sacrificesMade = 0;
     private int sacrificesNeeded = 0;
     private bool calmPhase = false;
+    private float bleatTimer;
+    private float minBleatTimer = 0.8f;
+    private float maxBleatTimer = 2.2f;
+    private float intermediaryWaveTimer;
 
     private bool gameStarted, gameEnded, victory;
 
@@ -81,11 +85,25 @@ public class LevelFlowControl : MonoBehaviour
 
     private void Update()
     {
-        if (gameStarted && !gameEnded)
+        if(!gameEnded)
         {
-            if (sacrificesMade >= sacrificesNeeded)
+            if (gameStarted)
             {
-                FinalizeTensionFlow(true);
+                if (sacrificesMade >= sacrificesNeeded)
+                {
+                    FinalizeTensionFlow(true);
+                }
+            }
+            else if (calmPhase)
+            {
+                bleatTimer -= Time.deltaTime;
+                intermediaryWaveTimer -= Time.deltaTime;
+
+                if (bleatTimer <= 0f && intermediaryWaveTimer > 0.2f)
+                {
+                    bleatTimer = UnityEngine.Random.Range(minBleatTimer, maxBleatTimer);
+                    AudioController.Instance.playSFX(AudioController.Instance.clipSFX_BleatNeutral);
+                }
             }
         }
     }
@@ -116,6 +134,8 @@ public class LevelFlowControl : MonoBehaviour
         {
             sheep.config.ResetUsedMessages();
         }
+
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_BleatFear);
 
         // initialize director 
         AiDirector.Instance.Initialize(0, 0);
@@ -159,6 +179,7 @@ public class LevelFlowControl : MonoBehaviour
         gameEnded = false;
         victory = false;
         calmPhase = true;
+        bleatTimer = minBleatTimer;
 
         foreach (SheepState sheep in SheepsManager.Instance.allSheeps)
         {
@@ -181,6 +202,7 @@ public class LevelFlowControl : MonoBehaviour
         StartCoroutine(this.WaitAndAct(1.5f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
 
         // wait to deactivate
+        intermediaryWaveTimer = intermediaryWave.tensionSequence[0].duration;
         StartCoroutine(this.WaitAndAct(intermediaryWave.tensionSequence[0].duration, () => FinalizeIntermediaryFlow()));
 
     }

@@ -44,7 +44,7 @@ public class SheepController : MonoBehaviour
     private LayerMask sheepLayerMask;
     public bool lockTarget;
     private Vector3 offsetGlove;
-    
+
     private void Awake()
     {
         sheepMovementController = GetComponent<SheepMovementController>();

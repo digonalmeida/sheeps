@@ -10,6 +10,7 @@ public class KeyListener : MonoBehaviour
     {
 		if(Input.anyKeyDown)
         {
+            AudioController.Instance.playSFX(AudioController.Instance.clipSFX_Rooster);
             SceneManager.LoadScene("main");
         }
 	}
