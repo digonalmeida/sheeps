@@ -73,6 +73,7 @@ public class MobilePhone : Singleton<MobilePhone>
 
     private void AddMessage(MessageBlob blob)
     {
+        AudioController.Instance.playSFX(AudioController.Instance.clipSFX_Meesenger);
         Transform msgTransform = contentParent.GetChild(0).transform;
         msgTransform.GetComponent<MobilePhoneMessage>().Setup(blob);
         //msgTransform.GetComponent<MobilePhoneMessage>().SetVisibility(true);
