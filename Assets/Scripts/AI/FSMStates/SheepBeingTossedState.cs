@@ -16,8 +16,7 @@ public class SheepBeingTossedState : FSMState
         target.y = 0f;
         agent.sheepAnimationController.setBool("BeingTossed", true);
         AudioController.Instance.playSFX(AudioController.Instance.clipSFX_YellToss);
-        agent.sheepAnimationController.spriteRenderer.sortingLayerName = "ForeGround";
-        agent.sheepAnimationController.particleSystemRenderer.sortingLayerName = "ForeGround";
+        agent.sheepAnimationController.setOrderLayer("ForeGround");
     }
 
     public override void OnExit()
@@ -25,8 +24,7 @@ public class SheepBeingTossedState : FSMState
         base.OnExit();
         agent.sheepAnimationController.setBool("BeingTossed", false);
         AudioController.Instance.playSFX(AudioController.Instance.clipSFX_TossLanding);
-        agent.sheepAnimationController.spriteRenderer.sortingLayerName = "Default";
-        agent.sheepAnimationController.particleSystemRenderer.sortingLayerName = "Default";
+        agent.sheepAnimationController.setOrderLayer("Default");
     }
 
     public override void Update()

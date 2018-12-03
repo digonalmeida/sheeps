@@ -151,10 +151,10 @@ public class SheepController : MonoBehaviour
         //Seek Nearest Sheep
         if(!lockTarget)
         {
-            if (sheepMovementController.flipped) offsetGlove = new Vector3(0.5f, 0f, 0f);
-            else offsetGlove = offsetGlove = new Vector3(-0.5f, 0f, 0f);
+            if (sheepMovementController.flipped) offsetGlove = new Vector3(-0.5f, 0f, 0f);
+            else offsetGlove = new Vector3(0.5f, 0f, 0f);
 
-            nearestSheepCount = Physics.OverlapSphereNonAlloc(this.transform.position, sheepState.interactDistance, nearestSheep, sheepLayerMask);
+            nearestSheepCount = Physics.OverlapSphereNonAlloc(this.transform.position + offsetGlove, sheepState.interactDistance, nearestSheep, sheepLayerMask);
             for (int i = 0; i <= nearestSheepCount; i++)
             {
                 //No Other Sheep Found

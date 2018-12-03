@@ -15,6 +15,7 @@ public class SheepStunnedState : FSMState
         if (agent.sheepInputData.targetSheep != null && agent.sheepInputData.targetSheep.GetComponent<SheepController>().sheepState.capturor != null) agent.sheepInputData.targetSheep.GetComponent<SheepController>().breakFreeFromCapture();
         timer = agent.sheepAnimationController.timeAnimationStunned;
         agent.sheepAnimationController.setBool("Stunned", true);
+        agent.lockTarget = false;
     }
 
     public override void OnExit()
