@@ -23,6 +23,7 @@ public class SheepsManager : Singleton<SheepsManager>
         {
             SheepConfig config = sheepConfigsToStart[i];
             GameObject go = Instantiate(sheepPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+            go.name = go.name + "_" + i;
             SheepState sheep = go.GetComponent<SheepState>();
             sheep.SetupSheep(config);
             allSheeps.Add(sheep);

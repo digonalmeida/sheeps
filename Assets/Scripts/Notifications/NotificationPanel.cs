@@ -44,6 +44,8 @@ public class NotificationPanel : Singleton<NotificationPanel>
     {
         if (!isWarning)
         {
+            Debug.Log("Notif death");
+
             deathNotificationPanel.gameObject.SetActive(true);
             warningNotificationPanel.gameObject.SetActive(false);
             notificationPanel.gameObject.SetActive(false);
@@ -66,6 +68,7 @@ public class NotificationPanel : Singleton<NotificationPanel>
 
     public void StartWarningNotificationPanel()
     {
+        Debug.Log("Notif warn");
         if (currentCoroutine != null) StopCoroutine(currentCoroutine);
         deathNotificationPanel.gameObject.SetActive(false);
         warningNotificationPanel.gameObject.SetActive(true);
@@ -90,8 +93,8 @@ public class NotificationPanel : Singleton<NotificationPanel>
         animator.SetBool("open", true);
 
         if (currentCoroutine != null) StopCoroutine(currentCoroutine);
-            currentCoroutine = StartCoroutine(this.WaitAndAct(notificationDuration, () => CloseNotificationPanel()));
-        
+        currentCoroutine = StartCoroutine(this.WaitAndAct(notificationDuration, () => CloseNotificationPanel()));
+
     }
 
 }

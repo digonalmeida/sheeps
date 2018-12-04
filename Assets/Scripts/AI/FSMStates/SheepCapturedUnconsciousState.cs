@@ -13,6 +13,7 @@ public class SheepCapturedUnconsciousState : FSMState
         agent = Agent as SheepController;
         agent.sheepAnimationController.setBool("Unconscious", true);
     }
+
     public override void OnExit()
     {
         base.OnExit();

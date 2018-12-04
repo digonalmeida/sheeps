@@ -13,5 +13,6 @@ public class SheepDeadState : FSMState
         agent = Agent as SheepController;
         agent.sheepAnimationController.setTrigger("Die");
         agent.sheepState.die();
+        agent.sheepAnimationController.setSortingOrder(-2);
     }
 }

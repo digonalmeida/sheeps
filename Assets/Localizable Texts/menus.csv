@@ -8,12 +8,16 @@ mainmenu_quit;SAIR;QUIT
 credits_menu;Ir para o Menu;Go to Menu
 credits_title;Créditos;Credits
 credits_script;Roteiro;Script
-credits_programer;Programador;Programer
+credits_programer;Código;Code
 credits_art;Arte;Art
-credits_producer;Produtora;Producer
-credits_sound;Sound Design;Sound Design
+credits_producer;Produção;Production
+credits_sound;Sound Design e Música;Sound Design and Music
 credits_thanks;OBRIGADO POR JOGAR!!!;THANK YOU FOR PLAYING!!!
 credits_description;Esta é uma peça de trabalho colaborativo. Todos nós contribuimos para a construção do projeto do Jogo;This is a collaborative piece of work. We all contributed to construct the Game Design.
 gameover_restart;Recomeçar;Restart
 gameover_menu;Menu;Menu
 ending_again;Jogar Novamente;Play Again
+controls_fire1;Socar - Crtl ou Botão Esquerdo;Punch - Crtl or Left Click
+controls_fire2;Agarrar/Jogar - Alt ou Botão Direito;Grab/Toss - Alt or Right Click
+controls_movement;Movimentação - WASD ou Setas;Movement - WASD or Arrows
+control_pressKey;Pressione Qualquer Tecla para Continuar;Press any Key to Continue

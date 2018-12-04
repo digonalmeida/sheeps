@@ -22,6 +22,7 @@ public class LevelFlowControl : MonoBehaviour
     private float msgRateValue;
     private int sacrificesMade = 0;
     private int sacrificesNeeded = 0;
+    private bool calmPhase = false;
 
     private bool gameStarted, gameEnded, victory;
 
@@ -52,6 +53,15 @@ public class LevelFlowControl : MonoBehaviour
         }
     }
 
+    public bool CalmPhase
+    {
+        get
+        {
+            return calmPhase;
+        }
+    }
+
+
     void OnEnable()
     {
         GameEvents.Sheeps.SheepDied += IncrementSacrificed;
@@ -71,7 +81,7 @@ public class LevelFlowControl : MonoBehaviour
 
     private void Update()
     {
-        if (gameStarted && !gameEnded)
+        if(!gameEnded && gameStarted)
         {
             if (sacrificesMade >= sacrificesNeeded)
             {
@@ -83,6 +93,12 @@ public class LevelFlowControl : MonoBehaviour
     private void IncrementSacrificed(SheepConfig config)
     {
         sacrificesMade++;
+        if(sacrificesMade < sacrificesNeeded) StartCoroutine(this.WaitAndAct(1f, callBackSacrifice));
+    }
+
+    private void callBackSacrifice()
+    {
+        if (gameStarted && !gameEnded) GameEvents.Notifications.NewNotification.SafeInvoke("sacrifice_made");
     }
 
     public void StartTensionFlow(LevelWaveSequence sequence)
@@ -142,6 +158,8 @@ public class LevelFlowControl : MonoBehaviour
         gameStarted = false;
         gameEnded = false;
         victory = false;
+        calmPhase = true;
+
         foreach (SheepState sheep in SheepsManager.Instance.allSheeps)
         {
             sheep.config.ResetUsedMessages();
@@ -160,7 +178,7 @@ public class LevelFlowControl : MonoBehaviour
         AudioController.Instance.playMusic(AudioController.Instance.clipMusic_CalmPhase);
 
         // scheddule notification
-        StartCoroutine(this.WaitAndAct(3f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
+        StartCoroutine(this.WaitAndAct(1.5f, () => GameEvents.Notifications.NewNotification.SafeInvoke("wave_end")));
 
         // wait to deactivate
         StartCoroutine(this.WaitAndAct(intermediaryWave.tensionSequence[0].duration, () => FinalizeIntermediaryFlow()));
@@ -171,6 +189,7 @@ public class LevelFlowControl : MonoBehaviour
     {
         // unfeature mobile
         MobilePhone.Instance.UnfeatureMobile();
+        calmPhase = false;
 
         // next wave
         StartTensionFlow(wavesSequences[0]);

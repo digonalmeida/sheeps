@@ -9,6 +9,7 @@ public class SheepAnimationController : MonoBehaviour
     private Animator animator;
     public SpriteRenderer spriteRenderer;
     public ParticleSystemRenderer particleSystemRenderer;
+    public SpriteRenderer shadowRenderer;
 
     //Timing Animations
     public float timeAnimationStunned;
@@ -20,6 +21,20 @@ public class SheepAnimationController : MonoBehaviour
     private void Start()
     {
         //animator = GetComponent<Animator>();
+    }
+
+    public void setOrderLayer(string layer)
+    {
+        spriteRenderer.sortingLayerName = layer;
+        particleSystemRenderer.sortingLayerName = layer;
+        shadowRenderer.sortingLayerName = layer;
+    }
+
+    public void setSortingOrder(int order)
+    {
+        spriteRenderer.sortingOrder = order;
+        particleSystemRenderer.sortingOrder = order;
+        shadowRenderer.sortingOrder = order;
     }
 
     public void setTrigger(string id)

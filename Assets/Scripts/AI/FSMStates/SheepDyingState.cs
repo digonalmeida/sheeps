@@ -15,6 +15,8 @@ public class SheepDyingState : FSMState
         timer = agent.sheepAnimationController.wolfFightTime;
         agent.sheepAnimationController.setTrigger("Die");
         AudioController.Instance.playSFX(AudioController.Instance.clipSFX_WolfKill);
+        if (agent.transform.position.z > 0) agent.sheepAnimationController.setOrderLayer("FrontFence");
+        else agent.sheepAnimationController.setOrderLayer("ForeGround");
     }
 
     public override void Update()

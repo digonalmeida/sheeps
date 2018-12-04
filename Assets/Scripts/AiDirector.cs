@@ -5,7 +5,6 @@ using UnityEngine;
 public class AiDirector : Singleton<AiDirector>
 {
     private List<SheepAI> sheepsAI;
-    private PlayerInput playerInput;
 
     [SerializeField]
     private float _playerAttackers = .1f;
@@ -25,7 +24,6 @@ public class AiDirector : Singleton<AiDirector>
         this._anyAttackers = anyAttackers;
 
         sheepsAI = new List<SheepAI>(FindObjectsOfType<SheepAI>());
-        playerInput = FindObjectOfType<PlayerInput>();
 
         sheepsAI = Extensions.ShuffleList(sheepsAI);
 
@@ -106,7 +104,7 @@ public class AiDirector : Singleton<AiDirector>
             {
                 return;
             }
-            sheepsAI[i].SpecialTarget = playerInput.gameObject;
+            sheepsAI[i].SpecialTarget = PlayerInput.Instance.gameObject;
             sheepsAI[i].CurrentStrategy = SheepAI.Strategy.AttackPlayer;
         }
 
