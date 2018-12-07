@@ -18,7 +18,7 @@ public class MenuManger : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene("Instructions");
+        SceneManager.LoadScene("Story");
     }
 
     public void ShowCredits()
